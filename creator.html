@@ -6,27 +6,24 @@
 <title>Simply Ads Creator — Create New Ad</title>
 
 <style>
-
 :root{
 --navy:#0B1220;
 --blue:#2563EB;
 --teal:#14B8A6;
 --bg:#F5F7FA;
---white:#FFFFFF;
+--white:#fff;
 --text:#111827;
 --muted:#64748B;
---border:#E2E8F0;
+--border:#E2E8F0
 }
 
-*{
-box-sizing:border-box;
-}
+*{box-sizing:border-box}
 
 body{
 margin:0;
 font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif;
 background:var(--bg);
-color:var(--text);
+color:var(--text)
 }
 
 header{
@@ -35,45 +32,45 @@ color:#fff;
 padding:18px 22px;
 display:flex;
 align-items:center;
-justify-content:space-between;
+justify-content:space-between
 }
 
 .brand{
 font-weight:800;
-font-size:19px;
+font-size:19px
 }
 
 .brand span{
-color:#60A5FA;
+color:#60A5FA
 }
 
 .back{
 color:#fff;
 text-decoration:none;
-font-weight:700;
+font-weight:700
 }
 
 .wrap{
 max-width:1050px;
 margin:auto;
-padding:22px;
+padding:22px
 }
 
 h1{
 margin:4px 0 6px;
-font-size:30px;
+font-size:30px
 }
 
 .intro{
 color:var(--muted);
-margin-bottom:22px;
+margin-bottom:22px
 }
 
 .steps{
 display:flex;
 gap:8px;
 overflow:auto;
-margin-bottom:18px;
+margin-bottom:18px
 }
 
 .step{
@@ -83,12 +80,12 @@ background:#E2E8F0;
 color:#475569;
 font-size:13px;
 font-weight:700;
-white-space:nowrap;
+white-space:nowrap
 }
 
 .step.active{
 background:#DBEAFE;
-color:#1D4ED8;
+color:#1D4ED8
 }
 
 .panel{
@@ -96,18 +93,18 @@ background:#fff;
 border:1px solid var(--border);
 border-radius:18px;
 padding:20px;
-margin-bottom:18px;
+margin-bottom:18px
 }
 
 h2{
 font-size:19px;
-margin:0 0 14px;
+margin:0 0 14px
 }
 
 .types{
 display:grid;
 grid-template-columns:repeat(3,1fr);
-gap:12px;
+gap:12px
 }
 
 .type{
@@ -115,48 +112,48 @@ border:2px solid var(--border);
 border-radius:14px;
 padding:16px;
 cursor:pointer;
-transition:.2s;
+transition:.2s
 }
 
 .type:hover{
-border-color:#93C5FD;
+border-color:#93C5FD
 }
 
 .type.active{
 border-color:var(--blue);
-background:#EFF6FF;
+background:#EFF6FF
 }
 
 .type b{
 display:block;
 font-size:17px;
-margin-bottom:5px;
+margin-bottom:5px
 }
 
 .type span{
 font-size:13px;
-color:var(--muted);
+color:var(--muted)
 }
 
 .form{
 display:grid;
 grid-template-columns:1fr 1fr;
-gap:14px;
+gap:14px
 }
 
 .field{
 display:flex;
 flex-direction:column;
-gap:6px;
+gap:6px
 }
 
 .field.full{
-grid-column:1/-1;
+grid-column:1/-1
 }
 
 label{
 font-size:13px;
-font-weight:800;
+font-weight:800
 }
 
 input,
@@ -167,31 +164,31 @@ border:1px solid #CBD5E1;
 border-radius:10px;
 padding:12px;
 background:#fff;
-color:#111827;
+color:#111827
 }
 
 textarea{
 min-height:85px;
-resize:vertical;
+resize:vertical
 }
 
 .media{
 border:2px dashed #CBD5E1;
 border-radius:14px;
-padding:24px;
-text-align:center;
+padding:20px;
+text-align:center
 }
 
 .media input{
 border:0;
-padding:10px;
+padding:10px
 }
 
 .fileName{
-margin-top:10px;
+margin-top:8px;
 font-size:13px;
 font-weight:700;
-color:#475569;
+color:#475569
 }
 
 .preview{
@@ -204,7 +201,7 @@ display:flex;
 flex-direction:column;
 justify-content:flex-end;
 overflow:hidden;
-position:relative;
+position:relative
 }
 
 .previewImage{
@@ -213,30 +210,30 @@ max-height:210px;
 object-fit:contain;
 border-radius:12px;
 margin-bottom:18px;
-display:none;
+display:none
 }
 
 .preview .tag{
 color:#93C5FD;
 font-size:12px;
-font-weight:800;
+font-weight:800
 }
 
 .preview h3{
 font-size:28px;
-margin:8px 0;
+margin:8px 0
 }
 
 .preview p{
 color:#CBD5E1;
-margin:4px 0;
+margin:4px 0
 }
 
 .previewPrice{
 font-size:20px;
 font-weight:900;
 margin-top:10px;
-color:#5EEAD4;
+color:#5EEAD4
 }
 
 .cta{
@@ -246,13 +243,13 @@ background:#14B8A6;
 padding:10px 14px;
 border-radius:9px;
 font-weight:800;
-width:max-content;
+width:max-content
 }
 
 .actions{
 display:flex;
 justify-content:flex-end;
-gap:10px;
+gap:10px
 }
 
 .btn{
@@ -261,25 +258,25 @@ border-radius:10px;
 padding:13px 18px;
 font-weight:800;
 cursor:pointer;
-font-size:15px;
+font-size:15px
 }
 
 .primary{
 background:var(--blue);
-color:#fff;
+color:#fff
 }
 
 .secondary{
 background:#EFF6FF;
-color:#1D4ED8;
+color:#1D4ED8
 }
 
 .btn:active{
-transform:scale(.98);
+transform:scale(.98)
 }
 
 .resultBox{
-display:none;
+display:none
 }
 
 .resultBox canvas{
@@ -290,20 +287,32 @@ height:auto;
 margin:0 auto;
 border-radius:16px;
 box-shadow:0 12px 35px rgba(11,18,32,.18);
-background:#0B1220;
+background:#0B1220
+}
+
+.videoResult{
+display:none;
+text-align:center
+}
+
+.videoResult video{
+width:100%;
+max-width:420px;
+border-radius:16px;
+background:#000;
+box-shadow:0 12px 35px rgba(11,18,32,.18)
 }
 
 .resultTitle{
 text-align:center;
-margin-bottom:16px;
+margin-bottom:8px
 }
 
 .resultSub{
 text-align:center;
 color:var(--muted);
 font-size:14px;
-margin-top:-7px;
-margin-bottom:18px;
+margin-bottom:18px
 }
 
 .downloadRow{
@@ -311,12 +320,12 @@ display:flex;
 justify-content:center;
 gap:10px;
 flex-wrap:wrap;
-margin-top:16px;
+margin-top:16px
 }
 
 .download{
 text-decoration:none;
-display:inline-block;
+display:inline-block
 }
 
 .status{
@@ -324,30 +333,45 @@ text-align:center;
 font-weight:700;
 color:#2563EB;
 margin-top:12px;
+display:none
+}
+
+.motionHint{
 display:none;
+background:#ECFDF5;
+border:1px solid #A7F3D0;
+color:#065F46;
+border-radius:12px;
+padding:12px;
+font-size:14px;
+margin-top:12px
+}
+
+.motionHint.show{
+display:block
 }
 
 @media(max-width:650px){
 
 .wrap{
-padding:14px;
+padding:14px
 }
 
 .types,
 .form{
-grid-template-columns:1fr;
+grid-template-columns:1fr
 }
 
 .field.full{
-grid-column:auto;
+grid-column:auto
 }
 
 h1{
-font-size:25px;
+font-size:25px
 }
 
 .panel{
-padding:16px;
+padding:16px
 }
 
 .actions{
@@ -355,18 +379,16 @@ position:sticky;
 bottom:0;
 background:var(--bg);
 padding:12px 0;
-z-index:5;
+z-index:5
 }
 
 .preview h3{
-font-size:25px;
+font-size:25px
 }
 
 }
-
 </style>
 </head>
-
 
 <body>
 
@@ -384,7 +406,6 @@ Simply Ads <span>Creator</span>
 
 
 <div class="wrap">
-
 
 <div class="steps">
 
@@ -415,9 +436,6 @@ Create New Ad
 Give us the basics. Simply Ads Creator builds the advertising design around your product, audience and goal.
 </div>
 
-
-
-<!-- AD TYPE -->
 
 <section class="panel">
 
@@ -452,7 +470,7 @@ Motion Ad
 </b>
 
 <span>
-Animated photo, captions and movement.
+Animated product ad with movement and optional audio.
 </span>
 
 </div>
@@ -467,7 +485,7 @@ Video Ad
 </b>
 
 <span>
-Full video with scenes, voice and captions.
+Full multi-scene video with voice and captions.
 </span>
 
 </div>
@@ -477,9 +495,6 @@ Full video with scenes, voice and captions.
 
 </section>
 
-
-
-<!-- PRODUCT INFORMATION -->
 
 <section class="panel">
 
@@ -526,7 +541,8 @@ What problem does it solve?
 
 <textarea
 id="problem"
-placeholder="Describe the customer's problem..."></textarea>
+placeholder="Describe the customer's problem...">
+</textarea>
 
 </div>
 
@@ -540,7 +556,8 @@ Main benefit
 <textarea
 id="benefit"
 placeholder="What makes the product useful or different?"
-oninput="updatePreview()"></textarea>
+oninput="updatePreview()">
+</textarea>
 
 </div>
 
@@ -622,9 +639,6 @@ onchange="updatePreview()">
 </section>
 
 
-
-<!-- MEDIA -->
-
 <section class="panel">
 
 <h2>
@@ -640,7 +654,7 @@ Upload product photos or videos
 </p>
 
 <p class="intro">
-Your product image will become the visual foundation of the finished ad.
+For Motion Ad, your first image becomes the animated product scene.
 </p>
 
 <input
@@ -653,16 +667,54 @@ onchange="handleMedia()">
 <div
 class="fileName"
 id="fileName">
+
 No file selected
+
+</div>
+
+</div>
+
+
+<div
+id="motionHint"
+class="motionHint">
+
+Motion Ad is ready. Add an optional audio file below, then tap
+<b>
+Build My Ad
+</b>.
+
+</div>
+
+
+<div
+class="media"
+style="margin-top:12px">
+
+<p>
+<b>
+Optional voice / music audio
+</b>
+</p>
+
+<input
+type="file"
+id="audioFile"
+accept="audio/*"
+onchange="handleAudio()">
+
+<div
+class="fileName"
+id="audioName">
+
+No audio selected
+
 </div>
 
 </div>
 
 </section>
 
-
-
-<!-- LIVE PREVIEW -->
 
 <section class="panel">
 
@@ -682,19 +734,25 @@ alt="Product preview">
 <div
 class="tag"
 id="ptype">
+
 STATIC AD • TIKTOK
+
 </div>
 
 
 <h3
 id="pname">
+
 Your product headline
+
 </h3>
 
 
 <p
 id="pbenefit">
+
 Your main product benefit will appear here.
+
 </p>
 
 
@@ -707,7 +765,9 @@ id="pprice">
 <div
 class="cta"
 id="pcta">
+
 SHOP NOW
+
 </div>
 
 
@@ -716,12 +776,9 @@ SHOP NOW
 </section>
 
 
-
-<!-- FINISHED RESULT -->
-
 <section
 class="panel resultBox"
-id="resultBox">
+id="staticResult">
 
 <h2 class="resultTitle">
 Your Finished Static Ad
@@ -737,8 +794,12 @@ id="adCanvas">
 </canvas>
 
 
-<div class="status" id="status">
+<div
+class="status"
+id="staticStatus">
+
 Ad created successfully.
+
 </div>
 
 
@@ -767,11 +828,63 @@ Create Another
 </section>
 
 
+<section
+class="panel videoResult"
+id="motionResult">
 
-<!-- ACTIONS -->
+<h2 class="resultTitle">
+Your Finished Motion Ad
+</h2>
+
+<div class="resultSub">
+
+Your animated ad is ready. Browser export uses WebM; MP4/server rendering will be added in the next rendering stage.
+
+</div>
+
+
+<video
+id="motionVideo"
+controls
+playsinline>
+</video>
+
+
+<div
+class="status"
+id="motionStatus">
+
+Motion ad created successfully.
+
+</div>
+
+
+<div class="downloadRow">
+
+<a
+id="downloadMotion"
+class="btn primary download"
+download="simply-ads-creator-motion.webm">
+
+Download Motion Ad ↓
+
+</a>
+
+
+<button
+class="btn secondary"
+onclick="createAnother()">
+
+Create Another
+
+</button>
+
+</div>
+
+</section>
+
 
 <div class="actions">
-
 
 <button
 class="btn secondary"
@@ -790,206 +903,226 @@ Build My Ad →
 
 </button>
 
-
 </div>
 
 
 </div>
-
 
 
 <script>
 
+let selected="Static Ad";
 
-let selected = "Static Ad";
+let selectedImage=null;
 
-let selectedImage = null;
+let selectedAudio=null;
+
+let motionUrl=null;
 
 
-
-/* -------------------------
-   CHOOSE AD TYPE
-------------------------- */
+/* CHOOSE TYPE */
 
 function chooseType(el,type){
 
 document
 .querySelectorAll(".type")
-.forEach(x=>{
-x.classList.remove("active");
-});
+.forEach(x=>x.classList.remove("active"));
 
 el.classList.add("active");
 
-selected = type;
+selected=type;
+
+document
+.getElementById("motionHint")
+.classList.toggle(
+"show",
+type==="Motion Ad"
+);
 
 updatePreview();
 
 }
 
 
-
-/* -------------------------
-   UPDATE LIVE PREVIEW
-------------------------- */
+/* LIVE PREVIEW */
 
 function updatePreview(){
 
-const name =
-document.getElementById("name").value.trim()
-|| "Your product headline";
+const name=
+document.getElementById("name")
+.value.trim()
+||
+"Your product headline";
 
-const benefit =
-document.getElementById("benefit").value.trim()
-|| "Your main product benefit will appear here.";
+const benefit=
+document.getElementById("benefit")
+.value.trim()
+||
+"Your main product benefit will appear here.";
 
-const price =
-document.getElementById("price").value.trim();
+const price=
+document.getElementById("price")
+.value.trim();
 
-const contact =
-document.getElementById("contact").value.trim();
+const contact=
+document.getElementById("contact")
+.value.trim();
 
-const platform =
-document.getElementById("platform").value;
-
-
-document.getElementById("pname").textContent =
-name;
-
-
-document.getElementById("pbenefit").textContent =
-benefit;
+const platform=
+document.getElementById("platform")
+.value;
 
 
-document.getElementById("ptype").textContent =
+document.getElementById("pname")
+.textContent=name;
+
+document.getElementById("pbenefit")
+.textContent=benefit;
+
+document.getElementById("ptype")
+.textContent=
 selected.toUpperCase()
 +" • "
 +platform.toUpperCase();
 
+document.getElementById("pprice")
+.textContent=price;
 
-document.getElementById("pprice").textContent =
-price;
-
-
-document.getElementById("pcta").textContent =
+document.getElementById("pcta")
+.textContent=
 contact
-? "CONTACT US"
-: "SHOP NOW";
+?
+"CONTACT US"
+:
+"SHOP NOW";
 
 }
 
 
-
-/* -------------------------
-   HANDLE IMAGE UPLOAD
-------------------------- */
+/* IMAGE UPLOAD */
 
 function handleMedia(){
 
-const input =
+const input=
 document.getElementById("media");
 
-const file =
-input.files[0];
+const file=input.files[0];
 
-const fileName =
+const label=
 document.getElementById("fileName");
 
-const previewImage =
+const img=
 document.getElementById("previewImage");
 
 
 if(!file){
 
-fileName.textContent =
-"No file selected";
+label.textContent="No file selected";
 
-selectedImage = null;
+selectedImage=null;
 
-previewImage.style.display =
-"none";
+img.style.display="none";
 
 return;
 
 }
 
 
-fileName.textContent =
-file.name;
+label.textContent=
+file.name+
+(input.files.length>1
+?
+" + "+(input.files.length-1)+" more"
+:
+"");
 
 
 if(file.type.startsWith("image/")){
 
-const reader =
-new FileReader();
+const reader=new FileReader();
 
+reader.onload=function(e){
 
-reader.onload = function(e){
+selectedImage=e.target.result;
 
-selectedImage =
-e.target.result;
+img.src=e.target.result;
 
-previewImage.src =
-e.target.result;
-
-previewImage.style.display =
-"block";
+img.style.display="block";
 
 };
 
-
 reader.readAsDataURL(file);
 
-}else{
+}
 
-selectedImage = null;
+else{
 
-previewImage.style.display =
-"none";
+selectedImage=null;
+
+img.style.display="none";
 
 }
 
 }
 
 
+/* AUDIO */
 
-/* -------------------------
-   CANVAS TEXT WRAPPING
-------------------------- */
+function handleAudio(){
 
-function wrapText(
-ctx,
-text,
-maxWidth
-){
+const file=
+document.getElementById("audioFile")
+.files[0];
 
-const words =
-text.split(/\s+/);
+selectedAudio=file||null;
 
-const lines = [];
+document.getElementById("audioName")
+.textContent=
+file
+?
+file.name
+:
+"No audio selected";
 
-let line = "";
+}
+
+
+/* TEXT WRAPPING */
+
+function wrapText(ctx,text,maxWidth){
+
+const words=text.split(/\s+/);
+
+const lines=[];
+
+let line="";
 
 for(const word of words){
 
-const test =
+const test=
 line
-? line+" "+word
-: word;
+?
+line+" "+word
+:
+word;
 
 if(
 ctx.measureText(test).width
-> maxWidth
-&& line
+>
+maxWidth
+&&
+line
 ){
 
 lines.push(line);
 
-line = word;
+line=word;
 
-}else{
+}
 
-line = test;
+else{
+
+line=test;
 
 }
 
@@ -1004,66 +1137,63 @@ return lines;
 }
 
 
-
-/* -------------------------
-   DRAW ROUNDED RECTANGLE
-------------------------- */
+/* ROUNDED RECT */
 
 function roundedRect(
 ctx,
 x,
 y,
-width,
-height,
-radius
+w,
+h,
+r
 ){
 
 ctx.beginPath();
 
-ctx.moveTo(x+radius,y);
+ctx.moveTo(x+r,y);
 
-ctx.lineTo(x+width-radius,y);
+ctx.lineTo(x+w-r,y);
 
 ctx.quadraticCurveTo(
-x+width,
+x+w,
 y,
-x+width,
-y+radius
+x+w,
+y+r
 );
 
 ctx.lineTo(
-x+width,
-y+height-radius
+x+w,
+y+h-r
 );
 
 ctx.quadraticCurveTo(
-x+width,
-y+height,
-x+width-radius,
-y+height
+x+w,
+y+h,
+x+w-r,
+y+h
 );
 
 ctx.lineTo(
-x+radius,
-y+height
+x+r,
+y+h
 );
 
 ctx.quadraticCurveTo(
 x,
-y+height,
+y+h,
 x,
-y+height-radius
+y+h-r
 );
 
 ctx.lineTo(
 x,
-y+radius
+y+r
 );
 
 ctx.quadraticCurveTo(
 x,
 y,
-x+radius,
+x+r,
 y
 );
 
@@ -1072,51 +1202,189 @@ ctx.closePath();
 }
 
 
+/* PLATFORM SIZE */
 
-/* -------------------------
-   DRAW IMAGE
-------------------------- */
+function platformSize(){
 
-function drawProductImage(
-ctx,
-img,
-canvasWidth,
-canvasHeight
+const platform=
+document.getElementById("platform")
+.value;
+
+if(
+platform==="Facebook"
+||
+platform==="General Online Ad"
 ){
 
-const boxX = 70;
+return [1200,1200];
 
-const boxY = 180;
+}
 
-const boxWidth =
-canvasWidth-140;
+return [1080,1920];
 
-const boxHeight =
-canvasHeight*0.38;
+}
 
 
-const scale =
-Math.min(
-boxWidth/img.width,
-boxHeight/img.height
+/* DRAW ANIMATED FRAME */
+
+function drawFrame(
+ctx,
+w,
+h,
+img,
+t=1
+){
+
+const name=
+document.getElementById("name")
+.value.trim()
+||
+"Your Product";
+
+const benefit=
+document.getElementById("benefit")
+.value.trim()
+||
+"Discover the difference today.";
+
+const price=
+document.getElementById("price")
+.value.trim();
+
+const contact=
+document.getElementById("contact")
+.value.trim();
+
+const platform=
+document.getElementById("platform")
+.value;
+
+const country=
+document.getElementById("country")
+.value;
+
+
+/* BACKGROUND */
+
+const gradient=
+ctx.createLinearGradient(
+0,
+0,
+w,
+h
+);
+
+gradient.addColorStop(
+0,
+"#0B1220"
+);
+
+gradient.addColorStop(
+0.55,
+"#172554"
+);
+
+gradient.addColorStop(
+1,
+"#2563EB"
+);
+
+ctx.fillStyle=gradient;
+
+ctx.fillRect(
+0,
+0,
+w,
+h
 );
 
 
-const width =
-img.width*scale;
+/* DECORATION */
 
-const height =
-img.height*scale;
+ctx.globalAlpha=.12;
+
+ctx.fillStyle="#14B8A6";
+
+ctx.beginPath();
+
+ctx.arc(
+w*(.82+.04*Math.sin(t*6)),
+h*.12,
+180,
+0,
+Math.PI*2
+);
+
+ctx.fill();
+
+ctx.globalAlpha=1;
 
 
-const x =
-(canvasWidth-width)/2;
+/* BRAND */
 
-const y =
-boxY+(boxHeight-height)/2;
+ctx.fillStyle="#93C5FD";
+
+ctx.font="800 30px Arial";
+
+ctx.fillText(
+"SIMPLY ADS CREATOR",
+70,
+75
+);
 
 
-/* image card */
+/* PLATFORM */
+
+ctx.fillStyle="#fff";
+
+ctx.font="800 25px Arial";
+
+ctx.fillText(
+platform.toUpperCase(),
+70,
+118
+);
+
+
+/* PRODUCT IMAGE */
+
+if(img){
+
+const boxX=70;
+
+const boxY=155;
+
+const boxW=w-140;
+
+const boxH=h*.36;
+
+const scale=
+Math.min(
+boxW/img.width,
+boxH/img.height
+)
+*
+(
+1+
+.05*Math.sin(t*7)
+);
+
+const iw=img.width*scale;
+
+const ih=img.height*scale;
+
+const x=
+(w-iw)/2
++
+18*Math.sin(t*4);
+
+const y=
+boxY
++
+(boxH-ih)/2
++
+12*Math.cos(t*4);
+
 
 ctx.save();
 
@@ -1124,13 +1392,12 @@ roundedRect(
 ctx,
 boxX,
 boxY,
-boxWidth,
-boxHeight,
+boxW,
+boxH,
 30
 );
 
-ctx.fillStyle =
-"#FFFFFF";
+ctx.fillStyle="#fff";
 
 ctx.fill();
 
@@ -1140,8 +1407,8 @@ ctx.drawImage(
 img,
 x,
 y,
-width,
-height
+iw,
+ih
 );
 
 ctx.restore();
@@ -1149,260 +1416,77 @@ ctx.restore();
 }
 
 
+/* TEXT ENTRANCE */
 
-/* -------------------------
-   DRAW FINISHED AD
-------------------------- */
-
-function buildCanvas(
-image
-){
-
-const platform =
-document.getElementById("platform")
-.value;
-
-const name =
-document.getElementById("name")
-.value.trim();
-
-const benefit =
-document.getElementById("benefit")
-.value.trim()
-|| "Discover the difference today.";
-
-const price =
-document.getElementById("price")
-.value.trim();
-
-const contact =
-document.getElementById("contact")
-.value.trim();
-
-const country =
-document.getElementById("country")
-.value;
-
-
-let width = 1080;
-
-let height = 1920;
-
-
-/* square for general online ad */
-
-if(platform === "General Online Ad"){
-
-width = 1200;
-
-height = 1200;
-
-}
-
-
-/* Facebook can work as square */
-
-if(platform === "Facebook"){
-
-width = 1200;
-
-height = 1200;
-
-}
-
-
-const canvas =
-document.getElementById("adCanvas");
-
-canvas.width = width;
-
-canvas.height = height;
-
-const ctx =
-canvas.getContext("2d");
-
-
-/* -------------------------
-   BACKGROUND
-------------------------- */
-
-const gradient =
-ctx.createLinearGradient(
-0,
-0,
-width,
-height
-);
-
-gradient.addColorStop(
-0,
-"#0B1220"
-);
-
-gradient.addColorStop(
-0.5,
-"#172554"
-);
-
-gradient.addColorStop(
+const fade=
+Math.min(
 1,
-"#2563EB"
-);
-
-ctx.fillStyle =
-gradient;
-
-ctx.fillRect(
+Math.max(
 0,
+(t-.05)*3
+)
+);
+
+const slide=
+(1-fade)*70;
+
+ctx.save();
+
+ctx.globalAlpha=fade;
+
+ctx.translate(
 0,
-width,
-height
+slide
 );
 
 
+/* PRODUCT NAME */
 
-/* decorative circle */
+ctx.fillStyle="#fff";
 
-ctx.globalAlpha = .12;
+ctx.font="900 68px Arial";
 
-ctx.fillStyle =
-"#14B8A6";
-
-ctx.beginPath();
-
-ctx.arc(
-width-100,
-180,
-180,
-0,
-Math.PI*2
-);
-
-ctx.fill();
-
-ctx.globalAlpha = 1;
-
-
-
-/* -------------------------
-   BRAND
-------------------------- */
-
-ctx.fillStyle =
-"#93C5FD";
-
-ctx.font =
-"800 30px Arial";
-
-ctx.fillText(
-"SIMPLY ADS CREATOR",
-70,
-75
-);
-
-
-/* -------------------------
-   PLATFORM
-------------------------- */
-
-ctx.fillStyle =
-"#FFFFFF";
-
-ctx.font =
-"800 26px Arial";
-
-ctx.fillText(
-platform.toUpperCase(),
-70,
-120
-);
-
-
-
-/* -------------------------
-   PRODUCT IMAGE
-------------------------- */
-
-let contentTop =
-170;
-
-if(image){
-
-drawProductImage(
-ctx,
-image,
-width,
-height
-);
-
-contentTop =
-height*0.49;
-
-}
-
-
-
-/* -------------------------
-   PRODUCT NAME
-------------------------- */
-
-ctx.fillStyle =
-"#FFFFFF";
-
-ctx.font =
-"900 72px Arial";
-
-let nameLines =
+let lines=
 wrapText(
 ctx,
 name,
-width-140
-);
+w-140
+)
+.slice(0,3);
 
-nameLines =
-nameLines.slice(0,3);
+let ny=h*.57;
 
-
-let nameY =
-contentTop+70;
-
-nameLines.forEach(
+lines.forEach(
 (line,index)=>{
 
 ctx.fillText(
 line,
 70,
-nameY+(index*82)
+ny+index*78
 );
 
 }
 );
 
 
+/* BENEFIT */
 
-/* -------------------------
-   BENEFIT
-------------------------- */
+ctx.fillStyle="#CBD5E1";
 
-const benefitY =
-nameY+(nameLines.length*82)+30;
+ctx.font="500 34px Arial";
 
-ctx.fillStyle =
-"#CBD5E1";
-
-ctx.font =
-"500 38px Arial";
-
-let benefitLines =
+let benefitLines=
 wrapText(
 ctx,
 benefit,
-width-140
-);
+w-140
+)
+.slice(0,4);
 
-benefitLines =
-benefitLines.slice(0,4);
-
+let by=
+ny+
+lines.length*78+
+25;
 
 benefitLines.forEach(
 (line,index)=>{
@@ -1410,110 +1494,105 @@ benefitLines.forEach(
 ctx.fillText(
 line,
 70,
-benefitY+(index*50)
+by+index*46
 );
 
 }
 );
 
 
-
-/* -------------------------
-   PRICE
-------------------------- */
-
-const priceY =
-benefitY+
-(benefitLines.length*50)+35;
-
+/* PRICE */
 
 if(price){
+
+const py=
+by+
+benefitLines.length*46+
+30;
 
 roundedRect(
 ctx,
 70,
-priceY,
+py,
 390,
-78,
+76,
 18
 );
 
-ctx.fillStyle =
-"#14B8A6";
+ctx.fillStyle="#14B8A6";
 
 ctx.fill();
 
+ctx.fillStyle="#fff";
 
-ctx.fillStyle =
-"#FFFFFF";
-
-ctx.font =
-"900 36px Arial";
+ctx.font="900 35px Arial";
 
 ctx.fillText(
 price,
 95,
-priceY+51
+py+50
 );
 
 }
 
 
+/* CTA */
 
-/* -------------------------
-   CTA
-------------------------- */
+const ctaY=h-170;
 
-const ctaText =
-contact
-? "CONTACT US"
-: "SHOP NOW";
+const pulse=
+1+
+.04*Math.sin(t*9);
 
+ctx.save();
 
-const ctaY =
-height-170;
+ctx.translate(
+70,
+ctaY
+);
 
+ctx.scale(
+pulse,
+pulse
+);
 
 roundedRect(
 ctx,
-70,
-ctaY,
+0,
+0,
 330,
 72,
 18
 );
 
-ctx.fillStyle =
-"#14B8A6";
+ctx.fillStyle="#14B8A6";
 
 ctx.fill();
 
+ctx.fillStyle="#fff";
 
-ctx.fillStyle =
-"#FFFFFF";
-
-ctx.font =
-"900 30px Arial";
+ctx.font="900 30px Arial";
 
 ctx.fillText(
-ctaText,
-100,
-ctaY+47
+contact
+?
+"CONTACT US"
+:
+"SHOP NOW",
+30,
+47
 );
 
+ctx.restore();
 
 
-/* -------------------------
-   CONTACT
-------------------------- */
+/* CONTACT */
 
 if(contact){
 
-ctx.fillStyle =
-"#FFFFFF";
+ctx.fillStyle="#fff";
 
-ctx.font =
-"700 25px Arial";
+ctx.font="700 24px Arial";
 
 ctx.fillText(
 contact,
@@ -1524,62 +1603,443 @@ ctaY+45
 }
 
 
+/* FOOTER */
 
-/* -------------------------
-   COUNTRY
-------------------------- */
+ctx.fillStyle="#93C5FD";
 
-ctx.fillStyle =
-"#93C5FD";
-
-ctx.font =
-"500 20px Arial";
+ctx.font="500 20px Arial";
 
 ctx.fillText(
 country,
 70,
-height-70
+h-70
 );
 
-
-
-/* -------------------------
-   TAGLINE
-------------------------- */
-
-ctx.textAlign =
-"right";
-
-ctx.fillStyle =
-"#93C5FD";
-
-ctx.font =
-"600 20px Arial";
+ctx.textAlign="right";
 
 ctx.fillText(
 "Create. Animate. Promote.",
-width-70,
-height-70
+w-70,
+h-70
 );
 
-ctx.textAlign =
-"left";
+ctx.textAlign="left";
 
-
-
-return canvas;
+ctx.restore();
 
 }
 
 
+/* LOAD IMAGE */
 
-/* -------------------------
-   GENERATE
-------------------------- */
+async function loadImage(){
 
-function generate(){
+if(!selectedImage){
+return null;
+}
 
-const name =
+return await new Promise(
+(resolve,reject)=>{
+
+const img=new Image();
+
+img.onload=()=>{
+resolve(img);
+};
+
+img.onerror=reject;
+
+img.src=selectedImage;
+
+}
+);
+
+}
+
+
+/* BUILD STATIC */
+
+function buildStatic(img){
+
+const [w,h]=platformSize();
+
+const canvas=
+document.getElementById("adCanvas");
+
+canvas.width=w;
+
+canvas.height=h;
+
+drawFrame(
+canvas.getContext("2d"),
+w,
+h,
+img,
+1
+);
+
+
+document.getElementById(
+"downloadAd"
+).href=
+canvas.toDataURL("image/png");
+
+
+document.getElementById(
+"downloadAd"
+).download=
+"simply-ads-creator-"+
+Date.now()+
+".png";
+
+
+document.getElementById(
+"staticResult"
+).style.display="block";
+
+
+document.getElementById(
+"staticStatus"
+).style.display="block";
+
+
+document.getElementById(
+"staticResult"
+).scrollIntoView({
+behavior:"smooth",
+block:"start"
+});
+
+}
+
+
+/* BUILD MOTION */
+
+async function buildMotion(){
+
+const img=await loadImage();
+
+if(!img){
+
+alert(
+"Motion Ad needs a product image. Please upload an image first."
+);
+
+return;
+
+}
+
+
+const [w,h]=platformSize();
+
+const canvas=
+document.createElement("canvas");
+
+canvas.width=w;
+
+canvas.height=h;
+
+const ctx=
+canvas.getContext("2d");
+
+
+/* CAPTURE VIDEO */
+
+const stream=
+canvas.captureStream(30);
+
+let tracks=[
+...stream.getVideoTracks()
+];
+
+let audioCtx=null;
+
+let audioEl=null;
+
+
+if(selectedAudio){
+
+audioEl=
+new Audio(
+URL.createObjectURL(
+selectedAudio
+)
+);
+
+audioEl.loop=false;
+
+audioEl.muted=false;
+
+audioEl.preload="auto";
+
+
+audioCtx=
+new (
+window.AudioContext
+||
+window.webkitAudioContext
+)();
+
+
+const source=
+audioCtx.createMediaElementSource(
+audioEl
+);
+
+const destination=
+audioCtx.createMediaStreamDestination();
+
+
+source.connect(destination);
+
+source.connect(
+audioCtx.destination
+);
+
+
+tracks=[
+...tracks,
+...destination.stream.getAudioTracks()
+];
+
+}
+
+
+const combined=
+new MediaStream(tracks);
+
+
+/* VIDEO FORMAT */
+
+const mime=
+MediaRecorder.isTypeSupported(
+"video/webm;codecs=vp9,opus"
+)
+?
+"video/webm;codecs=vp9,opus"
+:
+MediaRecorder.isTypeSupported(
+"video/webm"
+)
+?
+"video/webm"
+:
+"";
+
+
+if(!mime){
+
+alert(
+"This browser cannot record the Motion Ad. Please try Chrome or a current Edge browser."
+);
+
+return;
+
+}
+
+
+const recorder=
+new MediaRecorder(
+combined,
+{
+mimeType:mime,
+videoBitsPerSecond:6000000
+}
+);
+
+const chunks=[];
+
+
+recorder.ondataavailable=
+function(e){
+
+if(e.data.size){
+
+chunks.push(e.data);
+
+}
+
+};
+
+
+const duration=9000;
+
+const start=
+performance.now();
+
+
+recorder.start();
+
+
+if(audioEl){
+
+await audioEl
+.play()
+.catch(()=>{});
+
+if(
+audioCtx.state==="suspended"
+){
+
+await audioCtx.resume();
+
+}
+
+}
+
+
+/* ANIMATE */
+
+await new Promise(
+resolve=>{
+
+function frame(now){
+
+const t=
+Math.min(
+1,
+(now-start)/duration
+);
+
+drawFrame(
+ctx,
+w,
+h,
+img,
+t
+);
+
+if(t<1){
+
+requestAnimationFrame(
+frame
+);
+
+}
+
+else{
+
+resolve();
+
+}
+
+}
+
+requestAnimationFrame(
+frame
+);
+
+}
+);
+
+
+await new Promise(
+resolve=>
+setTimeout(
+resolve,
+150
+)
+);
+
+
+recorder.stop();
+
+
+await new Promise(
+resolve=>{
+
+recorder.onstop=
+resolve;
+
+}
+);
+
+
+if(audioEl){
+
+audioEl.pause();
+
+}
+
+if(audioCtx){
+
+audioCtx.close();
+
+}
+
+
+const blob=
+new Blob(
+chunks,
+{
+type:"video/webm"
+}
+);
+
+
+if(motionUrl){
+
+URL.revokeObjectURL(
+motionUrl
+);
+
+}
+
+
+motionUrl=
+URL.createObjectURL(
+blob
+);
+
+
+const video=
+document.getElementById(
+"motionVideo"
+);
+
+video.src=motionUrl;
+
+video.load();
+
+
+const link=
+document.getElementById(
+"downloadMotion"
+);
+
+link.href=motionUrl;
+
+link.download=
+"simply-ads-creator-motion-"+
+Date.now()+
+".webm";
+
+
+document.getElementById(
+"motionResult"
+).style.display="block";
+
+
+document.getElementById(
+"motionStatus"
+).style.display="block";
+
+
+document.getElementById(
+"motionResult"
+).scrollIntoView({
+behavior:"smooth",
+block:"start"
+});
+
+}
+
+
+/* GENERATE */
+
+async function generate(){
+
+const name=
 document.getElementById("name")
 .value.trim();
 
@@ -1593,27 +2053,6 @@ alert(
 return;
 
 }
-
-
-/* Motion and Video are next */
-
-if(selected !== "Static Ad"){
-
-alert(
-selected+
-" is the next rendering stage. For now, choose Static Ad to create a finished downloadable ad."
-);
-
-return;
-
-}
-
-
-const mediaInput =
-document.getElementById("media");
-
-const file =
-mediaInput.files[0];
 
 
 localStorage.setItem(
@@ -1656,135 +2095,73 @@ document.getElementById("platform")
 );
 
 
+document.getElementById(
+"staticResult"
+).style.display="none";
 
-/* -------------------------
-   BUILD WITH IMAGE
-------------------------- */
 
-if(
-file &&
-file.type.startsWith("image/")
+document.getElementById(
+"motionResult"
+).style.display="none";
+
+
+try{
+
+
+if(selected==="Static Ad"){
+
+const img=
+await loadImage();
+
+buildStatic(img);
+
+}
+
+
+else if(
+selected==="Motion Ad"
 ){
 
-const reader =
-new FileReader();
-
-
-reader.onload =
-function(e){
-
-const img =
-new Image();
-
-
-img.onload =
-function(){
-
-buildCanvas(img);
-
-showResult();
-
-};
-
-
-img.onerror =
-function(){
-
-buildCanvas(null);
-
-showResult();
-
-};
-
-
-img.src =
-e.target.result;
-
-};
-
-
-reader.readAsDataURL(file);
-
-
-}else{
-
-/* Build without image */
-
-buildCanvas(null);
-
-showResult();
-
-}
+await buildMotion();
 
 }
 
 
+else{
 
-/* -------------------------
-   SHOW RESULT
-------------------------- */
-
-function showResult(){
-
-const result =
-document.getElementById("resultBox");
-
-result.style.display =
-"block";
-
-
-const canvas =
-document.getElementById("adCanvas");
-
-
-const download =
-document.getElementById("downloadAd");
-
-
-download.href =
-canvas.toDataURL(
-"image/png"
-);
-
-
-download.download =
-"simply-ads-creator-"+
-Date.now()+
-".png";
-
-
-const status =
-document.getElementById("status");
-
-status.style.display =
-"block";
-
-
-setTimeout(
-function(){
-
-result.scrollIntoView({
-behavior:"smooth",
-block:"start"
-});
-
-},
-100
+alert(
+"Video Ad is the next rendering stage. Motion Ad is now live; next we add multi-scene video, voiceover, captions and MP4 export."
 );
 
 }
 
 
+}
 
-/* -------------------------
-   CREATE ANOTHER
-------------------------- */
+catch(error){
+
+console.error(error);
+
+alert(
+"The ad could not be rendered in this browser. Please try a current Chrome browser and an image file."
+);
+
+}
+
+}
+
+
+/* CREATE ANOTHER */
 
 function createAnother(){
 
-document.getElementById("resultBox")
-.style.display =
-"none";
+document.getElementById(
+"staticResult"
+).style.display="none";
+
+document.getElementById(
+"motionResult"
+).style.display="none";
 
 window.scrollTo({
 top:0,
@@ -1794,8 +2171,7 @@ behavior:"smooth"
 }
 
 
-
-/* INITIAL PREVIEW */
+/* INITIAL */
 
 updatePreview();
 
