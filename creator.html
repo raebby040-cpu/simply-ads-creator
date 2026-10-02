@@ -15,7 +15,6 @@
   --text:#111827;
   --muted:#64748B;
   --border:#E2E8F0;
-  --danger:#DC2626;
   --shadow:0 18px 50px rgba(15,23,42,.10);
 }
 
@@ -29,15 +28,12 @@ body{
 }
 
 button,input,textarea,select{font:inherit}
-
 button{cursor:pointer}
 
 .app{
   min-height:100vh;
   display:flex;
 }
-
-/* SIDEBAR */
 
 .sidebar{
   width:245px;
@@ -112,8 +108,6 @@ button{cursor:pointer}
   color:#94A3B8;
 }
 
-/* MAIN */
-
 .main{
   margin-left:245px;
   width:calc(100% - 245px);
@@ -146,8 +140,6 @@ button{cursor:pointer}
   gap:25px;
 }
 
-/* CARDS */
-
 .card{
   background:white;
   border:1px solid var(--border);
@@ -162,13 +154,11 @@ button{cursor:pointer}
   font-size:18px;
 }
 
-.card p.desc{
+.desc{
   margin:0 0 20px;
   color:var(--muted);
   font-size:13px;
 }
-
-/* MODE */
 
 .modes{
   display:grid;
@@ -198,8 +188,6 @@ button{cursor:pointer}
   border:2px solid var(--blue);
   background:#EFF6FF;
 }
-
-/* FORM */
 
 .grid{
   display:grid;
@@ -245,8 +233,6 @@ select:focus{
   box-shadow:0 0 0 3px rgba(37,99,235,.08);
 }
 
-/* UPLOAD */
-
 .upload{
   border:2px dashed #CBD5E1;
   border-radius:14px;
@@ -288,8 +274,6 @@ select:focus{
   object-fit:cover;
 }
 
-/* BUTTONS */
-
 .actions{
   display:flex;
   gap:10px;
@@ -305,10 +289,6 @@ select:focus{
   font-weight:800;
 }
 
-.primary:hover{
-  filter:brightness(.95);
-}
-
 .secondary{
   background:white;
   color:var(--text);
@@ -317,8 +297,6 @@ select:focus{
   border-radius:11px;
   font-weight:700;
 }
-
-/* PREVIEW */
 
 .preview{
   position:sticky;
@@ -377,8 +355,6 @@ select:focus{
   margin-top:12px;
 }
 
-/* RESULT */
-
 .resultBox{
   display:none;
   margin-top:20px;
@@ -418,9 +394,8 @@ select:focus{
   margin-top:7px;
 }
 
-/* RESPONSIVE */
-
 @media(max-width:950px){
+
   .sidebar{
     width:70px;
     padding:18px 10px;
@@ -442,10 +417,6 @@ select:focus{
     font-size:0;
   }
 
-  .nav button::first-letter{
-    font-size:18px;
-  }
-
   .main{
     margin-left:70px;
     width:calc(100% - 70px);
@@ -462,6 +433,7 @@ select:focus{
 }
 
 @media(max-width:600px){
+
   .grid{
     grid-template-columns:1fr;
   }
@@ -517,7 +489,9 @@ select:focus{
   <div class="topbar">
     <div>
       <h1>Create New Ad</h1>
-      <div class="small">Turn your product information into a ready-to-use advertisement.</div>
+      <div class="small">
+        Turn your product information into a ready-to-use advertisement.
+      </div>
     </div>
 
     <button class="back" onclick="goDashboard()">← Dashboard</button>
@@ -527,8 +501,6 @@ select:focus{
 
     <section>
 
-      <!-- AD TYPE -->
-
       <div class="card">
 
         <h2>Choose Ad Type</h2>
@@ -536,17 +508,20 @@ select:focus{
 
         <div class="modes">
 
-          <button class="mode active" id="staticMode" onclick="chooseType('static')">
+          <button class="mode active" id="staticMode"
+                  onclick="chooseType('static')">
             <strong>Static Ad</strong>
             <span>Professional promotional graphic</span>
           </button>
 
-          <button class="mode" id="motionMode" onclick="chooseType('motion')">
+          <button class="mode" id="motionMode"
+                  onclick="chooseType('motion')">
             <strong>Motion Ad</strong>
             <span>Animated product advertisement</span>
           </button>
 
-          <button class="mode" id="videoMode" onclick="chooseType('video')">
+          <button class="mode" id="videoMode"
+                  onclick="chooseType('video')">
             <strong>Video Ad</strong>
             <span>Multi-scene promotional video</span>
           </button>
@@ -555,12 +530,12 @@ select:focus{
 
       </div>
 
-      <!-- PRODUCT -->
-
       <div class="card">
 
         <h2>Product & Offer</h2>
-        <p class="desc">Give Simply Ads the information it needs to build your ad.</p>
+        <p class="desc">
+          Give Simply Ads the information it needs to build your ad.
+        </p>
 
         <div class="grid">
 
@@ -576,12 +551,14 @@ select:focus{
 
           <div class="field full">
             <label>Customer Problem</label>
-            <textarea id="problem" placeholder="What problem does your customer have?"></textarea>
+            <textarea id="problem"
+              placeholder="What problem does your customer have?"></textarea>
           </div>
 
           <div class="field full">
             <label>Main Benefit</label>
-            <textarea id="benefit" placeholder="What does your product help the customer achieve?"></textarea>
+            <textarea id="benefit"
+              placeholder="What does your product help the customer achieve?"></textarea>
           </div>
 
           <div class="field">
@@ -618,19 +595,22 @@ select:focus{
 
           <div class="field">
             <label>Call To Action / Contact</label>
-            <input id="contact" placeholder="e.g. WhatsApp 0730 053 551">
+            <input id="contact"
+              placeholder="e.g. WhatsApp 0730 053 551">
           </div>
 
         </div>
 
       </div>
 
-      <!-- MEDIA -->
-
       <div class="card">
 
         <h2>Product Media</h2>
-        <p class="desc">Upload product photos or videos. Video Ads can use multiple pieces of media.</p>
+
+        <p class="desc">
+          Upload product photos or videos. Video Ads can use multiple pieces
+          of media.
+        </p>
 
         <div class="upload">
 
@@ -644,8 +624,7 @@ select:focus{
             type="file"
             accept="image/*,video/*"
             multiple
-            onchange="handleMedia()"
-          >
+            onchange="handleMedia()">
 
         </div>
 
@@ -653,32 +632,33 @@ select:focus{
 
       </div>
 
-      <!-- AUDIO -->
-
       <div class="card">
 
         <h2>Voiceover & Music</h2>
-        <p class="desc">Optional. Upload a voice recording or background music.</p>
+
+        <p class="desc">
+          Optional. Upload a voice recording or background music.
+        </p>
 
         <input
           id="audio"
           type="file"
           accept="audio/*"
-          onchange="handleAudio()"
-        >
+          onchange="handleAudio()">
 
-        <div class="small" id="audioName">No audio selected.</div>
+        <div class="small" id="audioName">
+          No audio selected.
+        </div>
 
       </div>
-
-      <!-- BUILD -->
 
       <div class="card">
 
         <h2>Build Your Ad</h2>
 
         <p class="desc">
-          Simply Ads will automatically arrange your content into the selected advertisement format.
+          Simply Ads will automatically arrange your content into the
+          selected advertisement format.
         </p>
 
         <div class="actions">
@@ -706,39 +686,55 @@ select:focus{
         </div>
 
         <div class="resultBox" id="resultBox">
+
           <strong>Your ad is ready.</strong>
+
           <div class="small" id="resultText"></div>
+
         </div>
 
       </div>
 
     </section>
 
-    <!-- PREVIEW -->
-
     <aside class="preview">
 
       <div class="card">
 
         <h2>Live Preview</h2>
-        <p class="desc">Your finished ad will appear here.</p>
+
+        <p class="desc">
+          Your finished ad will appear here.
+        </p>
 
         <div class="phone">
 
           <div class="screen">
 
             <div class="previewEmpty" id="emptyPreview">
+
               <div>
                 <strong>Simply Ads Creator</strong>
-                Add your product information and media, then build your ad.
+
+                Add your product information and media,
+                then build your ad.
               </div>
+
             </div>
 
             <canvas id="staticCanvas"></canvas>
 
-            <video id="motionResult" controls playsinline></video>
+            <video
+              id="motionResult"
+              controls
+              playsinline>
+            </video>
 
-            <video id="videoResult" controls playsinline></video>
+            <video
+              id="videoResult"
+              controls
+              playsinline>
+            </video>
 
           </div>
 
@@ -764,6 +760,15 @@ let adType="static";
 let mediaFiles=[];
 let audioFile=null;
 
+/*
+  IMPORTANT:
+  These are the actual preloaded images.
+  The renderer never tries to load an image
+  while a frame is being rendered.
+*/
+let loadedImages=[];
+
+
 /* NAVIGATION */
 
 function goDashboard(){
@@ -774,20 +779,22 @@ function placeholder(name){
   alert(name+" will be connected to the professional dashboard in the next build.");
 }
 
-/* TYPE */
+
+/* AD TYPE */
 
 function chooseType(type){
 
   adType=type;
 
-  document.querySelectorAll(".mode").forEach(x=>{
-    x.classList.remove("active");
+  document.querySelectorAll(".mode").forEach(button=>{
+    button.classList.remove("active");
   });
 
   document.getElementById(type+"Mode").classList.add("active");
 
   updatePreview();
 }
+
 
 /* MEDIA */
 
@@ -797,6 +804,8 @@ function handleMedia(){
 
   mediaFiles=Array.from(input.files);
 
+  loadedImages=[];
+
   const list=document.getElementById("mediaList");
 
   list.innerHTML="";
@@ -804,19 +813,25 @@ function handleMedia(){
   mediaFiles.forEach(file=>{
 
     const item=document.createElement("div");
+
     item.className="mediaItem";
 
     if(file.type.startsWith("image/")){
 
       const img=document.createElement("img");
+
       img.src=URL.createObjectURL(file);
+
       item.appendChild(img);
 
     }else{
 
       const video=document.createElement("video");
+
       video.src=URL.createObjectURL(file);
+
       video.muted=true;
+
       item.appendChild(video);
 
     }
@@ -827,6 +842,56 @@ function handleMedia(){
 
   updatePreview();
 }
+
+
+/*
+  PRELOAD ALL PRODUCT IMAGES
+*/
+
+async function preloadProductImages(){
+
+  loadedImages=[];
+
+  const imageFiles=mediaFiles.filter(
+    file=>file.type.startsWith("image/")
+  );
+
+  for(const file of imageFiles){
+
+    const url=URL.createObjectURL(file);
+
+    const image=await new Promise((resolve,reject)=>{
+
+      const img=new Image();
+
+      img.onload=()=>{
+        resolve(img);
+      };
+
+      img.onerror=()=>{
+        reject(new Error("Could not load product image."));
+      };
+
+      img.src=url;
+
+    });
+
+    loadedImages.push(image);
+
+    /*
+      We intentionally keep the object URL alive
+      while the ad is being rendered.
+    */
+
+  }
+
+  if(!loadedImages.length){
+    throw new Error("No product image was successfully loaded.");
+  }
+
+  return loadedImages;
+}
+
 
 /* AUDIO */
 
@@ -839,6 +904,7 @@ function handleAudio(){
   document.getElementById("audioName").textContent=
     audioFile ? audioFile.name : "No audio selected.";
 }
+
 
 /* DATA */
 
@@ -857,13 +923,14 @@ function getData(){
 
 }
 
+
 /* PREVIEW */
 
 function updatePreview(){
 
-  const d=getData();
+  const data=getData();
 
-  if(!d.product && mediaFiles.length===0){
+  if(!data.product && !mediaFiles.length){
     return;
   }
 
@@ -873,103 +940,131 @@ function updatePreview(){
 
 }
 
+
 /* STATIC PREVIEW */
 
-function drawStaticPreview(){
+async function drawStaticPreview(){
 
   const canvas=document.getElementById("staticCanvas");
-  const empty=document.getElementById("emptyPreview");
 
   canvas.style.display="block";
-  empty.style.display="none";
 
-  const ctx=canvas.getContext("2d");
+  document.getElementById("emptyPreview").style.display="none";
 
   canvas.width=720;
   canvas.height=1280;
 
-  drawStaticFrame(ctx,canvas.width,canvas.height,getData(),mediaFiles[0],false);
+  if(
+    mediaFiles.length &&
+    mediaFiles[0].type.startsWith("image/") &&
+    !loadedImages.length
+  ){
+
+    try{
+      await preloadProductImages();
+    }catch(e){
+      console.error(e);
+    }
+
+  }
+
+  const ctx=canvas.getContext("2d");
+
+  drawStaticFrame(
+    ctx,
+    canvas.width,
+    canvas.height,
+    getData(),
+    loadedImages[0] || null
+  );
+
 }
 
-/* DRAW STATIC */
 
-function drawStaticFrame(ctx,w,h,d,file,scene){
+/* STATIC FRAME */
+
+function drawStaticFrame(ctx,w,h,d,img){
 
   ctx.clearRect(0,0,w,h);
 
   const bg=ctx.createLinearGradient(0,0,w,h);
+
   bg.addColorStop(0,"#0B1220");
   bg.addColorStop(1,"#172554");
 
   ctx.fillStyle=bg;
+
   ctx.fillRect(0,0,w,h);
 
-  /* accent */
-
   ctx.fillStyle="#14B8A6";
+
   ctx.fillRect(0,0,w,14);
 
-  /* image */
 
-  if(file && file.type.startsWith("image/")){
+  if(img){
 
-    const img=new Image();
+    const maxW=w*.86;
+    const maxH=h*.48;
 
-    img.onload=()=>{
+    const scale=Math.min(
+      maxW/img.width,
+      maxH/img.height
+    );
 
-      const maxW=w*.86;
-      const maxH=h*.48;
+    const iw=img.width*scale;
+    const ih=img.height*scale;
 
-      const scale=Math.min(maxW/img.width,maxH/img.height);
+    const x=(w-iw)/2;
+    const y=120;
 
-      const iw=img.width*scale;
-      const ih=img.height*scale;
+    ctx.save();
 
-      const x=(w-iw)/2;
-      const y=120;
+    ctx.shadowColor="rgba(0,0,0,.35)";
+    ctx.shadowBlur=35;
 
-      ctx.save();
+    ctx.drawImage(
+      img,
+      x,
+      y,
+      iw,
+      ih
+    );
 
-      ctx.shadowColor="rgba(0,0,0,.35)";
-      ctx.shadowBlur=35;
-
-      ctx.drawImage(img,x,y,iw,ih);
-
-      ctx.restore();
-
-      drawStaticText(ctx,w,h,d);
-
-    };
-
-    img.src=URL.createObjectURL(file);
-
-  }else{
-
-    drawStaticText(ctx,w,h,d);
+    ctx.restore();
 
   }
 
+  drawStaticText(ctx,w,h,d);
 }
+
 
 /* STATIC TEXT */
 
 function drawStaticText(ctx,w,h,d){
 
-  ctx.fillStyle="#FFFFFF";
   ctx.textAlign="left";
 
-  ctx.font="800 56px Arial";
+  ctx.fillStyle="#FFFFFF";
 
-  const title=d.product || "Your Product";
-
-  wrapCanvas(ctx,title,55,700,w-110,64);
-
-  ctx.font="400 28px Arial";
-  ctx.fillStyle="#CBD5E1";
+  ctx.font="900 56px Arial";
 
   wrapCanvas(
     ctx,
-    d.benefit || "A better solution for your customers.",
+    d.product || "Your Product",
+    55,
+    700,
+    w-110,
+    64
+  );
+
+  ctx.fillStyle="#CBD5E1";
+
+  ctx.font="400 28px Arial";
+
+  wrapCanvas(
+    ctx,
+    d.benefit ||
+      "A better solution for your customers.",
     55,
     850,
     w-110,
@@ -979,50 +1074,39 @@ function drawStaticText(ctx,w,h,d){
   if(d.price){
 
     ctx.fillStyle="#14B8A6";
+
     ctx.font="900 48px Arial";
-    ctx.fillText(d.price,55,1035);
+
+    ctx.fillText(
+      d.price,
+      55,
+      1035
+    );
 
   }
 
   ctx.fillStyle="#FFFFFF";
+
   ctx.font="700 27px Arial";
 
-  if(d.contact){
-    ctx.fillText(d.contact,55,1120);
-  }
+  ctx.fillText(
+    d.contact || "Contact us today",
+    55,
+    1120
+  );
 
   ctx.fillStyle="#94A3B8";
-  ctx.font="600 18px Arial";
-  ctx.fillText("SIMPLY ADS CREATOR",55,1215);
+
+  ctx.font="700 18px Arial";
+
+  ctx.fillText(
+    "SIMPLY ADS CREATOR",
+    55,
+    1215
+  );
 
 }
 
-function wrapCanvas(ctx,text,x,y,maxWidth,lineHeight){
-
-  const words=String(text).split(" ");
-  let line="";
-
-  for(let n=0;n<words.length;n++){
-
-    const test=line+words[n]+" ";
-
-    if(ctx.measureText(test).width>maxWidth && n>0){
-
-      ctx.fillText(line,x,y);
-      line=words[n]+" ";
-      y+=lineHeight;
-
-    }else{
-
-      line=test;
-
-    }
-
-  }
-
-  ctx.fillText(line,x,y);
-
-}
 
 /* VALIDATION */
 
@@ -1033,31 +1117,52 @@ function validate(){
   if(!d.product){
 
     alert("Please enter your product name.");
-    return false;
 
+    return false;
   }
 
-  if(adType!=="static" && mediaFiles.length===0){
+  if(!mediaFiles.length){
 
     alert("Please upload at least one product photo or video.");
-    return false;
 
+    return false;
   }
 
   return true;
 }
 
+
 /* GENERATE */
 
 async function generate(){
 
-  if(!validate()) return;
-
-  showProgress(true,0,"Preparing your ad...");
+  if(!validate()){
+    return;
+  }
 
   document.getElementById("resultBox").style.display="none";
 
+  showProgress(
+    true,
+    3,
+    "Loading your product media..."
+  );
+
   try{
+
+    /*
+      THIS IS THE KEY FIX.
+      The images are completely loaded BEFORE
+      any video frames are rendered.
+    */
+
+    await preloadProductImages();
+
+    showProgress(
+      true,
+      10,
+      "Product media loaded."
+    );
 
     if(adType==="static"){
 
@@ -1077,21 +1182,20 @@ async function generate(){
 
     console.error(error);
 
-    showProgress(false,0);
+    showProgress(false,0,"");
 
-    alert("Something went wrong while creating the ad. Please try again.");
+    alert(
+      "We couldn't create the ad. Please check your product image and try again."
+    );
 
   }
 
 }
 
+
 /* STATIC BUILD */
 
 async function buildStatic(){
-
-  showProgress(true,20,"Designing your static ad...");
-
-  await wait(300);
 
   const canvas=document.getElementById("staticCanvas");
 
@@ -1100,43 +1204,43 @@ async function buildStatic(){
 
   const ctx=canvas.getContext("2d");
 
-  await drawImageFrame(
+  drawStaticFrame(
     ctx,
     canvas.width,
     canvas.height,
     getData(),
-    mediaFiles[0]
+    loadedImages[0]
   );
 
   canvas.style.display="block";
 
   document.getElementById("emptyPreview").style.display="none";
 
-  const link=document.createElement("a");
-
-  link.download="simply-ads-static.png";
-  link.href=canvas.toDataURL("image/png");
-
-  showProgress(true,100,"Static ad ready.");
+  showProgress(
+    true,
+    100,
+    "Static ad ready."
+  );
 
   showResult(
-    "Your professional static ad has been created.",
-    link.href,
-    "Download Static Ad"
+    "Your static ad has been created.",
+    canvas.toDataURL("image/png"),
+    "Download Static Ad",
+    "png"
   );
 
 }
 
-/* MOTION */
+
+/* MOTION AD */
 
 async function buildMotion(){
 
-  if(!mediaFiles.length){
-    alert("Please upload at least one image for Motion Ad.");
-    return;
-  }
+  if(!loadedImages.length){
 
-  showProgress(true,10,"Preparing animation...");
+    throw new Error("Product image not loaded.");
+
+  }
 
   const canvas=document.createElement("canvas");
 
@@ -1148,7 +1252,6 @@ async function buildMotion(){
   const stream=canvas.captureStream(30);
 
   let audioContext=null;
-  let destination=null;
 
   if(audioFile){
 
@@ -1156,156 +1259,35 @@ async function buildMotion(){
 
       audioContext=new AudioContext();
 
-      destination=audioContext.createMediaStreamDestination();
+      const destination=
+        audioContext.createMediaStreamDestination();
 
-      const buffer=await audioContext.decodeAudioData(
-        await audioFile.arrayBuffer()
-      );
+      const buffer=
+        await audioContext.decodeAudioData(
+          await audioFile.arrayBuffer()
+        );
 
-      const source=audioContext.createBufferSource();
-
-      source.buffer=buffer;
-      source.connect(destination);
-      source.start();
-
-      destination.stream.getAudioTracks().forEach(track=>{
-        stream.addTrack(track);
-      });
-
-    }catch(e){
-
-      console.warn("Audio could not be added.",e);
-
-    }
-
-  }
-
-  const recorder=new MediaRecorder(
-    stream,
-    {mimeType:"video/webm;codecs=vp9,opus"}
-  );
-
-  const chunks=[];
-
-  recorder.ondataavailable=e=>{
-    if(e.data.size) chunks.push(e.data);
-  };
-
-  const stopped=new Promise(resolve=>{
-    recorder.onstop=resolve;
-  });
-
-  recorder.start();
-
-  const duration=9000;
-  const fps=30;
-  const frames=Math.floor(duration/(1000/fps));
-
-  for(let i=0;i<frames;i++){
-
-    const progress=i/frames;
-
-    drawAnimatedFrame(
-      ctx,
-      canvas.width,
-      canvas.height,
-      getData(),
-      mediaFiles,
-      progress
-    );
-
-    showProgress(
-      true,
-      10+Math.round(progress*80),
-      "Rendering motion ad..."
-    );
-
-    await wait(1000/fps);
-
-  }
-
-  recorder.stop();
-
-  await stopped;
-
-  if(audioContext){
-    try{ await audioContext.close(); }catch(e){}
-  }
-
-  const blob=new Blob(chunks,{type:"video/webm"});
-
-  const url=URL.createObjectURL(blob);
-
-  const video=document.getElementById("motionResult");
-
-  video.src=url;
-  video.style.display="block";
-
-  document.getElementById("staticCanvas").style.display="none";
-  document.getElementById("videoResult").style.display="none";
-  document.getElementById("emptyPreview").style.display="none";
-
-  showProgress(true,100,"Motion ad ready.");
-
-  showResult(
-    "Your animated ad has been rendered.",
-    url,
-    "Download Motion Ad"
-  );
-
-}
-
-/* VIDEO AD */
-
-async function buildVideo(){
-
-  if(!mediaFiles.length){
-
-    alert("Please upload at least one product photo or video.");
-    return;
-
-  }
-
-  showProgress(true,5,"Building your video scenes...");
-
-  const canvas=document.createElement("canvas");
-
-  canvas.width=1080;
-  canvas.height=1920;
-
-  const ctx=canvas.getContext("2d");
-
-  const stream=canvas.captureStream(30);
-
-  let audioContext=null;
-  let destination=null;
-
-  if(audioFile){
-
-    try{
-
-      audioContext=new AudioContext();
-
-      destination=audioContext.createMediaStreamDestination();
-
-      const buffer=await audioContext.decodeAudioData(
-        await audioFile.arrayBuffer()
-      );
-
-      const source=audioContext.createBufferSource();
+      const source=
+        audioContext.createBufferSource();
 
       source.buffer=buffer;
+
       source.connect(destination);
 
       source.start();
 
-      destination.stream.getAudioTracks().forEach(track=>{
-        stream.addTrack(track);
-      });
+      destination.stream
+        .getAudioTracks()
+        .forEach(track=>{
+          stream.addTrack(track);
+        });
 
-    }catch(e){
+    }catch(error){
 
-      console.warn("Audio unavailable.",e);
+      console.warn(
+        "Audio could not be added.",
+        error
+      );
 
     }
 
@@ -1317,12 +1299,20 @@ async function buildVideo(){
     mime="video/webm";
   }
 
-  const recorder=new MediaRecorder(stream,{mimeType:mime});
+  const recorder=
+    new MediaRecorder(
+      stream,
+      {mimeType:mime}
+    );
 
   const chunks=[];
 
   recorder.ondataavailable=e=>{
-    if(e.data.size) chunks.push(e.data);
+
+    if(e.data.size){
+      chunks.push(e.data);
+    }
+
   };
 
   const stopped=new Promise(resolve=>{
@@ -1331,59 +1321,29 @@ async function buildVideo(){
 
   recorder.start();
 
-  /*
-    Six scenes:
-    1 Hook
-    2 Problem
-    3 Product
-    4 Benefits
-    5 Offer
-    6 CTA
-  */
-
-  const scenes=[
-    "hook",
-    "problem",
-    "product",
-    "benefit",
-    "offer",
-    "cta"
-  ];
-
-  const sceneDuration=2200;
+  const duration=9000;
   const fps=30;
-  const total=scenes.length*sceneDuration;
-  const frames=Math.floor(total/(1000/fps));
+  const frames=Math.floor(
+    duration/(1000/fps)
+  );
 
-  for(let frame=0;frame<frames;frame++){
+  for(let i=0;i<frames;i++){
 
-    const elapsed=frame*(1000/fps);
+    const progress=i/frames;
 
-    const sceneIndex=Math.min(
-      scenes.length-1,
-      Math.floor(elapsed/sceneDuration)
-    );
-
-    const scene=scenes[sceneIndex];
-
-    const local=(
-      elapsed-(sceneIndex*sceneDuration)
-    )/sceneDuration;
-
-    drawVideoScene(
+    drawAnimatedFrame(
       ctx,
       canvas.width,
       canvas.height,
       getData(),
-      mediaFiles,
-      scene,
-      local
+      loadedImages[0],
+      progress
     );
 
     showProgress(
       true,
-      5+Math.round((frame/frames)*90),
-      "Building scene "+(sceneIndex+1)+" of "+scenes.length+"..."
+      10+Math.round(progress*85),
+      "Rendering motion ad..."
     );
 
     await wait(1000/fps);
@@ -1402,63 +1362,341 @@ async function buildVideo(){
 
   }
 
-  const blob=new Blob(chunks,{type:"video/webm"});
+  const blob=
+    new Blob(
+      chunks,
+      {type:"video/webm"}
+    );
 
-  const url=URL.createObjectURL(blob);
+  const url=
+    URL.createObjectURL(blob);
 
-  const video=document.getElementById("videoResult");
+  const video=
+    document.getElementById("motionResult");
 
   video.src=url;
+
+  video.style.display="block";
+
+  document.getElementById("staticCanvas").style.display="none";
+  document.getElementById("videoResult").style.display="none";
+  document.getElementById("emptyPreview").style.display="none";
+
+  showProgress(
+    true,
+    100,
+    "Motion ad ready."
+  );
+
+  showResult(
+    "Your animated ad has been rendered.",
+    url,
+    "Download Motion Ad",
+    "webm"
+  );
+
+}
+
+
+/* VIDEO AD */
+
+async function buildVideo(){
+
+  if(!loadedImages.length){
+
+    throw new Error("Product image not loaded.");
+
+  }
+
+  const canvas=document.createElement("canvas");
+
+  canvas.width=1080;
+  canvas.height=1920;
+
+  const ctx=canvas.getContext("2d");
+
+  const stream=
+    canvas.captureStream(30);
+
+  let audioContext=null;
+
+  if(audioFile){
+
+    try{
+
+      audioContext=new AudioContext();
+
+      const destination=
+        audioContext.createMediaStreamDestination();
+
+      const buffer=
+        await audioContext.decodeAudioData(
+          await audioFile.arrayBuffer()
+        );
+
+      const source=
+        audioContext.createBufferSource();
+
+      source.buffer=buffer;
+
+      source.connect(destination);
+
+      source.start();
+
+      destination.stream
+        .getAudioTracks()
+        .forEach(track=>{
+          stream.addTrack(track);
+        });
+
+    }catch(error){
+
+      console.warn(
+        "Audio could not be added.",
+        error
+      );
+
+    }
+
+  }
+
+  let mime=
+    "video/webm;codecs=vp9,opus";
+
+  if(!MediaRecorder.isTypeSupported(mime)){
+    mime="video/webm";
+  }
+
+  const recorder=
+    new MediaRecorder(
+      stream,
+      {mimeType:mime}
+    );
+
+  const chunks=[];
+
+  recorder.ondataavailable=e=>{
+
+    if(e.data.size){
+      chunks.push(e.data);
+    }
+
+  };
+
+  const stopped=new Promise(resolve=>{
+    recorder.onstop=resolve;
+  });
+
+  recorder.start();
+
+
+  /*
+    SIX PROFESSIONAL AD SCENES
+  */
+
+  const scenes=[
+    "hook",
+    "problem",
+    "product",
+    "benefit",
+    "offer",
+    "cta"
+  ];
+
+  const sceneDuration=2200;
+
+  const total=
+    scenes.length*sceneDuration;
+
+  const fps=30;
+
+  const frames=
+    Math.floor(
+      total/(1000/fps)
+    );
+
+
+  for(let frame=0;frame<frames;frame++){
+
+    const elapsed=
+      frame*(1000/fps);
+
+    const sceneIndex=
+      Math.min(
+        scenes.length-1,
+        Math.floor(
+          elapsed/sceneDuration
+        )
+      );
+
+    const scene=
+      scenes[sceneIndex];
+
+    const localProgress=
+      (
+        elapsed-
+        sceneIndex*sceneDuration
+      )/sceneDuration;
+
+
+    /*
+      IMPORTANT:
+      loadedImages[0] is passed directly.
+      There is NO image loading inside this loop.
+    */
+
+    drawVideoScene(
+      ctx,
+      canvas.width,
+      canvas.height,
+      getData(),
+      loadedImages[0],
+      scene,
+      localProgress
+    );
+
+
+    showProgress(
+      true,
+      10+
+        Math.round(
+          (frame/frames)*85
+        ),
+      "Building scene "+
+        (sceneIndex+1)+
+        " of "+
+        scenes.length+
+        "..."
+    );
+
+
+    await wait(
+      1000/fps
+    );
+
+  }
+
+  recorder.stop();
+
+  await stopped;
+
+  if(audioContext){
+
+    try{
+      await audioContext.close();
+    }catch(e){}
+
+  }
+
+  const blob=
+    new Blob(
+      chunks,
+      {type:"video/webm"}
+    );
+
+  const url=
+    URL.createObjectURL(blob);
+
+  const video=
+    document.getElementById("videoResult");
+
+  video.src=url;
+
   video.style.display="block";
 
   document.getElementById("staticCanvas").style.display="none";
   document.getElementById("motionResult").style.display="none";
   document.getElementById("emptyPreview").style.display="none";
 
-  showProgress(true,100,"Video ad ready.");
+  showProgress(
+    true,
+    100,
+    "Video ad ready."
+  );
 
   showResult(
     "Your six-scene video advertisement has been created.",
     url,
-    "Download Video Ad"
+    "Download Video Ad",
+    "webm"
   );
 
 }
 
-/* VIDEO SCENES */
 
-function drawVideoScene(ctx,w,h,d,files,scene,p){
+/* VIDEO SCENE RENDERER */
 
-  const gradient=ctx.createLinearGradient(0,0,w,h);
+function drawVideoScene(
+  ctx,
+  w,
+  h,
+  d,
+  img,
+  scene,
+  p
+){
 
-  gradient.addColorStop(0,"#0B1220");
-  gradient.addColorStop(1,"#172554");
+  const bg=
+    ctx.createLinearGradient(
+      0,
+      0,
+      w,
+      h
+    );
 
-  ctx.fillStyle=gradient;
-  ctx.fillRect(0,0,w,h);
+  bg.addColorStop(
+    0,
+    "#0B1220"
+  );
 
-  /* top brand line */
+  bg.addColorStop(
+    1,
+    "#172554"
+  );
+
+  ctx.fillStyle=bg;
+
+  ctx.fillRect(
+    0,
+    0,
+    w,
+    h
+  );
 
   ctx.fillStyle="#14B8A6";
-  ctx.fillRect(0,0,w,14);
 
-  const imageFile=files[0];
+  ctx.fillRect(
+    0,
+    0,
+    w,
+    14
+  );
+
 
   if(scene==="hook"){
 
-    drawProductBackground(ctx,w,h,imageFile,.22,p);
+    drawProductBackground(
+      ctx,
+      w,
+      h,
+      img,
+      .08,
+      p
+    );
 
     drawSceneText(
       ctx,
       w,
       h,
-      d.product || "Your Product",
+      d.product ||
+        "Your Product",
       "A better way to get it done.",
-      "HOOK",
+      "INTRODUCING",
       p
     );
 
   }
+
 
   else if(scene==="problem"){
 
@@ -1467,27 +1705,38 @@ function drawVideoScene(ctx,w,h,d,files,scene,p){
       w,
       h,
       "The problem?",
-      d.problem || "Your customers are looking for a better solution.",
+      d.problem ||
+        "Your customers are looking for a better solution.",
       p
     );
 
   }
 
+
   else if(scene==="product"){
 
-    drawProductBackground(ctx,w,h,imageFile,.10,p);
+    drawProductBackground(
+      ctx,
+      w,
+      h,
+      img,
+      .03,
+      p
+    );
 
     drawSceneText(
       ctx,
       w,
       h,
-      d.product || "Your Product",
+      d.product ||
+        "Your Product",
       "Meet the solution.",
       "THE SOLUTION",
       p
     );
 
   }
+
 
   else if(scene==="benefit"){
 
@@ -1496,121 +1745,136 @@ function drawVideoScene(ctx,w,h,d,files,scene,p){
       w,
       h,
       "Why customers choose it",
-      d.benefit || "Designed to make everyday life easier.",
+      d.benefit ||
+        "Designed to make everyday life easier.",
       p
     );
 
   }
 
+
   else if(scene==="offer"){
 
-    drawProductBackground(ctx,w,h,imageFile,.15,p);
+    drawProductBackground(
+      ctx,
+      w,
+      h,
+      img,
+      .05,
+      p
+    );
 
     drawSceneText(
       ctx,
       w,
       h,
-      d.price || "Special Offer",
+      d.price ||
+        "Special Offer",
       "Get yours today.",
-      "LIMITED OFFER",
+      "SPECIAL OFFER",
       p
     );
 
   }
 
+
   else if(scene==="cta"){
 
-    ctx.fillStyle="#FFFFFF";
-
-    ctx.font="900 72px Arial";
-
-    ctx.textAlign="center";
-
-    ctx.fillText(
-      "Ready to get yours?",
-      w/2,
-      720
-    );
-
-    ctx.fillStyle="#14B8A6";
-
-    ctx.font="800 46px Arial";
-
-    ctx.fillText(
-      d.contact || "Contact us today",
-      w/2,
-      850
-    );
-
-    ctx.fillStyle="#CBD5E1";
-
-    ctx.font="600 23px Arial";
-
-    ctx.fillText(
-      d.product || "Simply Ads Creator",
-      w/2,
-      960
-    );
-
-    ctx.fillStyle="#94A3B8";
-
-    ctx.font="700 19px Arial";
-
-    ctx.fillText(
-      "SIMPLY ADS CREATOR",
-      w/2,
-      1770
+    drawCTA(
+      ctx,
+      w,
+      h,
+      d,
+      p
     );
 
   }
 
 }
 
-/* PRODUCT BACKGROUND */
 
-function drawProductBackground(ctx,w,h,file,zoom,p){
+/*
+  PRODUCT IMAGE
+  The image is ALREADY LOADED.
+  No new Image() is created here.
+*/
 
-  if(!file || !file.type.startsWith("image/")){
+function drawProductBackground(
+  ctx,
+  w,
+  h,
+  img,
+  zoom,
+  p
+){
+
+  if(!img){
     return;
   }
 
-  const img=new Image();
+  const scale=
+    Math.max(
+      w/img.width,
+      h/img.height
+    )*
+    (1+zoom*p);
 
-  img.src=URL.createObjectURL(file);
+  const iw=
+    img.width*scale;
 
-  if(!img.complete){
-    return;
-  }
+  const ih=
+    img.height*scale;
 
-  const scale=Math.max(
-    w/img.width,
-    h/img.height
-  )*(1+zoom*p);
+  const x=
+    (w-iw)/2;
 
-  const iw=img.width*scale;
-  const ih=img.height*scale;
-
-  const x=(w-iw)/2;
-  const y=(h-ih)/2;
+  const y=
+    (h-ih)/2;
 
   ctx.save();
 
-  ctx.globalAlpha=.48;
+  ctx.globalAlpha=.65;
 
-  ctx.drawImage(img,x,y,iw,ih);
+  ctx.drawImage(
+    img,
+    x,
+    y,
+    iw,
+    ih
+  );
 
   ctx.restore();
 
-  ctx.fillStyle="rgba(11,18,32,.55)";
-  ctx.fillRect(0,0,w,h);
+  ctx.fillStyle=
+    "rgba(11,18,32,.55)";
+
+  ctx.fillRect(
+    0,
+    0,
+    w,
+    h
+  );
 
 }
 
+
 /* SCENE TEXT */
 
-function drawSceneText(ctx,w,h,title,subtitle,label,p){
+function drawSceneText(
+  ctx,
+  w,
+  h,
+  title,
+  subtitle,
+  label,
+  p
+){
 
-  const alpha=Math.min(1,p*4);
+  const alpha=
+    Math.min(
+      1,
+      p*4
+    );
 
   ctx.globalAlpha=alpha;
 
@@ -1618,30 +1882,33 @@ function drawSceneText(ctx,w,h,title,subtitle,label,p){
 
   ctx.fillStyle="#14B8A6";
 
-  ctx.font="800 22px Arial";
+  ctx.font=
+    "800 22px Arial";
 
   ctx.fillText(
     label,
     70,
-    1120
+    1110
   );
 
   ctx.fillStyle="#FFFFFF";
 
-  ctx.font="900 68px Arial";
+  ctx.font=
+    "900 68px Arial";
 
   wrapCanvas(
     ctx,
     title,
     70,
-    1210,
+    1200,
     w-140,
     82
   );
 
   ctx.fillStyle="#CBD5E1";
 
-  ctx.font="400 31px Arial";
+  ctx.font=
+    "400 31px Arial";
 
   wrapCanvas(
     ctx,
@@ -1656,11 +1923,23 @@ function drawSceneText(ctx,w,h,title,subtitle,label,p){
 
 }
 
+
 /* DARK SCENE */
 
-function drawDarkScene(ctx,w,h,title,body,p){
+function drawDarkScene(
+  ctx,
+  w,
+  h,
+  title,
+  body,
+  p
+){
 
-  const alpha=Math.min(1,p*4);
+  const alpha=
+    Math.min(
+      1,
+      p*4
+    );
 
   ctx.globalAlpha=alpha;
 
@@ -1668,7 +1947,8 @@ function drawDarkScene(ctx,w,h,title,body,p){
 
   ctx.fillStyle="#14B8A6";
 
-  ctx.font="800 24px Arial";
+  ctx.font=
+    "800 24px Arial";
 
   ctx.fillText(
     "SIMPLY ADS",
@@ -1678,7 +1958,8 @@ function drawDarkScene(ctx,w,h,title,body,p){
 
   ctx.fillStyle="#FFFFFF";
 
-  ctx.font="900 67px Arial";
+  ctx.font=
+    "900 67px Arial";
 
   ctx.fillText(
     title,
@@ -1688,7 +1969,8 @@ function drawDarkScene(ctx,w,h,title,body,p){
 
   ctx.fillStyle="#CBD5E1";
 
-  ctx.font="400 31px Arial";
+  ctx.font=
+    "400 31px Arial";
 
   wrapCentered(
     ctx,
@@ -1703,91 +1985,202 @@ function drawDarkScene(ctx,w,h,title,body,p){
 
 }
 
-function wrapCentered(ctx,text,x,y,maxWidth,lineHeight){
 
-  const words=String(text).split(" ");
-  let line="";
+/* CTA */
 
-  for(let i=0;i<words.length;i++){
+function drawCTA(
+  ctx,
+  w,
+  h,
+  d,
+  p
+){
 
-    const test=line+words[i]+" ";
+  const alpha=
+    Math.min(
+      1,
+      p*4
+    );
 
-    if(ctx.measureText(test).width>maxWidth && i>0){
+  ctx.globalAlpha=alpha;
 
-      ctx.fillText(line,x,y);
+  ctx.textAlign="center";
 
-      line=words[i]+" ";
-      y+=lineHeight;
+  ctx.fillStyle="#14B8A6";
 
-    }else{
+  ctx.font=
+    "800 25px Arial";
 
-      line=test;
-
-    }
-
-  }
-
-  ctx.fillText(line,x,y);
-
-}
-
-/* ANIMATED FRAME */
-
-function drawAnimatedFrame(ctx,w,h,d,files,p){
-
-  const bg=ctx.createLinearGradient(0,0,w,h);
-
-  bg.addColorStop(0,"#0B1220");
-  bg.addColorStop(1,"#1E3A8A");
-
-  ctx.fillStyle=bg;
-  ctx.fillRect(0,0,w,h);
-
-  const file=files[0];
-
-  if(file && file.type.startsWith("image/")){
-
-    const img=new Image();
-
-    img.src=URL.createObjectURL(file);
-
-    if(img.complete){
-
-      const zoom=1+p*.15;
-
-      const scale=Math.max(
-        w/img.width,
-        h*.58/img.height
-      )*zoom;
-
-      const iw=img.width*scale;
-      const ih=img.height*scale;
-
-      const x=(w-iw)/2;
-      const y=100+(p*30);
-
-      ctx.drawImage(img,x,y,iw,ih);
-
-    }
-
-  }
-
-  ctx.fillStyle="rgba(11,18,32,.58)";
-  ctx.fillRect(0,0,w,h);
-
-  const slide=Math.max(0,1-Math.abs(p-.35)*4);
-
-  ctx.globalAlpha=slide;
+  ctx.fillText(
+    "READY?",
+    w/2,
+    570
+  );
 
   ctx.fillStyle="#FFFFFF";
 
+  ctx.font=
+    "900 68px Arial";
+
+  ctx.fillText(
+    "Get yours today.",
+    w/2,
+    700
+  );
+
+  if(d.price){
+
+    ctx.fillStyle="#14B8A6";
+
+    ctx.font=
+      "900 52px Arial";
+
+    ctx.fillText(
+      d.price,
+      w/2,
+      830
+    );
+
+  }
+
+  ctx.fillStyle="#FFFFFF";
+
+  ctx.font=
+    "800 32px Arial";
+
+  ctx.fillText(
+    d.contact ||
+      "Contact us today",
+    w/2,
+    960
+  );
+
+  ctx.fillStyle="#CBD5E1";
+
+  ctx.font=
+    "500 24px Arial";
+
+  ctx.fillText(
+    d.product ||
+      "Your Product",
+    w/2,
+    1040
+  );
+
+  ctx.fillStyle="#94A3B8";
+
+  ctx.font=
+    "700 18px Arial";
+
+  ctx.fillText(
+    "SIMPLY ADS CREATOR",
+    w/2,
+    1770
+  );
+
+  ctx.globalAlpha=1;
+
+}
+
+
+/* MOTION FRAME */
+
+function drawAnimatedFrame(
+  ctx,
+  w,
+  h,
+  d,
+  img,
+  p
+){
+
+  const bg=
+    ctx.createLinearGradient(
+      0,
+      0,
+      w,
+      h
+    );
+
+  bg.addColorStop(
+    0,
+    "#0B1220"
+  );
+
+  bg.addColorStop(
+    1,
+    "#1E3A8A"
+  );
+
+  ctx.fillStyle=bg;
+
+  ctx.fillRect(
+    0,
+    0,
+    w,
+    h
+  );
+
+  if(img){
+
+    const zoom=
+      1+p*.14;
+
+    const scale=
+      Math.max(
+        w/img.width,
+        (h*.58)/img.height
+      )*zoom;
+
+    const iw=
+      img.width*scale;
+
+    const ih=
+      img.height*scale;
+
+    const x=
+      (w-iw)/2;
+
+    const y=
+      100+p*30;
+
+    ctx.drawImage(
+      img,
+      x,
+      y,
+      iw,
+      ih
+    );
+
+  }
+
+  ctx.fillStyle=
+    "rgba(11,18,32,.58)";
+
+  ctx.fillRect(
+    0,
+    0,
+    w,
+    h
+  );
+
+  ctx.globalAlpha=
+    Math.min(
+      1,
+      p*4
+    );
+
   ctx.textAlign="left";
 
-  ctx.font="900 64px Arial";
+  ctx.fillStyle="#FFFFFF";
+
+  ctx.font=
+    "900 64px Arial";
 
   wrapCanvas(
     ctx,
-    d.product || "Your Product",
+    d.product ||
+      "Your Product",
     65,
     1050,
     w-130,
@@ -1796,11 +2189,13 @@ function drawAnimatedFrame(ctx,w,h,d,files,p){
 
   ctx.fillStyle="#CBD5E1";
 
-  ctx.font="400 29px Arial";
+  ctx.font=
+    "400 29px Arial";
 
   wrapCanvas(
     ctx,
-    d.benefit || "A better solution for your customers.",
+    d.benefit ||
+      "A better solution for your customers.",
     65,
     1250,
     w-130,
@@ -1811,7 +2206,8 @@ function drawAnimatedFrame(ctx,w,h,d,files,p){
 
     ctx.fillStyle="#14B8A6";
 
-    ctx.font="900 48px Arial";
+    ctx.font=
+      "900 48px Arial";
 
     ctx.fillText(
       d.price,
@@ -1823,21 +2219,29 @@ function drawAnimatedFrame(ctx,w,h,d,files,p){
 
   ctx.fillStyle="#FFFFFF";
 
-  ctx.font="800 25px Arial";
+  ctx.font=
+    "800 25px Arial";
 
   ctx.fillText(
-    d.contact || "Order now",
+    d.contact ||
+      "Order now",
     65,
     1600
   );
 
-  ctx.globalAlpha=1;
-
   ctx.fillStyle="#14B8A6";
-  ctx.fillRect(0,0,w,14);
+
+  ctx.fillRect(
+    0,
+    0,
+    w,
+    14
+  );
 
   ctx.fillStyle="#94A3B8";
-  ctx.font="700 18px Arial";
+
+  ctx.font=
+    "700 18px Arial";
 
   ctx.fillText(
     "SIMPLY ADS CREATOR",
@@ -1845,103 +2249,212 @@ function drawAnimatedFrame(ctx,w,h,d,files,p){
     1830
   );
 
+  ctx.globalAlpha=1;
+
 }
 
-/* DRAW IMAGE */
 
-async function drawImageFrame(ctx,w,h,d,file){
+/* TEXT WRAPPING */
 
-  return new Promise(resolve=>{
+function wrapCanvas(
+  ctx,
+  text,
+  x,
+  y,
+  maxWidth,
+  lineHeight
+){
 
-    ctx.fillStyle="#0B1220";
-    ctx.fillRect(0,0,w,h);
+  const words=
+    String(text).split(" ");
 
-    ctx.fillStyle="#14B8A6";
-    ctx.fillRect(0,0,w,16);
+  let line="";
 
-    if(!file || !file.type.startsWith("image/")){
+  for(
+    let i=0;
+    i<words.length;
+    i++
+  ){
 
-      drawStaticText(ctx,w,h,d);
-      resolve();
-      return;
+    const test=
+      line+
+      words[i]+
+      " ";
+
+    if(
+      ctx.measureText(test).width>
+      maxWidth &&
+      i>0
+    ){
+
+      ctx.fillText(
+        line,
+        x,
+        y
+      );
+
+      line=
+        words[i]+" ";
+
+      y+=lineHeight;
+
+    }else{
+
+      line=test;
 
     }
 
-    const img=new Image();
+  }
 
-    img.onload=()=>{
-
-      const maxW=w*.84;
-      const maxH=h*.48;
-
-      const scale=Math.min(
-        maxW/img.width,
-        maxH/img.height
-      );
-
-      const iw=img.width*scale;
-      const ih=img.height*scale;
-
-      const x=(w-iw)/2;
-      const y=160;
-
-      ctx.save();
-
-      ctx.shadowColor="rgba(0,0,0,.35)";
-      ctx.shadowBlur=50;
-
-      ctx.drawImage(img,x,y,iw,ih);
-
-      ctx.restore();
-
-      drawStaticText(ctx,w,h,d);
-
-      resolve();
-
-    };
-
-    img.src=URL.createObjectURL(file);
-
-  });
+  ctx.fillText(
+    line,
+    x,
+    y
+  );
 
 }
+
+
+function wrapCentered(
+  ctx,
+  text,
+  x,
+  y,
+  maxWidth,
+  lineHeight
+){
+
+  const words=
+    String(text).split(" ");
+
+  let line="";
+
+  for(
+    let i=0;
+    i<words.length;
+    i++
+  ){
+
+    const test=
+      line+
+      words[i]+
+      " ";
+
+    if(
+      ctx.measureText(test).width>
+      maxWidth &&
+      i>0
+    ){
+
+      ctx.fillText(
+        line,
+        x,
+        y
+      );
+
+      line=
+        words[i]+" ";
+
+      y+=lineHeight;
+
+    }else{
+
+      line=test;
+
+    }
+
+  }
+
+  ctx.fillText(
+    line,
+    x,
+    y
+  );
+
+}
+
 
 /* RESULT */
 
-function showResult(text,url,label){
+function showResult(
+  text,
+  url,
+  label,
+  extension
+){
 
-  const box=document.getElementById("resultBox");
+  const box=
+    document.getElementById(
+      "resultBox"
+    );
 
   box.style.display="block";
 
-  document.getElementById("resultText").innerHTML=
+  const safeName=
+    label
+      .toLowerCase()
+      .replaceAll(" ","-");
+
+  document.getElementById(
+    "resultText"
+  ).innerHTML=
     text+
-    '<br><br><a href="'+url+'" download="'+
-    label.toLowerCase().replaceAll(" ","-")+
-    '.webm"><button class="primary">'+
+    "<br><br>"+
+    '<a href="'+url+
+    '" download="'+
+    safeName+
+    "."+
+    extension+
+    '">'+
+    '<button class="primary">'+
     label+
-    '</button></a>';
+    "</button>"+
+    "</a>";
 
 }
+
 
 /* PROGRESS */
 
-function showProgress(show,value,text){
+function showProgress(
+  show,
+  value,
+  text
+){
 
-  const box=document.getElementById("progress");
+  const box=
+    document.getElementById(
+      "progress"
+    );
 
-  box.style.display=show?"block":"none";
+  box.style.display=
+    show ? "block" : "none";
 
-  document.getElementById("progressBar").style.width=value+"%";
+  document.getElementById(
+    "progressBar"
+  ).style.width=
+    value+"%";
 
-  document.getElementById("progressText").textContent=text;
+  document.getElementById(
+    "progressText"
+  ).textContent=
+    text;
 
 }
 
-/* UTIL */
+
+/* WAIT */
 
 function wait(ms){
-  return new Promise(resolve=>setTimeout(resolve,ms));
+
+  return new Promise(
+    resolve=>
+      setTimeout(
+        resolve,
+        ms
+      )
+  );
+
 }
 
 </script>
