@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Simply Ads Creator — Create New Ad</title>
+<style>
+:root{--navy:#0B1220;--blue:#2563EB;--teal:#14B8A6;--bg:#F5F7FA;--white:#fff;--text:#111827;--muted:#64748B;--border:#E2E8F0}
+*{box-sizing:border-box}
+body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif;background:var(--bg);color:var(--text)}
+header{background:var(--navy);color:#fff;padding:18px 22px;display:flex;align-items:center;justify-content:space-between}
+.brand{font-weight:800;font-size:19px}.brand span{color:#60A5FA}
+.back{color:#fff;text-decoration:none;font-weight:700}
+.wrap{max-width:1050px;margin:auto;padding:22px}
+h1{margin:4px 0 6px;font-size:30px}
+.intro{color:var(--muted);margin-bottom:22px}
+.steps{display:flex;gap:8px;overflow:auto;margin-bottom:18px}
+.step{padding:9px 13px;border-radius:999px;background:#E2E8F0;color:#475569;font-size:13px;font-weight:700;white-space:nowrap}
+.step.active{background:#DBEAFE;color:#1D4ED8}
+.panel{background:#fff;border:1px solid var(--border);border-radius:18px;padding:20px;margin-bottom:18px}
+h2{font-size:19px;margin:0 0 14px}
+.types{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.type{border:2px solid var(--border);border-radius:14px;padding:16px;cursor:pointer}
+.type.active{border-color:var(--blue);background:#EFF6FF}
+.type b{display:block;font-size:17px;margin-bottom:5px}
+.type span{font-size:13px;color:var(--muted)}
+.form{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.field{display:flex;flex-direction:column;gap:6px}
+.field.full{grid-column:1/-1}
+label{font-size:13px;font-weight:800}
+input,textarea,select{font:inherit;border:1px solid #CBD5E1;border-radius:10px;padding:12px;background:#fff}
+textarea{min-height:85px;resize:vertical}
+.media{border:2px dashed #CBD5E1;border-radius:14px;padding:24px;text-align:center}
+.media input{border:0;padding:10px}
+.preview{background:linear-gradient(145deg,#0B1220,#1E3A8A);border-radius:16px;padding:24px;color:#fff;min-height:230px;display:flex;flex-direction:column;justify-content:flex-end}
+.preview .tag{color:#93C5FD;font-size:12px;font-weight:800}
+.preview h3{font-size:28px;margin:8px 0}
+.preview p{color:#CBD5E1;margin:4px 0}
+.cta{display:inline-block;margin-top:12px;background:#14B8A6;padding:10px 14px;border-radius:9px;font-weight:800;width:max-content}
+.actions{display:flex;justify-content:flex-end;gap:10px}
+.btn{border:0;border-radius:10px;padding:13px 18px;font-weight:800;cursor:pointer}
+.primary{background:var(--blue);color:#fff}
+.secondary{background:#EFF6FF;color:#1D4ED8}
+@media(max-width:650px){
+.wrap{padding:14px}
+.types,.form{grid-template-columns:1fr}
+.field.full{grid-column:auto}
+h1{font-size:25px}
+.panel{padding:16px}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="brand">Simply Ads <span>Creator</span></div>
+<a class="back" href="professional.html">← Dashboard</a>
+</header>
+
+<div class="wrap">
+
+<div class="steps">
+<div class="step active">1. Ad Type</div>
+<div class="step">2. Product</div>
+<div class="step">3. Media</div>
+<div class="step">4. Preview</div>
+</div>
+
+<h1>Create New Ad</h1>
+
+<div class="intro">
+Give us the basics. Your ad is built around your product, audience and goal.
+</div>
+
+<section class="panel">
+
+<h2>Choose your ad type</h2>
+
+<div class="types">
+
+<div class="type active" onclick="chooseType(this,'Static Ad')">
+<b>Static Ad</b>
+<span>Professional promotional graphic.</span>
+</div>
+
+<div class="type" onclick="chooseType(this,'Motion Ad')">
+<b>Motion Ad</b>
+<span>Animated photo, captions and music.</span>
+</div>
+
+<div class="type" onclick="chooseType(this,'Video Ad')">
+<b>Video Ad</b>
+<span>Full video with scenes, voice and captions.</span>
+</div>
+
+</div>
+</section>
+
+<section class="panel">
+
+<h2>Product information</h2>
+
+<div class="form">
+
+<div class="field">
+<label>Product name</label>
+<input id="name" placeholder="e.g. Smartwatch Pro" oninput="update()">
+</div>
+
+<div class="field">
+<label>Price / offer</label>
+<input id="price" placeholder="e.g. UGX 120,000" oninput="update()">
+</div>
+
+<div class="field full">
+<label>What problem does it solve?</label>
+<textarea id="problem" placeholder="Describe the customer's problem..."></textarea>
+</div>
+
+<div class="field full">
+<label>Main benefit</label>
+<textarea id="benefit" placeholder="What makes the product useful or different?" oninput="update()"></textarea>
+</div>
+
+<div class="field">
+<label>Target customer</label>
+<input id="audience" placeholder="e.g. Busy professionals">
+</div>
+
+<div class="field">
+<label>Country / market</label>
+<select id="country">
+<option>Uganda</option>
+<option>Kenya</option>
+<option>Nigeria</option>
+<option>South Africa</option>
+<option>United Kingdom</option>
+<option>United States</option>
+<option>Canada</option>
+<option>Australia</option>
+<option>Other</option>
+</select>
+</div>
+
+<div class="field">
+<label>Contact / CTA</label>
+<input id="contact" placeholder="WhatsApp, phone, website, etc." oninput="update()">
+</div>
+
+<div class="field">
+<label>Platform</label>
+<select id="platform" onchange="update()">
+<option>TikTok</option>
+<option>Instagram Reels</option>
+<option>Facebook</option>
+<option>WhatsApp Status</option>
+<option>YouTube Shorts</option>
+<option>General Online Ad</option>
+</select>
+</div>
+
+</div>
+</section>
+
+<section class="panel">
+
+<h2>Product media</h2>
+
+<div class="media">
+<p><b>Upload product photos or videos</b></p>
+<p class="intro">Your media will become the visual foundation of the ad.</p>
+<input type="file" id="media" accept="image/*,video/*" multiple>
+</div>
+
+</section>
+
+<section class="panel">
+
+<h2>Live ad preview</h2>
+
+<div class="preview">
+
+<div class="tag" id="ptype">STATIC AD • TIKTOK</div>
+
+<h3 id="pname">Your product headline</h3>
+
+<p id="pbenefit">
+Your main product benefit will appear here.
+</p>
+
+<div class="cta" id="pcta">SHOP NOW</div>
+
+</div>
+
+</section>
+
+<div class="actions">
+
+<button class="btn secondary"
+onclick="window.location.href='professional.html'">
+Cancel
+</button>
+
+<button class="btn primary" onclick="generate()">
+Build My Ad →
+</button>
+
+</div>
+
+</div>
+
+<script>
+
+let selected='Static Ad';
+
+function chooseType(el,type){
+
+document.querySelectorAll('.type')
+.forEach(x=>x.classList.remove('active'));
+
+el.classList.add('active');
+
+selected=type;
+
+update();
+
+}
+
+function update(){
+
+const n=document.getElementById('name').value || 'Your product headline';
+
+const b=document.getElementById('benefit').value ||
+'Your main product benefit will appear here.';
+
+const p=document.getElementById('platform').value;
+
+document.getElementById('pname').textContent=n;
+
+document.getElementById('pbenefit').textContent=b;
+
+document.getElementById('ptype').textContent=
+selected.toUpperCase()+' • '+p.toUpperCase();
+
+document.getElementById('pcta').textContent=
+document.getElementById('contact').value
+?'CONTACT US'
+:'SHOP NOW';
+
+}
+
+function generate(){
+
+const n=document.getElementById('name').value.trim();
+
+if(!n){
+
+alert('Please enter your product name first.');
+
+return;
+
+}
+
+localStorage.setItem(
+'sac_last_ad',
+JSON.stringify({
+type:selected,
+name:n,
+price:document.getElementById('price').value,
+platform:document.getElementById('platform').value
+})
+);
+
+alert(
+'Your '+selected+
+' brief is ready. The next build will turn this into the finished visual ad and export.'
+);
+
+}
+
+</script>
+
+</body>
+</html>
