@@ -2,2178 +2,1947 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Simply Ads Creator — Create New Ad</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Simply Ads Creator — Create Your Ad</title>
 
 <style>
 :root{
---navy:#0B1220;
---blue:#2563EB;
---teal:#14B8A6;
---bg:#F5F7FA;
---white:#fff;
---text:#111827;
---muted:#64748B;
---border:#E2E8F0
+  --navy:#0B1220;
+  --blue:#2563EB;
+  --teal:#14B8A6;
+  --white:#FFFFFF;
+  --gray:#F5F7FA;
+  --text:#111827;
+  --muted:#64748B;
+  --border:#E2E8F0;
+  --danger:#DC2626;
+  --shadow:0 18px 50px rgba(15,23,42,.10);
 }
 
 *{box-sizing:border-box}
 
 body{
-margin:0;
-font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif;
-background:var(--bg);
-color:var(--text)
+  margin:0;
+  font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  background:var(--gray);
+  color:var(--text);
 }
 
-header{
-background:var(--navy);
-color:#fff;
-padding:18px 22px;
-display:flex;
-align-items:center;
-justify-content:space-between
+button,input,textarea,select{font:inherit}
+
+button{cursor:pointer}
+
+.app{
+  min-height:100vh;
+  display:flex;
 }
 
-.brand{
-font-weight:800;
-font-size:19px
+/* SIDEBAR */
+
+.sidebar{
+  width:245px;
+  background:var(--navy);
+  color:white;
+  padding:25px 18px;
+  position:fixed;
+  inset:0 auto 0 0;
 }
 
-.brand span{
-color:#60A5FA
+.logo{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin-bottom:35px;
+}
+
+.logoMark{
+  width:38px;
+  height:38px;
+  border-radius:11px;
+  background:linear-gradient(135deg,var(--blue),var(--teal));
+  display:grid;
+  place-items:center;
+  font-weight:900;
+}
+
+.logoText{
+  font-size:17px;
+  font-weight:800;
+}
+
+.nav{
+  display:flex;
+  flex-direction:column;
+  gap:7px;
+}
+
+.nav button{
+  border:0;
+  background:transparent;
+  color:#CBD5E1;
+  text-align:left;
+  padding:12px 13px;
+  border-radius:10px;
+}
+
+.nav button:hover,
+.nav button.active{
+  background:rgba(255,255,255,.08);
+  color:white;
+}
+
+.proBox{
+  position:absolute;
+  bottom:22px;
+  left:18px;
+  right:18px;
+  padding:16px;
+  border-radius:15px;
+  background:linear-gradient(145deg,#17233B,#0F172A);
+  border:1px solid rgba(255,255,255,.08);
+}
+
+.proBox strong{
+  display:block;
+  margin-bottom:6px;
+}
+
+.proBox span{
+  font-size:12px;
+  color:#94A3B8;
+}
+
+/* MAIN */
+
+.main{
+  margin-left:245px;
+  width:calc(100% - 245px);
+  padding:30px;
+}
+
+.topbar{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin-bottom:25px;
+}
+
+.topbar h1{
+  margin:0;
+  font-size:28px;
+  letter-spacing:-.5px;
 }
 
 .back{
-color:#fff;
-text-decoration:none;
-font-weight:700
+  border:1px solid var(--border);
+  background:white;
+  padding:10px 15px;
+  border-radius:10px;
 }
 
-.wrap{
-max-width:1050px;
-margin:auto;
-padding:22px
+.layout{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) 410px;
+  gap:25px;
 }
 
-h1{
-margin:4px 0 6px;
-font-size:30px
+/* CARDS */
+
+.card{
+  background:white;
+  border:1px solid var(--border);
+  border-radius:18px;
+  box-shadow:var(--shadow);
+  padding:22px;
+  margin-bottom:20px;
 }
 
-.intro{
-color:var(--muted);
-margin-bottom:22px
+.card h2{
+  margin:0 0 6px;
+  font-size:18px;
 }
 
-.steps{
-display:flex;
-gap:8px;
-overflow:auto;
-margin-bottom:18px
+.card p.desc{
+  margin:0 0 20px;
+  color:var(--muted);
+  font-size:13px;
 }
 
-.step{
-padding:9px 13px;
-border-radius:999px;
-background:#E2E8F0;
-color:#475569;
-font-size:13px;
-font-weight:700;
-white-space:nowrap
+/* MODE */
+
+.modes{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:10px;
 }
 
-.step.active{
-background:#DBEAFE;
-color:#1D4ED8
+.mode{
+  border:1px solid var(--border);
+  background:white;
+  padding:15px;
+  border-radius:13px;
+  text-align:left;
 }
 
-.panel{
-background:#fff;
-border:1px solid var(--border);
-border-radius:18px;
-padding:20px;
-margin-bottom:18px
+.mode strong{
+  display:block;
+  margin-bottom:5px;
 }
 
-h2{
-font-size:19px;
-margin:0 0 14px
+.mode span{
+  font-size:12px;
+  color:var(--muted);
 }
 
-.types{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:12px
+.mode.active{
+  border:2px solid var(--blue);
+  background:#EFF6FF;
 }
 
-.type{
-border:2px solid var(--border);
-border-radius:14px;
-padding:16px;
-cursor:pointer;
-transition:.2s
-}
+/* FORM */
 
-.type:hover{
-border-color:#93C5FD
-}
-
-.type.active{
-border-color:var(--blue);
-background:#EFF6FF
-}
-
-.type b{
-display:block;
-font-size:17px;
-margin-bottom:5px
-}
-
-.type span{
-font-size:13px;
-color:var(--muted)
-}
-
-.form{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:14px
+.grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:15px;
 }
 
 .field{
-display:flex;
-flex-direction:column;
-gap:6px
+  margin-bottom:16px;
 }
 
 .field.full{
-grid-column:1/-1
+  grid-column:1/-1;
 }
 
 label{
-font-size:13px;
-font-weight:800
+  display:block;
+  font-size:13px;
+  font-weight:700;
+  margin-bottom:7px;
 }
 
 input,
 textarea,
 select{
-font:inherit;
-border:1px solid #CBD5E1;
-border-radius:10px;
-padding:12px;
-background:#fff;
-color:#111827
+  width:100%;
+  border:1px solid var(--border);
+  border-radius:10px;
+  padding:12px;
+  outline:none;
+  background:white;
 }
 
 textarea{
-min-height:85px;
-resize:vertical
+  min-height:90px;
+  resize:vertical;
 }
 
-.media{
-border:2px dashed #CBD5E1;
-border-radius:14px;
-padding:20px;
-text-align:center
+input:focus,
+textarea:focus,
+select:focus{
+  border-color:var(--blue);
+  box-shadow:0 0 0 3px rgba(37,99,235,.08);
 }
 
-.media input{
-border:0;
-padding:10px
+/* UPLOAD */
+
+.upload{
+  border:2px dashed #CBD5E1;
+  border-radius:14px;
+  padding:25px;
+  text-align:center;
+  background:#F8FAFC;
 }
 
-.fileName{
-margin-top:8px;
-font-size:13px;
-font-weight:700;
-color:#475569
+.upload strong{
+  display:block;
+  margin-bottom:5px;
 }
 
-.preview{
-background:linear-gradient(145deg,#0B1220,#1E3A8A);
-border-radius:16px;
-padding:24px;
-color:#fff;
-min-height:300px;
-display:flex;
-flex-direction:column;
-justify-content:flex-end;
-overflow:hidden;
-position:relative
+.upload span{
+  color:var(--muted);
+  font-size:12px;
 }
 
-.previewImage{
-width:100%;
-max-height:210px;
-object-fit:contain;
-border-radius:12px;
-margin-bottom:18px;
-display:none
+.mediaList{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  margin-top:15px;
 }
 
-.preview .tag{
-color:#93C5FD;
-font-size:12px;
-font-weight:800
+.mediaItem{
+  width:72px;
+  height:72px;
+  border-radius:9px;
+  overflow:hidden;
+  border:1px solid var(--border);
+  background:#E2E8F0;
 }
 
-.preview h3{
-font-size:28px;
-margin:8px 0
+.mediaItem img,
+.mediaItem video{
+  width:100%;
+  height:100%;
+  object-fit:cover;
 }
 
-.preview p{
-color:#CBD5E1;
-margin:4px 0
-}
-
-.previewPrice{
-font-size:20px;
-font-weight:900;
-margin-top:10px;
-color:#5EEAD4
-}
-
-.cta{
-display:inline-block;
-margin-top:12px;
-background:#14B8A6;
-padding:10px 14px;
-border-radius:9px;
-font-weight:800;
-width:max-content
-}
+/* BUTTONS */
 
 .actions{
-display:flex;
-justify-content:flex-end;
-gap:10px
-}
-
-.btn{
-border:0;
-border-radius:10px;
-padding:13px 18px;
-font-weight:800;
-cursor:pointer;
-font-size:15px
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
 }
 
 .primary{
-background:var(--blue);
-color:#fff
+  background:var(--blue);
+  color:white;
+  border:0;
+  padding:13px 20px;
+  border-radius:11px;
+  font-weight:800;
+}
+
+.primary:hover{
+  filter:brightness(.95);
 }
 
 .secondary{
-background:#EFF6FF;
-color:#1D4ED8
+  background:white;
+  color:var(--text);
+  border:1px solid var(--border);
+  padding:13px 20px;
+  border-radius:11px;
+  font-weight:700;
 }
 
-.btn:active{
-transform:scale(.98)
+/* PREVIEW */
+
+.preview{
+  position:sticky;
+  top:20px;
 }
+
+.phone{
+  width:100%;
+  max-width:360px;
+  margin:auto;
+  aspect-ratio:9/16;
+  border-radius:25px;
+  background:#0B1220;
+  padding:8px;
+  box-shadow:0 25px 70px rgba(0,0,0,.20);
+}
+
+.screen{
+  width:100%;
+  height:100%;
+  border-radius:19px;
+  overflow:hidden;
+  position:relative;
+  background:#111827;
+}
+
+.previewEmpty{
+  height:100%;
+  display:grid;
+  place-items:center;
+  color:#94A3B8;
+  text-align:center;
+  padding:30px;
+}
+
+.previewEmpty strong{
+  color:white;
+  display:block;
+  font-size:18px;
+  margin-bottom:7px;
+}
+
+#staticCanvas,
+#motionResult,
+#videoResult{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:none;
+}
+
+.previewInfo{
+  text-align:center;
+  color:var(--muted);
+  font-size:12px;
+  margin-top:12px;
+}
+
+/* RESULT */
 
 .resultBox{
-display:none
+  display:none;
+  margin-top:20px;
+  padding:15px;
+  border-radius:12px;
+  background:#F0FDFA;
+  border:1px solid #99F6E4;
 }
 
-.resultBox canvas{
-display:block;
-width:100%;
-max-width:540px;
-height:auto;
-margin:0 auto;
-border-radius:16px;
-box-shadow:0 12px 35px rgba(11,18,32,.18);
-background:#0B1220
+.resultBox strong{
+  display:block;
+  margin-bottom:5px;
 }
 
-.videoResult{
-display:none;
-text-align:center
+.progress{
+  display:none;
+  margin-top:15px;
 }
 
-.videoResult video{
-width:100%;
-max-width:420px;
-border-radius:16px;
-background:#000;
-box-shadow:0 12px 35px rgba(11,18,32,.18)
+.progressTrack{
+  height:8px;
+  background:#E2E8F0;
+  border-radius:99px;
+  overflow:hidden;
 }
 
-.resultTitle{
-text-align:center;
-margin-bottom:8px
+.progressBar{
+  height:100%;
+  width:0;
+  background:linear-gradient(90deg,var(--blue),var(--teal));
+  transition:.15s;
 }
 
-.resultSub{
-text-align:center;
-color:var(--muted);
-font-size:14px;
-margin-bottom:18px
+.small{
+  font-size:12px;
+  color:var(--muted);
+  margin-top:7px;
 }
 
-.downloadRow{
-display:flex;
-justify-content:center;
-gap:10px;
-flex-wrap:wrap;
-margin-top:16px
+/* RESPONSIVE */
+
+@media(max-width:950px){
+  .sidebar{
+    width:70px;
+    padding:18px 10px;
+  }
+
+  .logoText,
+  .nav span,
+  .proBox{
+    display:none;
+  }
+
+  .logo{
+    justify-content:center;
+  }
+
+  .nav button{
+    text-align:center;
+    padding:12px 5px;
+    font-size:0;
+  }
+
+  .nav button::first-letter{
+    font-size:18px;
+  }
+
+  .main{
+    margin-left:70px;
+    width:calc(100% - 70px);
+    padding:20px;
+  }
+
+  .layout{
+    grid-template-columns:1fr;
+  }
+
+  .preview{
+    position:static;
+  }
 }
 
-.download{
-text-decoration:none;
-display:inline-block
-}
+@media(max-width:600px){
+  .grid{
+    grid-template-columns:1fr;
+  }
 
-.status{
-text-align:center;
-font-weight:700;
-color:#2563EB;
-margin-top:12px;
-display:none
-}
+  .field.full{
+    grid-column:auto;
+  }
 
-.motionHint{
-display:none;
-background:#ECFDF5;
-border:1px solid #A7F3D0;
-color:#065F46;
-border-radius:12px;
-padding:12px;
-font-size:14px;
-margin-top:12px
-}
+  .modes{
+    grid-template-columns:1fr;
+  }
 
-.motionHint.show{
-display:block
-}
+  .topbar h1{
+    font-size:22px;
+  }
 
-@media(max-width:650px){
-
-.wrap{
-padding:14px
-}
-
-.types,
-.form{
-grid-template-columns:1fr
-}
-
-.field.full{
-grid-column:auto
-}
-
-h1{
-font-size:25px
-}
-
-.panel{
-padding:16px
-}
-
-.actions{
-position:sticky;
-bottom:0;
-background:var(--bg);
-padding:12px 0;
-z-index:5
-}
-
-.preview h3{
-font-size:25px
-}
-
+  .main{
+    padding:14px;
+  }
 }
 </style>
 </head>
 
 <body>
 
-<header>
+<div class="app">
 
-<div class="brand">
-Simply Ads <span>Creator</span>
-</div>
+<aside class="sidebar">
 
-<a class="back" href="professional.html">
-← Dashboard
-</a>
+  <div class="logo">
+    <div class="logoMark">SA</div>
+    <div class="logoText">Simply Ads</div>
+  </div>
 
-</header>
+  <div class="nav">
+    <button onclick="goDashboard()">⌂ <span>Dashboard</span></button>
+    <button class="active">＋ <span>Create Ad</span></button>
+    <button onclick="placeholder('My Projects')">▣ <span>Projects</span></button>
+    <button onclick="placeholder('Templates')">◈ <span>Templates</span></button>
+    <button onclick="placeholder('Brand Kit')">◆ <span>Brand Kit</span></button>
+    <button onclick="placeholder('Promote')">↗ <span>Promote</span></button>
+  </div>
 
+  <div class="proBox">
+    <strong>Simply Ads Pro</strong>
+    <span>Create professional ads without complicated editing.</span>
+  </div>
+
+</aside>
+
+<main class="main">
+
+  <div class="topbar">
+    <div>
+      <h1>Create New Ad</h1>
+      <div class="small">Turn your product information into a ready-to-use advertisement.</div>
+    </div>
+
+    <button class="back" onclick="goDashboard()">← Dashboard</button>
+  </div>
+
+  <div class="layout">
+
+    <section>
+
+      <!-- AD TYPE -->
+
+      <div class="card">
 
-<div class="wrap">
+        <h2>Choose Ad Type</h2>
+        <p class="desc">Start with the format you want to create.</p>
 
-<div class="steps">
+        <div class="modes">
 
-<div class="step active">
-1. Ad Type
-</div>
+          <button class="mode active" id="staticMode" onclick="chooseType('static')">
+            <strong>Static Ad</strong>
+            <span>Professional promotional graphic</span>
+          </button>
 
-<div class="step">
-2. Product
-</div>
+          <button class="mode" id="motionMode" onclick="chooseType('motion')">
+            <strong>Motion Ad</strong>
+            <span>Animated product advertisement</span>
+          </button>
 
-<div class="step">
-3. Media
-</div>
+          <button class="mode" id="videoMode" onclick="chooseType('video')">
+            <strong>Video Ad</strong>
+            <span>Multi-scene promotional video</span>
+          </button>
 
-<div class="step">
-4. Preview
-</div>
+        </div>
 
-</div>
+      </div>
 
+      <!-- PRODUCT -->
 
-<h1>
-Create New Ad
-</h1>
+      <div class="card">
 
-<div class="intro">
-Give us the basics. Simply Ads Creator builds the advertising design around your product, audience and goal.
-</div>
+        <h2>Product & Offer</h2>
+        <p class="desc">Give Simply Ads the information it needs to build your ad.</p>
 
+        <div class="grid">
 
-<section class="panel">
+          <div class="field">
+            <label>Product Name</label>
+            <input id="product" placeholder="e.g. Smartwatch Pro">
+          </div>
 
-<h2>
-Choose your ad type
-</h2>
+          <div class="field">
+            <label>Price / Offer</label>
+            <input id="price" placeholder="e.g. UGX 120,000">
+          </div>
 
-<div class="types">
+          <div class="field full">
+            <label>Customer Problem</label>
+            <textarea id="problem" placeholder="What problem does your customer have?"></textarea>
+          </div>
 
+          <div class="field full">
+            <label>Main Benefit</label>
+            <textarea id="benefit" placeholder="What does your product help the customer achieve?"></textarea>
+          </div>
 
-<div
-class="type active"
-onclick="chooseType(this,'Static Ad')">
+          <div class="field">
+            <label>Target Customer</label>
+            <input id="target" placeholder="e.g. Busy professionals">
+          </div>
 
-<b>
-Static Ad
-</b>
+          <div class="field">
+            <label>Country / Market</label>
+            <select id="country">
+              <option>Uganda</option>
+              <option>Kenya</option>
+              <option>Nigeria</option>
+              <option>South Africa</option>
+              <option>United Kingdom</option>
+              <option>United States</option>
+              <option>Canada</option>
+              <option>Australia</option>
+              <option>Other</option>
+            </select>
+          </div>
 
-<span>
-Professional promotional graphic.
-</span>
+          <div class="field">
+            <label>Platform</label>
+            <select id="platform">
+              <option>TikTok</option>
+              <option>Instagram Reels</option>
+              <option>Facebook</option>
+              <option>WhatsApp Status</option>
+              <option>YouTube Shorts</option>
+              <option>General Online Ad</option>
+            </select>
+          </div>
 
-</div>
+          <div class="field">
+            <label>Call To Action / Contact</label>
+            <input id="contact" placeholder="e.g. WhatsApp 0730 053 551">
+          </div>
 
+        </div>
 
-<div
-class="type"
-onclick="chooseType(this,'Motion Ad')">
+      </div>
 
-<b>
-Motion Ad
-</b>
+      <!-- MEDIA -->
 
-<span>
-Animated product ad with movement and optional audio.
-</span>
+      <div class="card">
 
-</div>
+        <h2>Product Media</h2>
+        <p class="desc">Upload product photos or videos. Video Ads can use multiple pieces of media.</p>
 
+        <div class="upload">
 
-<div
-class="type"
-onclick="chooseType(this,'Video Ad')">
+          <strong>Upload Product Media</strong>
+          <span>Images and videos are supported</span>
 
-<b>
-Video Ad
-</b>
+          <br><br>
 
-<span>
-Full multi-scene video with voice and captions.
-</span>
+          <input
+            id="media"
+            type="file"
+            accept="image/*,video/*"
+            multiple
+            onchange="handleMedia()"
+          >
 
-</div>
+        </div>
 
+        <div class="mediaList" id="mediaList"></div>
 
-</div>
+      </div>
 
-</section>
+      <!-- AUDIO -->
 
+      <div class="card">
 
-<section class="panel">
+        <h2>Voiceover & Music</h2>
+        <p class="desc">Optional. Upload a voice recording or background music.</p>
 
-<h2>
-Product information
-</h2>
+        <input
+          id="audio"
+          type="file"
+          accept="audio/*"
+          onchange="handleAudio()"
+        >
 
-<div class="form">
+        <div class="small" id="audioName">No audio selected.</div>
 
+      </div>
 
-<div class="field">
+      <!-- BUILD -->
 
-<label>
-Product name
-</label>
+      <div class="card">
 
-<input
-id="name"
-placeholder="e.g. Smartwatch Pro"
-oninput="updatePreview()">
+        <h2>Build Your Ad</h2>
 
-</div>
+        <p class="desc">
+          Simply Ads will automatically arrange your content into the selected advertisement format.
+        </p>
 
+        <div class="actions">
 
-<div class="field">
+          <button class="primary" onclick="generate()">
+            ✨ Build My Ad
+          </button>
 
-<label>
-Price / offer
-</label>
+          <button class="secondary" onclick="updatePreview()">
+            Preview
+          </button>
 
-<input
-id="price"
-placeholder="e.g. UGX 120,000"
-oninput="updatePreview()">
+        </div>
 
-</div>
+        <div class="progress" id="progress">
 
+          <div class="progressTrack">
+            <div class="progressBar" id="progressBar"></div>
+          </div>
 
-<div class="field full">
+          <div class="small" id="progressText">
+            Preparing your ad...
+          </div>
 
-<label>
-What problem does it solve?
-</label>
+        </div>
 
-<textarea
-id="problem"
-placeholder="Describe the customer's problem...">
-</textarea>
+        <div class="resultBox" id="resultBox">
+          <strong>Your ad is ready.</strong>
+          <div class="small" id="resultText"></div>
+        </div>
 
-</div>
+      </div>
 
+    </section>
 
-<div class="field full">
+    <!-- PREVIEW -->
 
-<label>
-Main benefit
-</label>
+    <aside class="preview">
 
-<textarea
-id="benefit"
-placeholder="What makes the product useful or different?"
-oninput="updatePreview()">
-</textarea>
+      <div class="card">
 
-</div>
+        <h2>Live Preview</h2>
+        <p class="desc">Your finished ad will appear here.</p>
 
+        <div class="phone">
 
-<div class="field">
+          <div class="screen">
 
-<label>
-Target customer
-</label>
+            <div class="previewEmpty" id="emptyPreview">
+              <div>
+                <strong>Simply Ads Creator</strong>
+                Add your product information and media, then build your ad.
+              </div>
+            </div>
 
-<input
-id="audience"
-placeholder="e.g. Busy professionals">
+            <canvas id="staticCanvas"></canvas>
 
-</div>
+            <video id="motionResult" controls playsinline></video>
 
+            <video id="videoResult" controls playsinline></video>
 
-<div class="field">
+          </div>
 
-<label>
-Country / market
-</label>
+        </div>
 
-<select id="country">
+        <div class="previewInfo">
+          Vertical format optimized for short-form advertising.
+        </div>
 
-<option>Uganda</option>
-<option>Kenya</option>
-<option>Nigeria</option>
-<option>South Africa</option>
-<option>United Kingdom</option>
-<option>United States</option>
-<option>Canada</option>
-<option>Australia</option>
-<option>Other</option>
+      </div>
 
-</select>
+    </aside>
 
-</div>
+  </div>
 
-
-<div class="field">
-
-<label>
-Contact / CTA
-</label>
-
-<input
-id="contact"
-placeholder="WhatsApp, phone, website, etc."
-oninput="updatePreview()">
-
-</div>
-
-
-<div class="field">
-
-<label>
-Platform
-</label>
-
-<select
-id="platform"
-onchange="updatePreview()">
-
-<option>TikTok</option>
-<option>Instagram Reels</option>
-<option>Facebook</option>
-<option>WhatsApp Status</option>
-<option>YouTube Shorts</option>
-<option>General Online Ad</option>
-
-</select>
-
-</div>
-
-
-</div>
-
-</section>
-
-
-<section class="panel">
-
-<h2>
-Product media
-</h2>
-
-<div class="media">
-
-<p>
-<b>
-Upload product photos or videos
-</b>
-</p>
-
-<p class="intro">
-For Motion Ad, your first image becomes the animated product scene.
-</p>
-
-<input
-type="file"
-id="media"
-accept="image/*,video/*"
-multiple
-onchange="handleMedia()">
-
-<div
-class="fileName"
-id="fileName">
-
-No file selected
+</main>
 
 </div>
-
-</div>
-
-
-<div
-id="motionHint"
-class="motionHint">
-
-Motion Ad is ready. Add an optional audio file below, then tap
-<b>
-Build My Ad
-</b>.
-
-</div>
-
-
-<div
-class="media"
-style="margin-top:12px">
-
-<p>
-<b>
-Optional voice / music audio
-</b>
-</p>
-
-<input
-type="file"
-id="audioFile"
-accept="audio/*"
-onchange="handleAudio()">
-
-<div
-class="fileName"
-id="audioName">
-
-No audio selected
-
-</div>
-
-</div>
-
-</section>
-
-
-<section class="panel">
-
-<h2>
-Live ad preview
-</h2>
-
-<div class="preview">
-
-
-<img
-id="previewImage"
-class="previewImage"
-alt="Product preview">
-
-
-<div
-class="tag"
-id="ptype">
-
-STATIC AD • TIKTOK
-
-</div>
-
-
-<h3
-id="pname">
-
-Your product headline
-
-</h3>
-
-
-<p
-id="pbenefit">
-
-Your main product benefit will appear here.
-
-</p>
-
-
-<div
-class="previewPrice"
-id="pprice">
-</div>
-
-
-<div
-class="cta"
-id="pcta">
-
-SHOP NOW
-
-</div>
-
-
-</div>
-
-</section>
-
-
-<section
-class="panel resultBox"
-id="staticResult">
-
-<h2 class="resultTitle">
-Your Finished Static Ad
-</h2>
-
-<div class="resultSub">
-Your ad has been generated and is ready to download.
-</div>
-
-
-<canvas
-id="adCanvas">
-</canvas>
-
-
-<div
-class="status"
-id="staticStatus">
-
-Ad created successfully.
-
-</div>
-
-
-<div class="downloadRow">
-
-<a
-id="downloadAd"
-class="btn primary download"
-download="simply-ads-creator-ad.png">
-
-Download Ad ↓
-
-</a>
-
-
-<button
-class="btn secondary"
-onclick="createAnother()">
-
-Create Another
-
-</button>
-
-</div>
-
-</section>
-
-
-<section
-class="panel videoResult"
-id="motionResult">
-
-<h2 class="resultTitle">
-Your Finished Motion Ad
-</h2>
-
-<div class="resultSub">
-
-Your animated ad is ready. Browser export uses WebM; MP4/server rendering will be added in the next rendering stage.
-
-</div>
-
-
-<video
-id="motionVideo"
-controls
-playsinline>
-</video>
-
-
-<div
-class="status"
-id="motionStatus">
-
-Motion ad created successfully.
-
-</div>
-
-
-<div class="downloadRow">
-
-<a
-id="downloadMotion"
-class="btn primary download"
-download="simply-ads-creator-motion.webm">
-
-Download Motion Ad ↓
-
-</a>
-
-
-<button
-class="btn secondary"
-onclick="createAnother()">
-
-Create Another
-
-</button>
-
-</div>
-
-</section>
-
-
-<div class="actions">
-
-<button
-class="btn secondary"
-onclick="window.location.href='professional.html'">
-
-Cancel
-
-</button>
-
-
-<button
-class="btn primary"
-onclick="generate()">
-
-Build My Ad →
-
-</button>
-
-</div>
-
-
-</div>
-
 
 <script>
 
-let selected="Static Ad";
+let adType="static";
+let mediaFiles=[];
+let audioFile=null;
 
-let selectedImage=null;
+/* NAVIGATION */
 
-let selectedAudio=null;
-
-let motionUrl=null;
-
-
-/* CHOOSE TYPE */
-
-function chooseType(el,type){
-
-document
-.querySelectorAll(".type")
-.forEach(x=>x.classList.remove("active"));
-
-el.classList.add("active");
-
-selected=type;
-
-document
-.getElementById("motionHint")
-.classList.toggle(
-"show",
-type==="Motion Ad"
-);
-
-updatePreview();
-
+function goDashboard(){
+  window.location.href="professional.html";
 }
 
-
-/* LIVE PREVIEW */
-
-function updatePreview(){
-
-const name=
-document.getElementById("name")
-.value.trim()
-||
-"Your product headline";
-
-const benefit=
-document.getElementById("benefit")
-.value.trim()
-||
-"Your main product benefit will appear here.";
-
-const price=
-document.getElementById("price")
-.value.trim();
-
-const contact=
-document.getElementById("contact")
-.value.trim();
-
-const platform=
-document.getElementById("platform")
-.value;
-
-
-document.getElementById("pname")
-.textContent=name;
-
-document.getElementById("pbenefit")
-.textContent=benefit;
-
-document.getElementById("ptype")
-.textContent=
-selected.toUpperCase()
-+" • "
-+platform.toUpperCase();
-
-document.getElementById("pprice")
-.textContent=price;
-
-document.getElementById("pcta")
-.textContent=
-contact
-?
-"CONTACT US"
-:
-"SHOP NOW";
-
+function placeholder(name){
+  alert(name+" will be connected to the professional dashboard in the next build.");
 }
 
+/* TYPE */
 
-/* IMAGE UPLOAD */
+function chooseType(type){
+
+  adType=type;
+
+  document.querySelectorAll(".mode").forEach(x=>{
+    x.classList.remove("active");
+  });
+
+  document.getElementById(type+"Mode").classList.add("active");
+
+  updatePreview();
+}
+
+/* MEDIA */
 
 function handleMedia(){
 
-const input=
-document.getElementById("media");
+  const input=document.getElementById("media");
 
-const file=input.files[0];
+  mediaFiles=Array.from(input.files);
 
-const label=
-document.getElementById("fileName");
+  const list=document.getElementById("mediaList");
 
-const img=
-document.getElementById("previewImage");
+  list.innerHTML="";
 
+  mediaFiles.forEach(file=>{
 
-if(!file){
+    const item=document.createElement("div");
+    item.className="mediaItem";
 
-label.textContent="No file selected";
+    if(file.type.startsWith("image/")){
 
-selectedImage=null;
+      const img=document.createElement("img");
+      img.src=URL.createObjectURL(file);
+      item.appendChild(img);
 
-img.style.display="none";
+    }else{
 
-return;
+      const video=document.createElement("video");
+      video.src=URL.createObjectURL(file);
+      video.muted=true;
+      item.appendChild(video);
 
+    }
+
+    list.appendChild(item);
+
+  });
+
+  updatePreview();
 }
-
-
-label.textContent=
-file.name+
-(input.files.length>1
-?
-" + "+(input.files.length-1)+" more"
-:
-"");
-
-
-if(file.type.startsWith("image/")){
-
-const reader=new FileReader();
-
-reader.onload=function(e){
-
-selectedImage=e.target.result;
-
-img.src=e.target.result;
-
-img.style.display="block";
-
-};
-
-reader.readAsDataURL(file);
-
-}
-
-else{
-
-selectedImage=null;
-
-img.style.display="none";
-
-}
-
-}
-
 
 /* AUDIO */
 
 function handleAudio(){
 
-const file=
-document.getElementById("audioFile")
-.files[0];
+  const input=document.getElementById("audio");
 
-selectedAudio=file||null;
+  audioFile=input.files[0] || null;
 
-document.getElementById("audioName")
-.textContent=
-file
-?
-file.name
-:
-"No audio selected";
+  document.getElementById("audioName").textContent=
+    audioFile ? audioFile.name : "No audio selected.";
+}
+
+/* DATA */
+
+function getData(){
+
+  return {
+    product:document.getElementById("product").value.trim(),
+    price:document.getElementById("price").value.trim(),
+    problem:document.getElementById("problem").value.trim(),
+    benefit:document.getElementById("benefit").value.trim(),
+    target:document.getElementById("target").value.trim(),
+    country:document.getElementById("country").value,
+    platform:document.getElementById("platform").value,
+    contact:document.getElementById("contact").value.trim()
+  };
 
 }
 
+/* PREVIEW */
 
-/* TEXT WRAPPING */
+function updatePreview(){
 
-function wrapText(ctx,text,maxWidth){
+  const d=getData();
 
-const words=text.split(/\s+/);
+  if(!d.product && mediaFiles.length===0){
+    return;
+  }
 
-const lines=[];
-
-let line="";
-
-for(const word of words){
-
-const test=
-line
-?
-line+" "+word
-:
-word;
-
-if(
-ctx.measureText(test).width
->
-maxWidth
-&&
-line
-){
-
-lines.push(line);
-
-line=word;
+  if(adType==="static"){
+    drawStaticPreview();
+  }
 
 }
 
-else{
+/* STATIC PREVIEW */
 
-line=test;
+function drawStaticPreview(){
+
+  const canvas=document.getElementById("staticCanvas");
+  const empty=document.getElementById("emptyPreview");
+
+  canvas.style.display="block";
+  empty.style.display="none";
+
+  const ctx=canvas.getContext("2d");
+
+  canvas.width=720;
+  canvas.height=1280;
+
+  drawStaticFrame(ctx,canvas.width,canvas.height,getData(),mediaFiles[0],false);
+}
+
+/* DRAW STATIC */
+
+function drawStaticFrame(ctx,w,h,d,file,scene){
+
+  ctx.clearRect(0,0,w,h);
+
+  const bg=ctx.createLinearGradient(0,0,w,h);
+  bg.addColorStop(0,"#0B1220");
+  bg.addColorStop(1,"#172554");
+
+  ctx.fillStyle=bg;
+  ctx.fillRect(0,0,w,h);
+
+  /* accent */
+
+  ctx.fillStyle="#14B8A6";
+  ctx.fillRect(0,0,w,14);
+
+  /* image */
+
+  if(file && file.type.startsWith("image/")){
+
+    const img=new Image();
+
+    img.onload=()=>{
+
+      const maxW=w*.86;
+      const maxH=h*.48;
+
+      const scale=Math.min(maxW/img.width,maxH/img.height);
+
+      const iw=img.width*scale;
+      const ih=img.height*scale;
+
+      const x=(w-iw)/2;
+      const y=120;
+
+      ctx.save();
+
+      ctx.shadowColor="rgba(0,0,0,.35)";
+      ctx.shadowBlur=35;
+
+      ctx.drawImage(img,x,y,iw,ih);
+
+      ctx.restore();
+
+      drawStaticText(ctx,w,h,d);
+
+    };
+
+    img.src=URL.createObjectURL(file);
+
+  }else{
+
+    drawStaticText(ctx,w,h,d);
+
+  }
 
 }
 
-}
+/* STATIC TEXT */
 
-if(line){
-lines.push(line);
-}
+function drawStaticText(ctx,w,h,d){
 
-return lines;
+  ctx.fillStyle="#FFFFFF";
+  ctx.textAlign="left";
 
-}
+  ctx.font="800 56px Arial";
 
+  const title=d.product || "Your Product";
 
-/* ROUNDED RECT */
+  wrapCanvas(ctx,title,55,700,w-110,64);
 
-function roundedRect(
-ctx,
-x,
-y,
-w,
-h,
-r
-){
+  ctx.font="400 28px Arial";
+  ctx.fillStyle="#CBD5E1";
 
-ctx.beginPath();
+  wrapCanvas(
+    ctx,
+    d.benefit || "A better solution for your customers.",
+    55,
+    850,
+    w-110,
+    38
+  );
 
-ctx.moveTo(x+r,y);
+  if(d.price){
 
-ctx.lineTo(x+w-r,y);
+    ctx.fillStyle="#14B8A6";
+    ctx.font="900 48px Arial";
+    ctx.fillText(d.price,55,1035);
 
-ctx.quadraticCurveTo(
-x+w,
-y,
-x+w,
-y+r
-);
+  }
 
-ctx.lineTo(
-x+w,
-y+h-r
-);
+  ctx.fillStyle="#FFFFFF";
+  ctx.font="700 27px Arial";
 
-ctx.quadraticCurveTo(
-x+w,
-y+h,
-x+w-r,
-y+h
-);
+  if(d.contact){
+    ctx.fillText(d.contact,55,1120);
+  }
 
-ctx.lineTo(
-x+r,
-y+h
-);
-
-ctx.quadraticCurveTo(
-x,
-y+h,
-x,
-y+h-r
-);
-
-ctx.lineTo(
-x,
-y+r
-);
-
-ctx.quadraticCurveTo(
-x,
-y,
-x+r,
-y
-);
-
-ctx.closePath();
+  ctx.fillStyle="#94A3B8";
+  ctx.font="600 18px Arial";
+  ctx.fillText("SIMPLY ADS CREATOR",55,1215);
 
 }
 
+function wrapCanvas(ctx,text,x,y,maxWidth,lineHeight){
 
-/* PLATFORM SIZE */
+  const words=String(text).split(" ");
+  let line="";
 
-function platformSize(){
+  for(let n=0;n<words.length;n++){
 
-const platform=
-document.getElementById("platform")
-.value;
+    const test=line+words[n]+" ";
 
-if(
-platform==="Facebook"
-||
-platform==="General Online Ad"
-){
+    if(ctx.measureText(test).width>maxWidth && n>0){
 
-return [1200,1200];
+      ctx.fillText(line,x,y);
+      line=words[n]+" ";
+      y+=lineHeight;
 
-}
+    }else{
 
-return [1080,1920];
+      line=test;
 
-}
+    }
 
+  }
 
-/* DRAW ANIMATED FRAME */
-
-function drawFrame(
-ctx,
-w,
-h,
-img,
-t=1
-){
-
-const name=
-document.getElementById("name")
-.value.trim()
-||
-"Your Product";
-
-const benefit=
-document.getElementById("benefit")
-.value.trim()
-||
-"Discover the difference today.";
-
-const price=
-document.getElementById("price")
-.value.trim();
-
-const contact=
-document.getElementById("contact")
-.value.trim();
-
-const platform=
-document.getElementById("platform")
-.value;
-
-const country=
-document.getElementById("country")
-.value;
-
-
-/* BACKGROUND */
-
-const gradient=
-ctx.createLinearGradient(
-0,
-0,
-w,
-h
-);
-
-gradient.addColorStop(
-0,
-"#0B1220"
-);
-
-gradient.addColorStop(
-0.55,
-"#172554"
-);
-
-gradient.addColorStop(
-1,
-"#2563EB"
-);
-
-ctx.fillStyle=gradient;
-
-ctx.fillRect(
-0,
-0,
-w,
-h
-);
-
-
-/* DECORATION */
-
-ctx.globalAlpha=.12;
-
-ctx.fillStyle="#14B8A6";
-
-ctx.beginPath();
-
-ctx.arc(
-w*(.82+.04*Math.sin(t*6)),
-h*.12,
-180,
-0,
-Math.PI*2
-);
-
-ctx.fill();
-
-ctx.globalAlpha=1;
-
-
-/* BRAND */
-
-ctx.fillStyle="#93C5FD";
-
-ctx.font="800 30px Arial";
-
-ctx.fillText(
-"SIMPLY ADS CREATOR",
-70,
-75
-);
-
-
-/* PLATFORM */
-
-ctx.fillStyle="#fff";
-
-ctx.font="800 25px Arial";
-
-ctx.fillText(
-platform.toUpperCase(),
-70,
-118
-);
-
-
-/* PRODUCT IMAGE */
-
-if(img){
-
-const boxX=70;
-
-const boxY=155;
-
-const boxW=w-140;
-
-const boxH=h*.36;
-
-const scale=
-Math.min(
-boxW/img.width,
-boxH/img.height
-)
-*
-(
-1+
-.05*Math.sin(t*7)
-);
-
-const iw=img.width*scale;
-
-const ih=img.height*scale;
-
-const x=
-(w-iw)/2
-+
-18*Math.sin(t*4);
-
-const y=
-boxY
-+
-(boxH-ih)/2
-+
-12*Math.cos(t*4);
-
-
-ctx.save();
-
-roundedRect(
-ctx,
-boxX,
-boxY,
-boxW,
-boxH,
-30
-);
-
-ctx.fillStyle="#fff";
-
-ctx.fill();
-
-ctx.clip();
-
-ctx.drawImage(
-img,
-x,
-y,
-iw,
-ih
-);
-
-ctx.restore();
+  ctx.fillText(line,x,y);
 
 }
 
+/* VALIDATION */
 
-/* TEXT ENTRANCE */
+function validate(){
 
-const fade=
-Math.min(
-1,
-Math.max(
-0,
-(t-.05)*3
-)
-);
+  const d=getData();
 
-const slide=
-(1-fade)*70;
+  if(!d.product){
 
-ctx.save();
+    alert("Please enter your product name.");
+    return false;
 
-ctx.globalAlpha=fade;
+  }
 
-ctx.translate(
-0,
-slide
-);
+  if(adType!=="static" && mediaFiles.length===0){
 
+    alert("Please upload at least one product photo or video.");
+    return false;
 
-/* PRODUCT NAME */
+  }
 
-ctx.fillStyle="#fff";
-
-ctx.font="900 68px Arial";
-
-let lines=
-wrapText(
-ctx,
-name,
-w-140
-)
-.slice(0,3);
-
-let ny=h*.57;
-
-lines.forEach(
-(line,index)=>{
-
-ctx.fillText(
-line,
-70,
-ny+index*78
-);
-
+  return true;
 }
-);
-
-
-/* BENEFIT */
-
-ctx.fillStyle="#CBD5E1";
-
-ctx.font="500 34px Arial";
-
-let benefitLines=
-wrapText(
-ctx,
-benefit,
-w-140
-)
-.slice(0,4);
-
-let by=
-ny+
-lines.length*78+
-25;
-
-benefitLines.forEach(
-(line,index)=>{
-
-ctx.fillText(
-line,
-70,
-by+index*46
-);
-
-}
-);
-
-
-/* PRICE */
-
-if(price){
-
-const py=
-by+
-benefitLines.length*46+
-30;
-
-roundedRect(
-ctx,
-70,
-py,
-390,
-76,
-18
-);
-
-ctx.fillStyle="#14B8A6";
-
-ctx.fill();
-
-ctx.fillStyle="#fff";
-
-ctx.font="900 35px Arial";
-
-ctx.fillText(
-price,
-95,
-py+50
-);
-
-}
-
-
-/* CTA */
-
-const ctaY=h-170;
-
-const pulse=
-1+
-.04*Math.sin(t*9);
-
-ctx.save();
-
-ctx.translate(
-70,
-ctaY
-);
-
-ctx.scale(
-pulse,
-pulse
-);
-
-roundedRect(
-ctx,
-0,
-0,
-330,
-72,
-18
-);
-
-ctx.fillStyle="#14B8A6";
-
-ctx.fill();
-
-ctx.fillStyle="#fff";
-
-ctx.font="900 30px Arial";
-
-ctx.fillText(
-contact
-?
-"CONTACT US"
-:
-"SHOP NOW",
-30,
-47
-);
-
-ctx.restore();
-
-
-/* CONTACT */
-
-if(contact){
-
-ctx.fillStyle="#fff";
-
-ctx.font="700 24px Arial";
-
-ctx.fillText(
-contact,
-430,
-ctaY+45
-);
-
-}
-
-
-/* FOOTER */
-
-ctx.fillStyle="#93C5FD";
-
-ctx.font="500 20px Arial";
-
-ctx.fillText(
-country,
-70,
-h-70
-);
-
-ctx.textAlign="right";
-
-ctx.fillText(
-"Create. Animate. Promote.",
-w-70,
-h-70
-);
-
-ctx.textAlign="left";
-
-ctx.restore();
-
-}
-
-
-/* LOAD IMAGE */
-
-async function loadImage(){
-
-if(!selectedImage){
-return null;
-}
-
-return await new Promise(
-(resolve,reject)=>{
-
-const img=new Image();
-
-img.onload=()=>{
-resolve(img);
-};
-
-img.onerror=reject;
-
-img.src=selectedImage;
-
-}
-);
-
-}
-
-
-/* BUILD STATIC */
-
-function buildStatic(img){
-
-const [w,h]=platformSize();
-
-const canvas=
-document.getElementById("adCanvas");
-
-canvas.width=w;
-
-canvas.height=h;
-
-drawFrame(
-canvas.getContext("2d"),
-w,
-h,
-img,
-1
-);
-
-
-document.getElementById(
-"downloadAd"
-).href=
-canvas.toDataURL("image/png");
-
-
-document.getElementById(
-"downloadAd"
-).download=
-"simply-ads-creator-"+
-Date.now()+
-".png";
-
-
-document.getElementById(
-"staticResult"
-).style.display="block";
-
-
-document.getElementById(
-"staticStatus"
-).style.display="block";
-
-
-document.getElementById(
-"staticResult"
-).scrollIntoView({
-behavior:"smooth",
-block:"start"
-});
-
-}
-
-
-/* BUILD MOTION */
-
-async function buildMotion(){
-
-const img=await loadImage();
-
-if(!img){
-
-alert(
-"Motion Ad needs a product image. Please upload an image first."
-);
-
-return;
-
-}
-
-
-const [w,h]=platformSize();
-
-const canvas=
-document.createElement("canvas");
-
-canvas.width=w;
-
-canvas.height=h;
-
-const ctx=
-canvas.getContext("2d");
-
-
-/* CAPTURE VIDEO */
-
-const stream=
-canvas.captureStream(30);
-
-let tracks=[
-...stream.getVideoTracks()
-];
-
-let audioCtx=null;
-
-let audioEl=null;
-
-
-if(selectedAudio){
-
-audioEl=
-new Audio(
-URL.createObjectURL(
-selectedAudio
-)
-);
-
-audioEl.loop=false;
-
-audioEl.muted=false;
-
-audioEl.preload="auto";
-
-
-audioCtx=
-new (
-window.AudioContext
-||
-window.webkitAudioContext
-)();
-
-
-const source=
-audioCtx.createMediaElementSource(
-audioEl
-);
-
-const destination=
-audioCtx.createMediaStreamDestination();
-
-
-source.connect(destination);
-
-source.connect(
-audioCtx.destination
-);
-
-
-tracks=[
-...tracks,
-...destination.stream.getAudioTracks()
-];
-
-}
-
-
-const combined=
-new MediaStream(tracks);
-
-
-/* VIDEO FORMAT */
-
-const mime=
-MediaRecorder.isTypeSupported(
-"video/webm;codecs=vp9,opus"
-)
-?
-"video/webm;codecs=vp9,opus"
-:
-MediaRecorder.isTypeSupported(
-"video/webm"
-)
-?
-"video/webm"
-:
-"";
-
-
-if(!mime){
-
-alert(
-"This browser cannot record the Motion Ad. Please try Chrome or a current Edge browser."
-);
-
-return;
-
-}
-
-
-const recorder=
-new MediaRecorder(
-combined,
-{
-mimeType:mime,
-videoBitsPerSecond:6000000
-}
-);
-
-const chunks=[];
-
-
-recorder.ondataavailable=
-function(e){
-
-if(e.data.size){
-
-chunks.push(e.data);
-
-}
-
-};
-
-
-const duration=9000;
-
-const start=
-performance.now();
-
-
-recorder.start();
-
-
-if(audioEl){
-
-await audioEl
-.play()
-.catch(()=>{});
-
-if(
-audioCtx.state==="suspended"
-){
-
-await audioCtx.resume();
-
-}
-
-}
-
-
-/* ANIMATE */
-
-await new Promise(
-resolve=>{
-
-function frame(now){
-
-const t=
-Math.min(
-1,
-(now-start)/duration
-);
-
-drawFrame(
-ctx,
-w,
-h,
-img,
-t
-);
-
-if(t<1){
-
-requestAnimationFrame(
-frame
-);
-
-}
-
-else{
-
-resolve();
-
-}
-
-}
-
-requestAnimationFrame(
-frame
-);
-
-}
-);
-
-
-await new Promise(
-resolve=>
-setTimeout(
-resolve,
-150
-)
-);
-
-
-recorder.stop();
-
-
-await new Promise(
-resolve=>{
-
-recorder.onstop=
-resolve;
-
-}
-);
-
-
-if(audioEl){
-
-audioEl.pause();
-
-}
-
-if(audioCtx){
-
-audioCtx.close();
-
-}
-
-
-const blob=
-new Blob(
-chunks,
-{
-type:"video/webm"
-}
-);
-
-
-if(motionUrl){
-
-URL.revokeObjectURL(
-motionUrl
-);
-
-}
-
-
-motionUrl=
-URL.createObjectURL(
-blob
-);
-
-
-const video=
-document.getElementById(
-"motionVideo"
-);
-
-video.src=motionUrl;
-
-video.load();
-
-
-const link=
-document.getElementById(
-"downloadMotion"
-);
-
-link.href=motionUrl;
-
-link.download=
-"simply-ads-creator-motion-"+
-Date.now()+
-".webm";
-
-
-document.getElementById(
-"motionResult"
-).style.display="block";
-
-
-document.getElementById(
-"motionStatus"
-).style.display="block";
-
-
-document.getElementById(
-"motionResult"
-).scrollIntoView({
-behavior:"smooth",
-block:"start"
-});
-
-}
-
 
 /* GENERATE */
 
 async function generate(){
 
-const name=
-document.getElementById("name")
-.value.trim();
+  if(!validate()) return;
 
+  showProgress(true,0,"Preparing your ad...");
 
-if(!name){
+  document.getElementById("resultBox").style.display="none";
 
-alert(
-"Please enter your product name first."
-);
+  try{
 
-return;
+    if(adType==="static"){
 
-}
+      await buildStatic();
 
+    }else if(adType==="motion"){
 
-localStorage.setItem(
-"sac_last_ad",
-JSON.stringify({
+      await buildMotion();
 
-type:selected,
+    }else{
 
-name:name,
+      await buildVideo();
 
-price:
-document.getElementById("price")
-.value,
+    }
 
-problem:
-document.getElementById("problem")
-.value,
+  }catch(error){
 
-benefit:
-document.getElementById("benefit")
-.value,
+    console.error(error);
 
-audience:
-document.getElementById("audience")
-.value,
+    showProgress(false,0);
 
-country:
-document.getElementById("country")
-.value,
+    alert("Something went wrong while creating the ad. Please try again.");
 
-contact:
-document.getElementById("contact")
-.value,
-
-platform:
-document.getElementById("platform")
-.value
-
-})
-);
-
-
-document.getElementById(
-"staticResult"
-).style.display="none";
-
-
-document.getElementById(
-"motionResult"
-).style.display="none";
-
-
-try{
-
-
-if(selected==="Static Ad"){
-
-const img=
-await loadImage();
-
-buildStatic(img);
+  }
 
 }
 
+/* STATIC BUILD */
 
-else if(
-selected==="Motion Ad"
-){
+async function buildStatic(){
 
-await buildMotion();
+  showProgress(true,20,"Designing your static ad...");
 
-}
+  await wait(300);
 
+  const canvas=document.getElementById("staticCanvas");
 
-else{
+  canvas.width=1080;
+  canvas.height=1920;
 
-alert(
-"Video Ad is the next rendering stage. Motion Ad is now live; next we add multi-scene video, voiceover, captions and MP4 export."
-);
+  const ctx=canvas.getContext("2d");
 
-}
+  await drawImageFrame(
+    ctx,
+    canvas.width,
+    canvas.height,
+    getData(),
+    mediaFiles[0]
+  );
 
+  canvas.style.display="block";
 
-}
+  document.getElementById("emptyPreview").style.display="none";
 
-catch(error){
+  const link=document.createElement("a");
 
-console.error(error);
+  link.download="simply-ads-static.png";
+  link.href=canvas.toDataURL("image/png");
 
-alert(
-"The ad could not be rendered in this browser. Please try a current Chrome browser and an image file."
-);
+  showProgress(true,100,"Static ad ready.");
 
-}
-
-}
-
-
-/* CREATE ANOTHER */
-
-function createAnother(){
-
-document.getElementById(
-"staticResult"
-).style.display="none";
-
-document.getElementById(
-"motionResult"
-).style.display="none";
-
-window.scrollTo({
-top:0,
-behavior:"smooth"
-});
+  showResult(
+    "Your professional static ad has been created.",
+    link.href,
+    "Download Static Ad"
+  );
 
 }
 
+/* MOTION */
 
-/* INITIAL */
+async function buildMotion(){
 
-updatePreview();
+  if(!mediaFiles.length){
+    alert("Please upload at least one image for Motion Ad.");
+    return;
+  }
+
+  showProgress(true,10,"Preparing animation...");
+
+  const canvas=document.createElement("canvas");
+
+  canvas.width=1080;
+  canvas.height=1920;
+
+  const ctx=canvas.getContext("2d");
+
+  const stream=canvas.captureStream(30);
+
+  let audioContext=null;
+  let destination=null;
+
+  if(audioFile){
+
+    try{
+
+      audioContext=new AudioContext();
+
+      destination=audioContext.createMediaStreamDestination();
+
+      const buffer=await audioContext.decodeAudioData(
+        await audioFile.arrayBuffer()
+      );
+
+      const source=audioContext.createBufferSource();
+
+      source.buffer=buffer;
+      source.connect(destination);
+      source.start();
+
+      destination.stream.getAudioTracks().forEach(track=>{
+        stream.addTrack(track);
+      });
+
+    }catch(e){
+
+      console.warn("Audio could not be added.",e);
+
+    }
+
+  }
+
+  const recorder=new MediaRecorder(
+    stream,
+    {mimeType:"video/webm;codecs=vp9,opus"}
+  );
+
+  const chunks=[];
+
+  recorder.ondataavailable=e=>{
+    if(e.data.size) chunks.push(e.data);
+  };
+
+  const stopped=new Promise(resolve=>{
+    recorder.onstop=resolve;
+  });
+
+  recorder.start();
+
+  const duration=9000;
+  const fps=30;
+  const frames=Math.floor(duration/(1000/fps));
+
+  for(let i=0;i<frames;i++){
+
+    const progress=i/frames;
+
+    drawAnimatedFrame(
+      ctx,
+      canvas.width,
+      canvas.height,
+      getData(),
+      mediaFiles,
+      progress
+    );
+
+    showProgress(
+      true,
+      10+Math.round(progress*80),
+      "Rendering motion ad..."
+    );
+
+    await wait(1000/fps);
+
+  }
+
+  recorder.stop();
+
+  await stopped;
+
+  if(audioContext){
+    try{ await audioContext.close(); }catch(e){}
+  }
+
+  const blob=new Blob(chunks,{type:"video/webm"});
+
+  const url=URL.createObjectURL(blob);
+
+  const video=document.getElementById("motionResult");
+
+  video.src=url;
+  video.style.display="block";
+
+  document.getElementById("staticCanvas").style.display="none";
+  document.getElementById("videoResult").style.display="none";
+  document.getElementById("emptyPreview").style.display="none";
+
+  showProgress(true,100,"Motion ad ready.");
+
+  showResult(
+    "Your animated ad has been rendered.",
+    url,
+    "Download Motion Ad"
+  );
+
+}
+
+/* VIDEO AD */
+
+async function buildVideo(){
+
+  if(!mediaFiles.length){
+
+    alert("Please upload at least one product photo or video.");
+    return;
+
+  }
+
+  showProgress(true,5,"Building your video scenes...");
+
+  const canvas=document.createElement("canvas");
+
+  canvas.width=1080;
+  canvas.height=1920;
+
+  const ctx=canvas.getContext("2d");
+
+  const stream=canvas.captureStream(30);
+
+  let audioContext=null;
+  let destination=null;
+
+  if(audioFile){
+
+    try{
+
+      audioContext=new AudioContext();
+
+      destination=audioContext.createMediaStreamDestination();
+
+      const buffer=await audioContext.decodeAudioData(
+        await audioFile.arrayBuffer()
+      );
+
+      const source=audioContext.createBufferSource();
+
+      source.buffer=buffer;
+      source.connect(destination);
+
+      source.start();
+
+      destination.stream.getAudioTracks().forEach(track=>{
+        stream.addTrack(track);
+      });
+
+    }catch(e){
+
+      console.warn("Audio unavailable.",e);
+
+    }
+
+  }
+
+  let mime="video/webm;codecs=vp9,opus";
+
+  if(!MediaRecorder.isTypeSupported(mime)){
+    mime="video/webm";
+  }
+
+  const recorder=new MediaRecorder(stream,{mimeType:mime});
+
+  const chunks=[];
+
+  recorder.ondataavailable=e=>{
+    if(e.data.size) chunks.push(e.data);
+  };
+
+  const stopped=new Promise(resolve=>{
+    recorder.onstop=resolve;
+  });
+
+  recorder.start();
+
+  /*
+    Six scenes:
+    1 Hook
+    2 Problem
+    3 Product
+    4 Benefits
+    5 Offer
+    6 CTA
+  */
+
+  const scenes=[
+    "hook",
+    "problem",
+    "product",
+    "benefit",
+    "offer",
+    "cta"
+  ];
+
+  const sceneDuration=2200;
+  const fps=30;
+  const total=scenes.length*sceneDuration;
+  const frames=Math.floor(total/(1000/fps));
+
+  for(let frame=0;frame<frames;frame++){
+
+    const elapsed=frame*(1000/fps);
+
+    const sceneIndex=Math.min(
+      scenes.length-1,
+      Math.floor(elapsed/sceneDuration)
+    );
+
+    const scene=scenes[sceneIndex];
+
+    const local=(
+      elapsed-(sceneIndex*sceneDuration)
+    )/sceneDuration;
+
+    drawVideoScene(
+      ctx,
+      canvas.width,
+      canvas.height,
+      getData(),
+      mediaFiles,
+      scene,
+      local
+    );
+
+    showProgress(
+      true,
+      5+Math.round((frame/frames)*90),
+      "Building scene "+(sceneIndex+1)+" of "+scenes.length+"..."
+    );
+
+    await wait(1000/fps);
+
+  }
+
+  recorder.stop();
+
+  await stopped;
+
+  if(audioContext){
+
+    try{
+      await audioContext.close();
+    }catch(e){}
+
+  }
+
+  const blob=new Blob(chunks,{type:"video/webm"});
+
+  const url=URL.createObjectURL(blob);
+
+  const video=document.getElementById("videoResult");
+
+  video.src=url;
+  video.style.display="block";
+
+  document.getElementById("staticCanvas").style.display="none";
+  document.getElementById("motionResult").style.display="none";
+  document.getElementById("emptyPreview").style.display="none";
+
+  showProgress(true,100,"Video ad ready.");
+
+  showResult(
+    "Your six-scene video advertisement has been created.",
+    url,
+    "Download Video Ad"
+  );
+
+}
+
+/* VIDEO SCENES */
+
+function drawVideoScene(ctx,w,h,d,files,scene,p){
+
+  const gradient=ctx.createLinearGradient(0,0,w,h);
+
+  gradient.addColorStop(0,"#0B1220");
+  gradient.addColorStop(1,"#172554");
+
+  ctx.fillStyle=gradient;
+  ctx.fillRect(0,0,w,h);
+
+  /* top brand line */
+
+  ctx.fillStyle="#14B8A6";
+  ctx.fillRect(0,0,w,14);
+
+  const imageFile=files[0];
+
+  if(scene==="hook"){
+
+    drawProductBackground(ctx,w,h,imageFile,.22,p);
+
+    drawSceneText(
+      ctx,
+      w,
+      h,
+      d.product || "Your Product",
+      "A better way to get it done.",
+      "HOOK",
+      p
+    );
+
+  }
+
+  else if(scene==="problem"){
+
+    drawDarkScene(
+      ctx,
+      w,
+      h,
+      "The problem?",
+      d.problem || "Your customers are looking for a better solution.",
+      p
+    );
+
+  }
+
+  else if(scene==="product"){
+
+    drawProductBackground(ctx,w,h,imageFile,.10,p);
+
+    drawSceneText(
+      ctx,
+      w,
+      h,
+      d.product || "Your Product",
+      "Meet the solution.",
+      "THE SOLUTION",
+      p
+    );
+
+  }
+
+  else if(scene==="benefit"){
+
+    drawDarkScene(
+      ctx,
+      w,
+      h,
+      "Why customers choose it",
+      d.benefit || "Designed to make everyday life easier.",
+      p
+    );
+
+  }
+
+  else if(scene==="offer"){
+
+    drawProductBackground(ctx,w,h,imageFile,.15,p);
+
+    drawSceneText(
+      ctx,
+      w,
+      h,
+      d.price || "Special Offer",
+      "Get yours today.",
+      "LIMITED OFFER",
+      p
+    );
+
+  }
+
+  else if(scene==="cta"){
+
+    ctx.fillStyle="#FFFFFF";
+
+    ctx.font="900 72px Arial";
+
+    ctx.textAlign="center";
+
+    ctx.fillText(
+      "Ready to get yours?",
+      w/2,
+      720
+    );
+
+    ctx.fillStyle="#14B8A6";
+
+    ctx.font="800 46px Arial";
+
+    ctx.fillText(
+      d.contact || "Contact us today",
+      w/2,
+      850
+    );
+
+    ctx.fillStyle="#CBD5E1";
+
+    ctx.font="600 23px Arial";
+
+    ctx.fillText(
+      d.product || "Simply Ads Creator",
+      w/2,
+      960
+    );
+
+    ctx.fillStyle="#94A3B8";
+
+    ctx.font="700 19px Arial";
+
+    ctx.fillText(
+      "SIMPLY ADS CREATOR",
+      w/2,
+      1770
+    );
+
+  }
+
+}
+
+/* PRODUCT BACKGROUND */
+
+function drawProductBackground(ctx,w,h,file,zoom,p){
+
+  if(!file || !file.type.startsWith("image/")){
+    return;
+  }
+
+  const img=new Image();
+
+  img.src=URL.createObjectURL(file);
+
+  if(!img.complete){
+    return;
+  }
+
+  const scale=Math.max(
+    w/img.width,
+    h/img.height
+  )*(1+zoom*p);
+
+  const iw=img.width*scale;
+  const ih=img.height*scale;
+
+  const x=(w-iw)/2;
+  const y=(h-ih)/2;
+
+  ctx.save();
+
+  ctx.globalAlpha=.48;
+
+  ctx.drawImage(img,x,y,iw,ih);
+
+  ctx.restore();
+
+  ctx.fillStyle="rgba(11,18,32,.55)";
+  ctx.fillRect(0,0,w,h);
+
+}
+
+/* SCENE TEXT */
+
+function drawSceneText(ctx,w,h,title,subtitle,label,p){
+
+  const alpha=Math.min(1,p*4);
+
+  ctx.globalAlpha=alpha;
+
+  ctx.textAlign="left";
+
+  ctx.fillStyle="#14B8A6";
+
+  ctx.font="800 22px Arial";
+
+  ctx.fillText(
+    label,
+    70,
+    1120
+  );
+
+  ctx.fillStyle="#FFFFFF";
+
+  ctx.font="900 68px Arial";
+
+  wrapCanvas(
+    ctx,
+    title,
+    70,
+    1210,
+    w-140,
+    82
+  );
+
+  ctx.fillStyle="#CBD5E1";
+
+  ctx.font="400 31px Arial";
+
+  wrapCanvas(
+    ctx,
+    subtitle,
+    70,
+    1430,
+    w-140,
+    45
+  );
+
+  ctx.globalAlpha=1;
+
+}
+
+/* DARK SCENE */
+
+function drawDarkScene(ctx,w,h,title,body,p){
+
+  const alpha=Math.min(1,p*4);
+
+  ctx.globalAlpha=alpha;
+
+  ctx.textAlign="center";
+
+  ctx.fillStyle="#14B8A6";
+
+  ctx.font="800 24px Arial";
+
+  ctx.fillText(
+    "SIMPLY ADS",
+    w/2,
+    570
+  );
+
+  ctx.fillStyle="#FFFFFF";
+
+  ctx.font="900 67px Arial";
+
+  ctx.fillText(
+    title,
+    w/2,
+    720
+  );
+
+  ctx.fillStyle="#CBD5E1";
+
+  ctx.font="400 31px Arial";
+
+  wrapCentered(
+    ctx,
+    body,
+    w/2,
+    850,
+    w-150,
+    45
+  );
+
+  ctx.globalAlpha=1;
+
+}
+
+function wrapCentered(ctx,text,x,y,maxWidth,lineHeight){
+
+  const words=String(text).split(" ");
+  let line="";
+
+  for(let i=0;i<words.length;i++){
+
+    const test=line+words[i]+" ";
+
+    if(ctx.measureText(test).width>maxWidth && i>0){
+
+      ctx.fillText(line,x,y);
+
+      line=words[i]+" ";
+      y+=lineHeight;
+
+    }else{
+
+      line=test;
+
+    }
+
+  }
+
+  ctx.fillText(line,x,y);
+
+}
+
+/* ANIMATED FRAME */
+
+function drawAnimatedFrame(ctx,w,h,d,files,p){
+
+  const bg=ctx.createLinearGradient(0,0,w,h);
+
+  bg.addColorStop(0,"#0B1220");
+  bg.addColorStop(1,"#1E3A8A");
+
+  ctx.fillStyle=bg;
+  ctx.fillRect(0,0,w,h);
+
+  const file=files[0];
+
+  if(file && file.type.startsWith("image/")){
+
+    const img=new Image();
+
+    img.src=URL.createObjectURL(file);
+
+    if(img.complete){
+
+      const zoom=1+p*.15;
+
+      const scale=Math.max(
+        w/img.width,
+        h*.58/img.height
+      )*zoom;
+
+      const iw=img.width*scale;
+      const ih=img.height*scale;
+
+      const x=(w-iw)/2;
+      const y=100+(p*30);
+
+      ctx.drawImage(img,x,y,iw,ih);
+
+    }
+
+  }
+
+  ctx.fillStyle="rgba(11,18,32,.58)";
+  ctx.fillRect(0,0,w,h);
+
+  const slide=Math.max(0,1-Math.abs(p-.35)*4);
+
+  ctx.globalAlpha=slide;
+
+  ctx.fillStyle="#FFFFFF";
+
+  ctx.textAlign="left";
+
+  ctx.font="900 64px Arial";
+
+  wrapCanvas(
+    ctx,
+    d.product || "Your Product",
+    65,
+    1050,
+    w-130,
+    75
+  );
+
+  ctx.fillStyle="#CBD5E1";
+
+  ctx.font="400 29px Arial";
+
+  wrapCanvas(
+    ctx,
+    d.benefit || "A better solution for your customers.",
+    65,
+    1250,
+    w-130,
+    42
+  );
+
+  if(d.price){
+
+    ctx.fillStyle="#14B8A6";
+
+    ctx.font="900 48px Arial";
+
+    ctx.fillText(
+      d.price,
+      65,
+      1510
+    );
+
+  }
+
+  ctx.fillStyle="#FFFFFF";
+
+  ctx.font="800 25px Arial";
+
+  ctx.fillText(
+    d.contact || "Order now",
+    65,
+    1600
+  );
+
+  ctx.globalAlpha=1;
+
+  ctx.fillStyle="#14B8A6";
+  ctx.fillRect(0,0,w,14);
+
+  ctx.fillStyle="#94A3B8";
+  ctx.font="700 18px Arial";
+
+  ctx.fillText(
+    "SIMPLY ADS CREATOR",
+    65,
+    1830
+  );
+
+}
+
+/* DRAW IMAGE */
+
+async function drawImageFrame(ctx,w,h,d,file){
+
+  return new Promise(resolve=>{
+
+    ctx.fillStyle="#0B1220";
+    ctx.fillRect(0,0,w,h);
+
+    ctx.fillStyle="#14B8A6";
+    ctx.fillRect(0,0,w,16);
+
+    if(!file || !file.type.startsWith("image/")){
+
+      drawStaticText(ctx,w,h,d);
+      resolve();
+      return;
+
+    }
+
+    const img=new Image();
+
+    img.onload=()=>{
+
+      const maxW=w*.84;
+      const maxH=h*.48;
+
+      const scale=Math.min(
+        maxW/img.width,
+        maxH/img.height
+      );
+
+      const iw=img.width*scale;
+      const ih=img.height*scale;
+
+      const x=(w-iw)/2;
+      const y=160;
+
+      ctx.save();
+
+      ctx.shadowColor="rgba(0,0,0,.35)";
+      ctx.shadowBlur=50;
+
+      ctx.drawImage(img,x,y,iw,ih);
+
+      ctx.restore();
+
+      drawStaticText(ctx,w,h,d);
+
+      resolve();
+
+    };
+
+    img.src=URL.createObjectURL(file);
+
+  });
+
+}
+
+/* RESULT */
+
+function showResult(text,url,label){
+
+  const box=document.getElementById("resultBox");
+
+  box.style.display="block";
+
+  document.getElementById("resultText").innerHTML=
+    text+
+    '<br><br><a href="'+url+'" download="'+
+    label.toLowerCase().replaceAll(" ","-")+
+    '.webm"><button class="primary">'+
+    label+
+    '</button></a>';
+
+}
+
+/* PROGRESS */
+
+function showProgress(show,value,text){
+
+  const box=document.getElementById("progress");
+
+  box.style.display=show?"block":"none";
+
+  document.getElementById("progressBar").style.width=value+"%";
+
+  document.getElementById("progressText").textContent=text;
+
+}
+
+/* UTIL */
+
+function wait(ms){
+  return new Promise(resolve=>setTimeout(resolve,ms));
+}
 
 </script>
 
