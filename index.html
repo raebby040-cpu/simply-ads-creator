@@ -1,0 +1,938 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simply Ads Creator by Raymond</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f5f7fb;
+      color: #172033;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 760px;
+      margin: auto;
+      padding: 18px;
+    }
+
+    .header {
+      background: linear-gradient(135deg, #111827, #2563eb);
+      color: white;
+      padding: 28px 20px;
+      border-radius: 18px;
+      margin-bottom: 18px;
+      text-align: center;
+    }
+
+    .header h1 {
+      margin: 0 0 8px;
+      font-size: 28px;
+    }
+
+    .header p {
+      margin: 0;
+      opacity: .9;
+    }
+
+    .card {
+      background: white;
+      padding: 20px;
+      border-radius: 16px;
+      margin-bottom: 18px;
+      box-shadow: 0 5px 20px rgba(0,0,0,.06);
+    }
+
+    label {
+      display: block;
+      font-weight: bold;
+      margin: 15px 0 7px;
+    }
+
+    input,
+    textarea,
+    select {
+      width: 100%;
+      padding: 13px;
+      border: 1px solid #d5d9e2;
+      border-radius: 10px;
+      font-size: 16px;
+      font-family: inherit;
+      background: white;
+    }
+
+    textarea {
+      min-height: 90px;
+      resize: vertical;
+    }
+
+    button {
+      width: 100%;
+      border: none;
+      border-radius: 11px;
+      padding: 14px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 12px;
+    }
+
+    .generate {
+      background: #2563eb;
+      color: white;
+    }
+
+    .copy {
+      background: #16a34a;
+      color: white;
+    }
+
+    .download {
+      background: #7c3aed;
+      color: white;
+    }
+
+    .clear {
+      background: #e5e7eb;
+      color: #111827;
+    }
+
+    .whatsapp {
+      background: #25d366;
+      color: white;
+    }
+
+    button:hover {
+      opacity: .9;
+    }
+
+    .usage {
+      text-align: center;
+      font-size: 14px;
+      margin: 10px 0;
+      color: #555;
+    }
+
+    .pro-box {
+      background: #fff7ed;
+      border: 1px solid #fed7aa;
+    }
+
+    .result {
+      white-space: pre-wrap;
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 18px;
+      line-height: 1.6;
+      min-height: 180px;
+      font-size: 16px;
+    }
+
+    .next {
+      background: #eff6ff;
+      border-left: 5px solid #2563eb;
+      padding: 15px;
+      border-radius: 8px;
+      margin-top: 15px;
+    }
+
+    .small {
+      font-size: 13px;
+      color: #667085;
+    }
+
+    .footer {
+      text-align: center;
+      color: #667085;
+      font-size: 13px;
+      padding: 20px 0;
+    }
+
+    @media (max-width: 500px) {
+      .container {
+        padding: 12px;
+      }
+
+      .header h1 {
+        font-size: 24px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <div class="header">
+    <h1>Simply Ads Creator</h1>
+    <p>By Raymond • Make better ads faster 🇺🇬</p>
+  </div>
+
+  <div class="card">
+
+    <label>Product Name *</label>
+    <input id="product" placeholder="Example: Smart Watch">
+
+    <label>Problem It Solves *</label>
+    <textarea id="problem"
+      placeholder="Example: People struggle to track their fitness and notifications."></textarea>
+
+    <label>Main Benefit *</label>
+    <textarea id="benefit"
+      placeholder="Example: Helps you track health, calls and notifications from your wrist."></textarea>
+
+    <label>Product Price</label>
+    <input id="price" placeholder="Example: UGX 50,000">
+
+    <label>Target Customer</label>
+    <input id="customer" placeholder="Example: Students, workers, business owners">
+
+    <label>Location</label>
+    <input id="location" placeholder="Example: Kampala, Uganda">
+
+    <label>Contact / WhatsApp</label>
+    <input id="contact" placeholder="Example: 0700000000">
+
+    <label>Platform</label>
+    <select id="platform">
+      <option>TikTok</option>
+      <option>Instagram Reels</option>
+      <option>Facebook</option>
+      <option>WhatsApp Status</option>
+      <option>YouTube Shorts</option>
+      <option>WhatsApp Message</option>
+      <option>General Online Ad</option>
+    </select>
+
+    <label>Advertising Style</label>
+    <select id="style">
+      <option>TikTok Girl / Gen Z</option>
+      <option>Professional Man</option>
+      <option>Luganda Mix</option>
+      <option>Friendly Seller</option>
+      <option>Bold Salesperson</option>
+    </select>
+
+    <label>Ad Template</label>
+    <select id="template">
+      <option>POV Hook</option>
+      <option>Problem → Solution</option>
+      <option>Before → After</option>
+      <option>Testimonial</option>
+      <option>Direct Sales</option>
+    </select>
+
+    <label>Language</label>
+    <select id="language">
+      <option>Ugandan English</option>
+      <option>Luganda Mix</option>
+      <option>English</option>
+    </select>
+
+    <div class="usage" id="usage"></div>
+
+    <button class="generate" onclick="generateAd()">
+      🚀 Generate Ad
+    </button>
+
+  </div>
+
+
+  <div class="card pro-box">
+
+    <h3>🔐 Pro Unlock</h3>
+
+    <p class="small">
+      Enter your Pro code for unlimited ads and no free watermark.
+    </p>
+
+    <input id="proCode" placeholder="Enter Pro code">
+
+    <button onclick="activatePro()">
+      Unlock Pro
+    </button>
+
+    <div id="proStatus" class="small"></div>
+
+  </div>
+
+
+  <div class="card">
+
+    <h3>📝 Your Ad Script</h3>
+
+    <div id="result" class="result">
+Your generated advertisement will appear here.
+    </div>
+
+    <button class="copy" onclick="copyAd()">
+      📋 Copy Script
+    </button>
+
+    <button class="download" onclick="downloadAd()">
+      📥 Download .TXT
+    </button>
+
+    <button class="clear" onclick="clearAll()">
+      🗑️ Clear
+    </button>
+
+    <div class="next">
+      <strong>🎬 Next Step</strong><br><br>
+      Copy your script into CapCut and use free Text-to-Speech to create your video.
+    </div>
+
+  </div>
+
+
+  <div class="card">
+
+    <h3>💰 Simple Ads Creator</h3>
+
+    <p>
+      FREE 3/day | UNLIMITED 20k/month
+    </p>
+
+    <p>
+      MoMo: 07XXXXXXX
+    </p>
+
+    <p>
+      WhatsApp: 07XXXXXXX
+    </p>
+
+    <button class="whatsapp" onclick="contactWhatsApp()">
+      💬 Contact on WhatsApp
+    </button>
+
+  </div>
+
+
+  <div class="footer">
+    Simply Ads Creator by Raymond 🇺🇬
+    <br>
+    Built for JForce Uganda agents and small sellers.
+  </div>
+
+</div>
+
+
+<script>
+
+  /*
+    Simply Ads Creator
+    Browser-only version.
+
+    NOTE:
+    The Pro codes are visible in browser JavaScript.
+    This is suitable for a simple demo/prototype, but NOT
+    secure payment authentication.
+  */
+
+  const PRO_CODES = [
+    "RAYMOND2026",
+    "SIMPLE20K"
+  ];
+
+  const USAGE_KEY = "simply_ads_creator_usage";
+
+  let currentAd = "";
+
+
+  function todayKey() {
+    const today = new Date();
+
+    return today.getFullYear() + "-" +
+           String(today.getMonth() + 1).padStart(2, "0") + "-" +
+           String(today.getDate()).padStart(2, "0");
+  }
+
+
+  function getUsage() {
+
+    const saved = JSON.parse(
+      localStorage.getItem(USAGE_KEY) || "{}"
+    );
+
+    const today = todayKey();
+
+    if (saved.date !== today) {
+      return 0;
+    }
+
+    return saved.count || 0;
+  }
+
+
+  function setUsage(count) {
+
+    localStorage.setItem(
+      USAGE_KEY,
+      JSON.stringify({
+        date: todayKey(),
+        count: count
+      })
+    );
+
+  }
+
+
+  function isPro() {
+
+    return localStorage.getItem("simply_ads_pro") === "true";
+
+  }
+
+
+  function updateUsageDisplay() {
+
+    const usage = getUsage();
+
+    const element = document.getElementById("usage");
+
+    if (isPro()) {
+
+      element.innerHTML =
+        "⭐ PRO ACTIVE — Unlimited ads";
+
+    } else {
+
+      element.innerHTML =
+        "Free ads used today: " + usage + "/3";
+
+    }
+
+  }
+
+
+  function activatePro() {
+
+    const code =
+      document.getElementById("proCode")
+      .value
+      .trim()
+      .toUpperCase();
+
+    if (PRO_CODES.includes(code)) {
+
+      localStorage.setItem(
+        "simply_ads_pro",
+        "true"
+      );
+
+      document.getElementById("proStatus").innerHTML =
+        "✅ Pro activated. Unlimited ads enabled.";
+
+      updateUsageDisplay();
+
+    } else {
+
+      document.getElementById("proStatus").innerHTML =
+        "❌ Invalid Pro code.";
+
+    }
+
+  }
+
+
+  function generateAd() {
+
+    const product =
+      document.getElementById("product").value.trim();
+
+    const problem =
+      document.getElementById("problem").value.trim();
+
+    const benefit =
+      document.getElementById("benefit").value.trim();
+
+    const price =
+      document.getElementById("price").value.trim();
+
+    const customer =
+      document.getElementById("customer").value.trim();
+
+    const location =
+      document.getElementById("location").value.trim();
+
+    const contact =
+      document.getElementById("contact").value.trim();
+
+    const platform =
+      document.getElementById("platform").value;
+
+    const style =
+      document.getElementById("style").value;
+
+    const template =
+      document.getElementById("template").value;
+
+    const language =
+      document.getElementById("language").value;
+
+
+    if (!product || !problem || !benefit) {
+
+      alert(
+        "Please enter the Product Name, Problem and Main Benefit."
+      );
+
+      return;
+
+    }
+
+
+    if (!isPro() && getUsage() >= 3) {
+
+      alert(
+        "You have reached your free limit of 3 ads today. Enter a valid Pro code for unlimited ads."
+      );
+
+      return;
+
+    }
+
+
+    let hook = "";
+    let story = "";
+    let cta = "";
+
+
+    // -------------------------
+    // HOOKS
+    // -------------------------
+
+    if (template === "POV Hook") {
+
+      hook =
+        "POV: You are tired of dealing with " +
+        problem.toLowerCase() +
+        "... 👀";
+
+    }
+
+    else if (template === "Problem → Solution") {
+
+      hook =
+        "Still struggling with " +
+        problem.toLowerCase() +
+        "?";
+
+    }
+
+    else if (template === "Before → After") {
+
+      hook =
+        "Before you discover " +
+        product +
+        " vs after you start using it! 🔥";
+
+    }
+
+    else if (template === "Testimonial") {
+
+      hook =
+        "I honestly wish I discovered " +
+        product +
+        " earlier!";
+
+    }
+
+    else {
+
+      hook =
+        "Looking for a simple solution to " +
+        problem.toLowerCase() +
+        "?";
+
+    }
+
+
+    // -------------------------
+    // LANGUAGE STYLE
+    // -------------------------
+
+    if (language === "Luganda Mix") {
+
+      story =
+        "Kati, bwoba okyalina problem ya " +
+        problem.toLowerCase() +
+        ", " +
+        product +
+        " ekusobozesa " +
+        benefit.toLowerCase() +
+        ". " +
+        "It's simple, convenient and easy to use.";
+
+      cta =
+        "Kale tosigaza! Contact us kati oyambeko.";
+
+    }
+
+    else if (language === "English") {
+
+      story =
+        "If you are dealing with " +
+        problem.toLowerCase() +
+        ", " +
+        product +
+        " gives you a simple way to " +
+        benefit.toLowerCase() +
+        ". " +
+        "It is convenient and easy to use.";
+
+      cta =
+        "Message us today and get yours.";
+
+    }
+
+    else {
+
+      story =
+        "If you have been struggling with " +
+        problem.toLowerCase() +
+        ", " +
+        product +
+        " can help you " +
+        benefit.toLowerCase() +
+        ". " +
+        "It is simple, convenient and made for everyday use.";
+
+      cta =
+        "Don't miss out. Send us a message today and get yours.";
+
+    }
+
+
+    // -------------------------
+    // STYLE
+    // -------------------------
+
+    if (style === "TikTok Girl / Gen Z") {
+
+      hook =
+        "Wait... why are people sleeping on " +
+        product +
+        "? 😭🔥\n\n" +
+        hook;
+
+    }
+
+    else if (style === "Professional Man") {
+
+      hook =
+        "Here is a practical solution worth considering.\n\n" +
+        hook;
+
+    }
+
+    else if (style === "Friendly Seller") {
+
+      hook =
+        "Hey guys! Let me show you something useful.\n\n" +
+        hook;
+
+    }
+
+    else if (style === "Bold Salesperson") {
+
+      hook =
+        "STOP scrolling! 🔥\n\n" +
+        hook;
+
+    }
+
+
+    // -------------------------
+    // PRICE
+    // -------------------------
+
+    let priceText = "";
+
+    if (price) {
+
+      priceText =
+        "\n\n💰 Price: " + price;
+
+    }
+
+
+    // -------------------------
+    // CUSTOMER
+    // -------------------------
+
+    let customerText = "";
+
+    if (customer) {
+
+      customerText =
+        "\n👥 Perfect for: " + customer;
+
+    }
+
+
+    // -------------------------
+    // LOCATION
+    // -------------------------
+
+    let locationText = "";
+
+    if (location) {
+
+      locationText =
+        "\n📍 Location: " + location;
+
+    }
+
+
+    // -------------------------
+    // CONTACT
+    // -------------------------
+
+    let contactText = "";
+
+    if (contact) {
+
+      contactText =
+        "\n📞 Contact: " + contact;
+
+    }
+
+
+    // -------------------------
+    // FINAL SCRIPT
+    // -------------------------
+
+    currentAd =
+      "🎬 " + platform + " AD SCRIPT\n" +
+      "━━━━━━━━━━━━━━━━━━━━\n\n" +
+
+      "🔥 HOOK\n" +
+      hook +
+
+      "\n\n📖 STORY\n" +
+      story +
+
+      priceText +
+      customerText +
+      locationText +
+
+      "\n\n📢 CTA\n" +
+      cta +
+
+      contactText +
+
+      "\n\n━━━━━━━━━━━━━━━━━━━━\n" +
+
+      (
+        isPro()
+        ? "[Pro by Raymond]"
+        : "[Made with Simple Ads Creator - Free]"
+      );
+
+
+    document.getElementById("result").innerText =
+      currentAd;
+
+
+    // Count successful free generation
+    if (!isPro()) {
+
+      setUsage(
+        getUsage() + 1
+      );
+
+    }
+
+
+    updateUsageDisplay();
+
+  }
+
+
+  async function copyAd() {
+
+    if (!currentAd) {
+
+      alert("Generate an ad first.");
+
+      return;
+
+    }
+
+
+    try {
+
+      await navigator.clipboard.writeText(
+        currentAd
+      );
+
+      alert("✅ Script copied!");
+
+    }
+
+    catch (error) {
+
+      const textarea =
+        document.createElement("textarea");
+
+      textarea.value = currentAd;
+
+      document.body.appendChild(textarea);
+
+      textarea.select();
+
+      document.execCommand("copy");
+
+      textarea.remove();
+
+      alert("✅ Script copied!");
+
+    }
+
+  }
+
+
+  function downloadAd() {
+
+    if (!currentAd) {
+
+      alert("Generate an ad first.");
+
+      return;
+
+    }
+
+
+    const blob =
+      new Blob(
+        [currentAd],
+        { type: "text/plain;charset=utf-8" }
+      );
+
+
+    const url =
+      URL.createObjectURL(blob);
+
+
+    const link =
+      document.createElement("a");
+
+    link.href = url;
+
+    link.download =
+      "simply-ads-creator.txt";
+
+
+    document.body.appendChild(link);
+
+    link.click();
+
+    link.remove();
+
+    URL.revokeObjectURL(url);
+
+  }
+
+
+  function clearAll() {
+
+    document
+      .querySelectorAll("input, textarea")
+      .forEach(element => {
+
+        element.value = "";
+
+      });
+
+
+    document.getElementById("result").innerText =
+      "Your generated advertisement will appear here.";
+
+    currentAd = "";
+
+  }
+
+
+  function contactWhatsApp() {
+
+    let number =
+      document.getElementById("contact")
+      .value
+      .trim();
+
+
+    if (!number) {
+
+      alert(
+        "Enter your WhatsApp number in the Contact / WhatsApp field first."
+      );
+
+      return;
+
+    }
+
+
+    number =
+      number.replace(/\D/g, "");
+
+
+    if (number.startsWith("0")) {
+
+      number =
+        "256" + number.substring(1);
+
+    }
+
+
+    if (!number.startsWith("256")) {
+
+      alert(
+        "Please enter a valid Ugandan WhatsApp number."
+      );
+
+      return;
+
+    }
+
+
+    const message =
+      encodeURIComponent(
+        "Hello, I am interested in " +
+        (document.getElementById("product").value || "your product")
+      );
+
+
+    window.open(
+      "https://wa.me/" +
+      number +
+      "?text=" +
+      message,
+      "_blank"
+    );
+
+  }
+
+
+  // Initial display
+  updateUsageDisplay();
+
+</script>
+
+<!--
+  FUTURE FEATURE:
+  Wav2Lip / talking-avatar video generation can be integrated later.
+-->
+
+</body>
+</html>
