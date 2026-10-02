@@ -4,78 +4,826 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Simply Ads Creator — Professional</title>
+
 <style>
-:root{--navy:#0B1220;--blue:#2563EB;--teal:#14B8A6;--white:#fff;--gray:#F5F7FA;--text:#111827;--muted:#64748B;--border:#E2E8F0}
-*{box-sizing:border-box}body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif;background:var(--gray);color:var(--text)}
-.app{display:flex;min-height:100vh}.sidebar{width:245px;background:var(--navy);color:#fff;padding:22px 16px;position:fixed;inset:0 auto 0 0}
-.logo{font-weight:800;font-size:20px;margin:4px 8px 30px}.logo span{color:#60A5FA}.nav button{width:100%;padding:12px 13px;margin:3px 0;border:0;border-radius:10px;background:transparent;color:#CBD5E1;text-align:left;font-size:14px;cursor:pointer}.nav button.active,.nav button:hover{background:#17233A;color:#fff}.bottom{position:absolute;bottom:20px;left:16px;right:16px}.pro{background:linear-gradient(135deg,#1D4ED8,#0F766E);padding:15px;border-radius:14px}.pro b{display:block;margin-bottom:6px}.pro small{color:#DDEAFE}
-.main{margin-left:245px;flex:1;padding:28px;max-width:1400px}.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:26px}.eyebrow{color:var(--blue);font-size:13px;font-weight:700}.top h1{margin:4px 0;font-size:30px}.avatar{width:42px;height:42px;border-radius:50%;background:#DBEAFE;display:grid;place-items:center;font-weight:800;color:#1D4ED8}
-.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:22px}.card{background:#fff;border:1px solid var(--border);border-radius:16px;padding:18px;box-shadow:0 3px 12px #0B122008}.stat{font-size:26px;font-weight:800;margin-top:8px}.muted{color:var(--muted);font-size:13px}
-.hero{background:#fff;border:1px solid var(--border);border-radius:18px;padding:24px;display:grid;grid-template-columns:1.3fr .7fr;gap:24px}.hero h2{font-size:25px;margin:0 0 8px}.hero p{color:var(--muted);line-height:1.55}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}.btn{border:0;border-radius:10px;padding:12px 17px;font-weight:700;cursor:pointer}.primary{background:var(--blue);color:#fff}.secondary{background:#EFF6FF;color:#1D4ED8}
-.preview{background:linear-gradient(145deg,#0B1220,#1E3A8A);border-radius:16px;min-height:210px;padding:20px;color:#fff;display:flex;flex-direction:column;justify-content:flex-end}.preview .tag{color:#93C5FD;font-size:12px;font-weight:700}.preview h3{font-size:24px;margin:8px 0}.preview p{color:#CBD5E1;margin:0}
-.section{margin-top:24px}.section h2{font-size:20px}.modes{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}.mode{background:#fff;border:1px solid var(--border);border-radius:15px;padding:20px;cursor:pointer}.mode:hover{border-color:#93C5FD;transform:translateY(-1px)}.icon{width:42px;height:42px;border-radius:10px;background:#EFF6FF;display:grid;place-items:center;color:var(--blue);font-weight:800}.mode h3{margin:13px 0 5px}.templates{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.template{background:#fff;border:1px solid var(--border);border-radius:14px;overflow:hidden}.thumb{height:115px;background:linear-gradient(135deg,#DBEAFE,#CCFBF1);display:grid;place-items:center;font-weight:800;color:#0F172A}.template div:last-child{padding:12px;font-weight:700}
-@media(max-width:900px){.sidebar{width:70px;padding:18px 8px}.logo{font-size:0}.logo:after{content:'SA';font-size:18px}.nav button{font-size:0;text-align:center}.nav button:before{content:'•';font-size:20px}.pro{display:none}.main{margin-left:70px;padding:18px}.grid{grid-template-columns:repeat(2,1fr)}.hero{grid-template-columns:1fr}.templates{grid-template-columns:repeat(2,1fr)}}@media(max-width:560px){.grid,.modes,.templates{grid-template-columns:1fr}.main{padding:14px}.top h1{font-size:24px}}
+:root{
+  --navy:#0B1220;
+  --blue:#2563EB;
+  --teal:#14B8A6;
+  --white:#fff;
+  --gray:#F5F7FA;
+  --text:#111827;
+  --muted:#64748B;
+  --border:#E2E8F0;
+}
+
+*{
+  box-sizing:border-box;
+}
+
+body{
+  margin:0;
+  font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  background:var(--gray);
+  color:var(--text);
+}
+
+.app{
+  display:flex;
+  min-height:100vh;
+}
+
+/* SIDEBAR */
+
+.sidebar{
+  width:245px;
+  background:var(--navy);
+  color:#fff;
+  padding:22px 16px;
+  position:fixed;
+  inset:0 auto 0 0;
+  z-index:10;
+}
+
+.logo{
+  font-weight:800;
+  font-size:20px;
+  margin:4px 8px 30px;
+}
+
+.logo span{
+  color:#60A5FA;
+}
+
+.nav button{
+  width:100%;
+  padding:12px 13px;
+  margin:3px 0;
+  border:0;
+  border-radius:10px;
+  background:transparent;
+  color:#CBD5E1;
+  text-align:left;
+  font-size:14px;
+  cursor:pointer;
+}
+
+.nav button:hover,
+.nav button.active{
+  background:#17233A;
+  color:#fff;
+}
+
+.bottom{
+  position:absolute;
+  bottom:20px;
+  left:16px;
+  right:16px;
+}
+
+.pro{
+  background:linear-gradient(135deg,#1D4ED8,#0F766E);
+  padding:15px;
+  border-radius:14px;
+}
+
+.pro b{
+  display:block;
+  margin-bottom:6px;
+}
+
+.pro small{
+  color:#DDEAFE;
+}
+
+/* MAIN */
+
+.main{
+  margin-left:245px;
+  flex:1;
+  padding:28px;
+  max-width:1400px;
+}
+
+.top{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:26px;
+}
+
+.eyebrow{
+  color:var(--blue);
+  font-size:13px;
+  font-weight:700;
+}
+
+.top h1{
+  margin:4px 0;
+  font-size:30px;
+}
+
+.avatar{
+  width:42px;
+  height:42px;
+  border-radius:50%;
+  background:#DBEAFE;
+  display:grid;
+  place-items:center;
+  font-weight:800;
+  color:#1D4ED8;
+}
+
+/* STATS */
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:16px;
+  margin-bottom:22px;
+}
+
+.card{
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:18px;
+  box-shadow:0 3px 12px #0B122008;
+}
+
+.stat{
+  font-size:26px;
+  font-weight:800;
+  margin-top:8px;
+}
+
+.muted{
+  color:var(--muted);
+  font-size:13px;
+}
+
+/* HERO */
+
+.hero{
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:18px;
+  padding:24px;
+  display:grid;
+  grid-template-columns:1.3fr .7fr;
+  gap:24px;
+}
+
+.hero h2{
+  font-size:25px;
+  margin:0 0 8px;
+}
+
+.hero p{
+  color:var(--muted);
+  line-height:1.55;
+}
+
+.actions{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-top:18px;
+}
+
+.btn{
+  border:0;
+  border-radius:10px;
+  padding:12px 17px;
+  font-weight:700;
+  cursor:pointer;
+}
+
+.primary{
+  background:var(--blue);
+  color:#fff;
+}
+
+.primary:hover{
+  background:#1D4ED8;
+}
+
+.secondary{
+  background:#EFF6FF;
+  color:#1D4ED8;
+}
+
+.preview{
+  background:linear-gradient(145deg,#0B1220,#1E3A8A);
+  border-radius:16px;
+  min-height:210px;
+  padding:20px;
+  color:#fff;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-end;
+}
+
+.preview .tag{
+  color:#93C5FD;
+  font-size:12px;
+  font-weight:700;
+}
+
+.preview h3{
+  font-size:24px;
+  margin:8px 0;
+}
+
+.preview p{
+  color:#CBD5E1;
+  margin:0;
+}
+
+/* CREATION MODES */
+
+.section{
+  margin-top:24px;
+}
+
+.section h2{
+  font-size:20px;
+}
+
+.modes{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:15px;
+}
+
+.mode{
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:15px;
+  padding:20px;
+  cursor:pointer;
+  transition:.15s;
+}
+
+.mode:hover{
+  border-color:#93C5FD;
+  transform:translateY(-2px);
+  box-shadow:0 5px 18px #0B122010;
+}
+
+.icon{
+  width:42px;
+  height:42px;
+  border-radius:10px;
+  background:#EFF6FF;
+  display:grid;
+  place-items:center;
+  color:var(--blue);
+  font-weight:800;
+  font-size:18px;
+}
+
+.mode h3{
+  margin:13px 0 5px;
+}
+
+/* TEMPLATES */
+
+.templates{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:14px;
+}
+
+.template{
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:14px;
+  overflow:hidden;
+  cursor:pointer;
+}
+
+.template:hover{
+  border-color:#93C5FD;
+}
+
+.thumb{
+  height:115px;
+  background:linear-gradient(135deg,#DBEAFE,#CCFBF1);
+  display:grid;
+  place-items:center;
+  text-align:center;
+  padding:10px;
+  font-weight:800;
+  color:#0F172A;
+}
+
+.template div:last-child{
+  padding:12px;
+  font-weight:700;
+}
+
+/* MOBILE */
+
+.mobile-menu{
+  display:none;
+}
+
+@media(max-width:900px){
+
+  .sidebar{
+    width:72px;
+    padding:18px 8px;
+  }
+
+  .logo{
+    font-size:0;
+    text-align:center;
+    margin-bottom:24px;
+  }
+
+  .logo:after{
+    content:"SA";
+    font-size:18px;
+  }
+
+  .nav button{
+    font-size:0;
+    text-align:center;
+    padding:14px 5px;
+  }
+
+  .nav button:first-letter{
+    font-size:18px;
+  }
+
+  .pro{
+    display:none;
+  }
+
+  .main{
+    margin-left:72px;
+    padding:18px;
+  }
+
+  .grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .hero{
+    grid-template-columns:1fr;
+  }
+
+  .templates{
+    grid-template-columns:repeat(2,1fr);
+  }
+}
+
+@media(max-width:600px){
+
+  .main{
+    padding:14px;
+  }
+
+  .top h1{
+    font-size:24px;
+  }
+
+  .grid{
+    grid-template-columns:1fr;
+  }
+
+  .modes{
+    grid-template-columns:1fr;
+  }
+
+  .templates{
+    grid-template-columns:1fr;
+  }
+
+  .hero{
+    padding:18px;
+  }
+
+  .preview{
+    min-height:180px;
+  }
+}
 </style>
 </head>
+
 <body>
+
 <div class="app">
+
+<!-- SIDEBAR -->
+
 <aside class="sidebar">
-  <div class="logo">Simply Ads <span>Creator</span></div>
-  <div class="nav">
-    <button class="active">Dashboard</button>
-    <button onclick="start('Create New Ad')">＋ Create New Ad</button>
-    <button onclick="start('My Projects')">▣ My Projects</button>
-    <button>★ Templates</button>
-    <button>◈ Brand Kit</button>
-    <button>↗ Promote</button>
-    <button>⚙ Account</button>
+
+  <div class="logo">
+    Simply Ads <span>Creator</span>
   </div>
-  <div class="bottom"><div class="pro"><b>Go Pro</b><small>Unlock more creations, exports and premium tools.</small></div></div>
+
+  <div class="nav">
+
+    <button class="active" onclick="go('Dashboard')">
+      ● Dashboard
+    </button>
+
+    <button onclick="go('Create New Ad')">
+      ＋ Create New Ad
+    </button>
+
+    <button onclick="go('My Projects')">
+      ▣ My Projects
+    </button>
+
+    <button onclick="go('Templates')">
+      ★ Templates
+    </button>
+
+    <button onclick="go('Brand Kit')">
+      ◈ Brand Kit
+    </button>
+
+    <button onclick="go('Promote')">
+      ↗ Promote
+    </button>
+
+    <button onclick="go('Account')">
+      ⚙ Account
+    </button>
+
+  </div>
+
+  <div class="bottom">
+
+    <div class="pro">
+      <b>Go Pro</b>
+      <small>
+        Unlock more creations, exports and premium tools.
+      </small>
+    </div>
+
+  </div>
+
 </aside>
+
+
+<!-- MAIN -->
+
 <main class="main">
-  <header class="top">
-    <div><div class="eyebrow">SIMPLY ADS CREATOR</div><h1>Create ads that sell.</h1></div>
-    <div class="avatar">R</div>
-  </header>
-  <section class="grid">
-    <div class="card"><div class="muted">Ads created</div><div class="stat">0</div></div>
-    <div class="card"><div class="muted">Projects</div><div class="stat">0</div></div>
-    <div class="card"><div class="muted">Saved templates</div><div class="stat">0</div></div>
-    <div class="card"><div class="muted">Plan</div><div class="stat">Free</div></div>
-  </section>
-  <section class="hero">
-    <div>
-      <div class="eyebrow">AI-POWERED CREATION</div>
-      <h2>Tell us what you're selling. We'll build the ad.</h2>
-      <p>Start with a product, a few details and your media. Simply Ads Creator is designed to handle the copy, layout, scenes, captions and call-to-action so you don't have to be a designer.</p>
-      <div class="actions">
-        <button class="btn primary" onclick="start('Create New Ad')">Create New Ad</button>
-        <button class="btn secondary" onclick="start('My Projects')">View Projects</button>
+
+<header class="top">
+
+  <div>
+
+    <div class="eyebrow">
+      SIMPLY ADS CREATOR
+    </div>
+
+    <h1>
+      Create ads that sell.
+    </h1>
+
+  </div>
+
+  <div class="avatar">
+    R
+  </div>
+
+</header>
+
+
+<!-- STATS -->
+
+<section class="grid">
+
+  <div class="card">
+    <div class="muted">
+      Ads created
+    </div>
+
+    <div class="stat">
+      0
+    </div>
+  </div>
+
+
+  <div class="card">
+
+    <div class="muted">
+      Projects
+    </div>
+
+    <div class="stat">
+      0
+    </div>
+
+  </div>
+
+
+  <div class="card">
+
+    <div class="muted">
+      Saved templates
+    </div>
+
+    <div class="stat">
+      0
+    </div>
+
+  </div>
+
+
+  <div class="card">
+
+    <div class="muted">
+      Plan
+    </div>
+
+    <div class="stat">
+      Free
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- HERO -->
+
+<section class="hero">
+
+  <div>
+
+    <div class="eyebrow">
+      AI-POWERED CREATION
+    </div>
+
+    <h2>
+      Tell us what you're selling. We'll build the ad.
+    </h2>
+
+    <p>
+      Start with a product, a few details and your media.
+      Simply Ads Creator is designed to handle the copy,
+      layout, scenes, captions and call-to-action so you
+      don't have to be a designer.
+    </p>
+
+    <div class="actions">
+
+      <button
+        class="btn primary"
+        onclick="go('Create New Ad')">
+        Create New Ad
+      </button>
+
+      <button
+        class="btn secondary"
+        onclick="go('My Projects')">
+        View Projects
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <div class="preview">
+
+    <div class="tag">
+      AD PREVIEW
+    </div>
+
+    <h3>
+      Your product. Your story. Your customers.
+    </h3>
+
+    <p>
+      Create → Animate → Promote
+    </p>
+
+  </div>
+
+</section>
+
+
+<!-- CREATION MODES -->
+
+<section class="section">
+
+  <h2>
+    Choose how you want to create
+  </h2>
+
+  <div class="modes">
+
+
+    <div
+      class="mode"
+      onclick="go('Static Ad')">
+
+      <div class="icon">
+        S
       </div>
+
+      <h3>
+        Static Ad
+      </h3>
+
+      <div class="muted">
+        Professional promotional graphics
+        for social media and online campaigns.
+      </div>
+
     </div>
-    <div class="preview"><div class="tag">AD PREVIEW</div><h3>Your product. Your story. Your customers.</h3><p>Create → Animate → Promote</p></div>
-  </section>
-  <section class="section">
-    <h2>Choose how you want to create</h2>
-    <div class="modes">
-      <div class="mode" onclick="start('Static Ad')"><div class="icon">S</div><h3>Static Ad</h3><div class="muted">Professional promotional graphics for social media and online campaigns.</div></div>
-      <div class="mode" onclick="start('Motion Ad')"><div class="icon">M</div><h3>Motion Ad</h3><div class="muted">Animate product photos with movement, captions, transitions and music.</div></div>
-      <div class="mode" onclick="start('Video Ad')"><div class="icon">V</div><h3>Video Ad</h3><div class="muted">Combine video, images, voice, captions and calls-to-action into a finished ad.</div></div>
+
+
+    <div
+      class="mode"
+      onclick="go('Motion Ad')">
+
+      <div class="icon">
+        M
+      </div>
+
+      <h3>
+        Motion Ad
+      </h3>
+
+      <div class="muted">
+        Animate product photos with movement,
+        captions, transitions and music.
+      </div>
+
     </div>
-  </section>
-  <section class="section">
-    <h2>Popular starting templates</h2>
-    <div class="templates">
-      <div class="template"><div class="thumb">PRODUCT LAUNCH</div><div>Product Launch</div></div>
-      <div class="template"><div class="thumb">FLASH SALE</div><div>Flash Sale</div></div>
-      <div class="template"><div class="thumb">PROBLEM → SOLUTION</div><div>Problem → Solution</div></div>
-      <div class="template"><div class="thumb">TESTIMONIAL</div><div>Testimonial</div></div>
+
+
+    <div
+      class="mode"
+      onclick="go('Video Ad')">
+
+      <div class="icon">
+        V
+      </div>
+
+      <h3>
+        Video Ad
+      </h3>
+
+      <div class="muted">
+        Combine video, images, voice,
+        captions and calls-to-action.
+      </div>
+
     </div>
-  </section>
+
+
+  </div>
+
+</section>
+
+
+<!-- TEMPLATES -->
+
+<section class="section">
+
+  <h2>
+    Popular starting templates
+  </h2>
+
+  <div class="templates">
+
+
+    <div
+      class="template"
+      onclick="go('Product Launch')">
+
+      <div class="thumb">
+        PRODUCT LAUNCH
+      </div>
+
+      <div>
+        Product Launch
+      </div>
+
+    </div>
+
+
+    <div
+      class="template"
+      onclick="go('Flash Sale')">
+
+      <div class="thumb">
+        FLASH SALE
+      </div>
+
+      <div>
+        Flash Sale
+      </div>
+
+    </div>
+
+
+    <div
+      class="template"
+      onclick="go('Problem Solution')">
+
+      <div class="thumb">
+        PROBLEM → SOLUTION
+      </div>
+
+      <div>
+        Problem → Solution
+      </div>
+
+    </div>
+
+
+    <div
+      class="template"
+      onclick="go('Testimonial')">
+
+      <div class="thumb">
+        TESTIMONIAL
+      </div>
+
+      <div>
+        Testimonial
+      </div>
+
+    </div>
+
+
+  </div>
+
+</section>
+
 </main>
+
 </div>
+
+
 <script>
-function start(name){alert(name+' is part of the professional build. Next we will connect this screen to the real ad-creation workflow.');}
+
+function go(name){
+
+  /*
+    Creation modes now open the real creator.
+  */
+
+  if(
+    name === "Create New Ad" ||
+    name === "Static Ad" ||
+    name === "Motion Ad" ||
+    name === "Video Ad"
+  ){
+
+    window.location.href = "creator.html";
+
+    return;
+  }
+
+
+  /*
+    Other sections are placeholders
+    until we build them.
+  */
+
+  if(name === "My Projects"){
+
+    alert(
+      "My Projects is the next feature we will build."
+    );
+
+    return;
+  }
+
+
+  if(
+    name === "Templates" ||
+    name === "Brand Kit" ||
+    name === "Promote" ||
+    name === "Account" ||
+    name === "Product Launch" ||
+    name === "Flash Sale" ||
+    name === "Problem Solution" ||
+    name === "Testimonial"
+  ){
+
+    alert(
+      name +
+      " will be connected in the next professional build."
+    );
+
+    return;
+  }
+
+}
+
 </script>
+
 </body>
 </html>
