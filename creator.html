@@ -1139,4 +1139,287 @@ async function createMotionOrVideoAd(type){
       const progress =
         Math.min(
           elapsed / sceneDuration,
-       
+          1
+        );
+
+      drawVideoScene(
+        ctx,
+        canvas,
+        images[scene % images.length],
+        product,
+        price,
+        benefit,
+        contact,
+        scenes[scene],
+        progress
+      );
+
+      await wait(33);
+    }
+  }
+
+  recorder.stop();
+
+  const blob =
+    await finished;
+
+  addDownload(
+    blob,
+    "simply-ads-video.webm",
+    type === "video"
+      ? "Download Video Ad"
+      : "Download Motion Ad"
+  );
+}
+
+function drawVideoScene(
+  ctx,
+  canvas,
+  image,
+  product,
+  price,
+  benefit,
+  contact,
+  title,
+  progress
+){
+
+  ctx.fillStyle = "#0B1220";
+
+  ctx.fillRect(
+    0,
+    0,
+    canvas.width,
+    canvas.height
+  );
+
+  /*
+    Product animation.
+  */
+  const baseScale =
+    Math.min(
+      850 / image.width,
+      850 / image.height
+    );
+
+  const scale =
+    baseScale *
+    (1 + progress * .08);
+
+  const w =
+    image.width * scale;
+
+  const h =
+    image.height * scale;
+
+  const x =
+    (canvas.width - w) / 2;
+
+  const y =
+    410 -
+    progress * 35;
+
+  ctx.save();
+
+  ctx.globalAlpha =
+    Math.min(1,progress * 3);
+
+  ctx.drawImage(
+    image,
+    x,
+    y,
+    w,
+    h
+  );
+
+  ctx.restore();
+
+  /*
+    Brand.
+  */
+  ctx.fillStyle = "#14B8A6";
+  ctx.font = "bold 32px Arial";
+
+  ctx.fillText(
+    "SIMPLY ADS CREATOR",
+    70,
+    90
+  );
+
+  /*
+    Main scene title.
+  */
+  ctx.fillStyle = "#FFFFFF";
+  ctx.font = "bold 70px Arial";
+
+  wrapText(
+    ctx,
+    title,
+    70,
+    1180,
+    900,
+    80
+  );
+
+  /*
+    Product.
+  */
+  ctx.font = "bold 48px Arial";
+
+  ctx.fillText(
+    product,
+    70,
+    1370
+  );
+
+  /*
+    Benefit.
+  */
+  ctx.fillStyle = "#CBD5E1";
+  ctx.font = "30px Arial";
+
+  wrapText(
+    ctx,
+    benefit,
+    70,
+    1440,
+    900,
+    42
+  );
+
+  /*
+    Price.
+  */
+  if(price){
+
+    ctx.fillStyle = "#14B8A6";
+    ctx.font = "bold 55px Arial";
+
+    ctx.fillText(
+      price,
+      70,
+      1610
+    );
+  }
+
+  /*
+    CTA.
+  */
+  ctx.fillStyle = "#2563EB";
+
+  ctx.roundRect(
+    70,
+    1690,
+    940,
+    115,
+    22
+  );
+
+  ctx.fill();
+
+  ctx.fillStyle = "#FFFFFF";
+  ctx.font = "bold 38px Arial";
+
+  ctx.fillText(
+    contact || "GET YOURS TODAY",
+    105,
+    1763
+  );
+
+  /*
+    Footer.
+  */
+  ctx.fillStyle = "#64748B";
+  ctx.font = "22px Arial";
+
+  ctx.fillText(
+    "Create. Animate. Promote.",
+    70,
+    1870
+  );
+}
+
+function wait(ms){
+
+  return new Promise(
+    resolve => setTimeout(resolve,ms)
+  );
+}
+
+function canvasToBlob(
+  canvas,
+  type
+){
+
+  return new Promise(resolve => {
+
+    canvas.toBlob(
+      blob => resolve(blob),
+      type,
+      .95
+    );
+
+  });
+}
+
+function addDownload(
+  blob,
+  filename,
+  label
+){
+
+  const area =
+    document.getElementById("downloadArea");
+
+  const url =
+    URL.createObjectURL(blob);
+
+  const link =
+    document.createElement("a");
+
+  link.href = url;
+  link.download = filename;
+
+  const button =
+    document.createElement("button");
+
+  button.className = "primary";
+  button.textContent = label;
+
+  button.onclick = () => {
+    link.click();
+  };
+
+  area.appendChild(button);
+}
+
+function clearAll(){
+
+  document
+    .querySelectorAll(
+      "input:not([type=file]),textarea"
+    )
+    .forEach(el => el.value = "");
+
+  document.getElementById("media").value = "";
+
+  document.getElementById("audio").value = "";
+
+  document.getElementById("mediaList").innerHTML = "";
+
+  document.getElementById("downloadArea").innerHTML = "";
+
+  document.getElementById("result").style.display = "none";
+
+  document.getElementById("aiStatus").textContent = "";
+
+  loadedImages = [];
+  aiImage = null;
+
+  updatePreview();
+}
+
+</script>
+
+</body>
+</html>
