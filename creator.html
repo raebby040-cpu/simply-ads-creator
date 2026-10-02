@@ -10,7 +10,7 @@
   --navy:#0B1220;
   --blue:#2563EB;
   --teal:#14B8A6;
-  --white:#FFFFFF;
+  --white:#fff;
   --gray:#F5F7FA;
   --text:#111827;
   --muted:#64748B;
@@ -22,2241 +22,937 @@
 
 body{
   margin:0;
-  font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  font-family:Inter,Arial,sans-serif;
   background:var(--gray);
   color:var(--text);
 }
 
-button,input,textarea,select{font:inherit}
-button{cursor:pointer}
-
-.app{
-  min-height:100vh;
-  display:flex;
-}
-
-.sidebar{
-  width:245px;
+header{
   background:var(--navy);
   color:white;
-  padding:25px 18px;
-  position:fixed;
-  inset:0 auto 0 0;
-}
-
-.logo{
+  padding:16px 20px;
   display:flex;
+  justify-content:space-between;
   align-items:center;
-  gap:10px;
-  margin-bottom:35px;
+  position:sticky;
+  top:0;
+  z-index:10;
 }
 
-.logoMark{
-  width:38px;
-  height:38px;
-  border-radius:11px;
-  background:linear-gradient(135deg,var(--blue),var(--teal));
-  display:grid;
-  place-items:center;
-  font-weight:900;
-}
-
-.logoText{
-  font-size:17px;
+.brand{
+  font-size:20px;
   font-weight:800;
 }
 
-.nav{
-  display:flex;
-  flex-direction:column;
-  gap:7px;
-}
-
-.nav button{
-  border:0;
-  background:transparent;
-  color:#CBD5E1;
-  text-align:left;
-  padding:12px 13px;
-  border-radius:10px;
-}
-
-.nav button:hover,
-.nav button.active{
-  background:rgba(255,255,255,.08);
-  color:white;
-}
-
-.proBox{
-  position:absolute;
-  bottom:22px;
-  left:18px;
-  right:18px;
-  padding:16px;
-  border-radius:15px;
-  background:linear-gradient(145deg,#17233B,#0F172A);
-  border:1px solid rgba(255,255,255,.08);
-}
-
-.proBox strong{
-  display:block;
-  margin-bottom:6px;
-}
-
-.proBox span{
-  font-size:12px;
-  color:#94A3B8;
-}
-
-.main{
-  margin-left:245px;
-  width:calc(100% - 245px);
-  padding:30px;
-}
-
-.topbar{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  margin-bottom:25px;
-}
-
-.topbar h1{
-  margin:0;
-  font-size:28px;
-  letter-spacing:-.5px;
-}
+.brand span{color:var(--teal)}
 
 .back{
-  border:1px solid var(--border);
-  background:white;
-  padding:10px 15px;
-  border-radius:10px;
+  color:white;
+  text-decoration:none;
+  font-size:14px;
+  opacity:.9;
 }
 
-.layout{
+.container{
+  max-width:1200px;
+  margin:auto;
+  padding:24px 16px 60px;
+}
+
+.steps{
+  display:flex;
+  gap:8px;
+  overflow:auto;
+  margin-bottom:22px;
+}
+
+.step{
+  white-space:nowrap;
+  background:white;
+  border:1px solid var(--border);
+  border-radius:999px;
+  padding:9px 14px;
+  font-size:13px;
+  color:var(--muted);
+}
+
+.step.active{
+  background:var(--blue);
+  color:white;
+  border-color:var(--blue);
+}
+
+.grid{
   display:grid;
-  grid-template-columns:minmax(0,1fr) 410px;
-  gap:25px;
+  grid-template-columns:1fr 1fr;
+  gap:20px;
 }
 
 .card{
   background:white;
   border:1px solid var(--border);
   border-radius:18px;
+  padding:20px;
   box-shadow:var(--shadow);
-  padding:22px;
-  margin-bottom:20px;
 }
 
 .card h2{
   margin:0 0 6px;
-  font-size:18px;
+  font-size:21px;
 }
 
-.desc{
-  margin:0 0 20px;
+.card p{
   color:var(--muted);
-  font-size:13px;
-}
-
-.modes{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:10px;
-}
-
-.mode{
-  border:1px solid var(--border);
-  background:white;
-  padding:15px;
-  border-radius:13px;
-  text-align:left;
-}
-
-.mode strong{
-  display:block;
-  margin-bottom:5px;
-}
-
-.mode span{
-  font-size:12px;
-  color:var(--muted);
-}
-
-.mode.active{
-  border:2px solid var(--blue);
-  background:#EFF6FF;
-}
-
-.grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:15px;
-}
-
-.field{
-  margin-bottom:16px;
-}
-
-.field.full{
-  grid-column:1/-1;
+  line-height:1.5;
+  margin-top:6px;
 }
 
 label{
   display:block;
   font-size:13px;
   font-weight:700;
-  margin-bottom:7px;
+  margin:16px 0 7px;
 }
 
-input,
-textarea,
-select{
+input,textarea,select{
   width:100%;
+  padding:12px 13px;
   border:1px solid var(--border);
-  border-radius:10px;
-  padding:12px;
+  border-radius:11px;
+  font:inherit;
   outline:none;
   background:white;
 }
 
 textarea{
-  min-height:90px;
+  min-height:85px;
   resize:vertical;
 }
 
-input:focus,
-textarea:focus,
-select:focus{
+input:focus,textarea:focus,select:focus{
   border-color:var(--blue);
-  box-shadow:0 0 0 3px rgba(37,99,235,.08);
+  box-shadow:0 0 0 3px rgba(37,99,235,.10);
+}
+
+.mode-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:10px;
+  margin-top:14px;
+}
+
+.mode{
+  border:1px solid var(--border);
+  background:white;
+  padding:15px 10px;
+  border-radius:13px;
+  cursor:pointer;
+  text-align:center;
+  font-weight:700;
+}
+
+.mode small{
+  display:block;
+  color:var(--muted);
+  font-weight:400;
+  margin-top:5px;
+}
+
+.mode.selected{
+  border:2px solid var(--blue);
+  background:#EFF6FF;
 }
 
 .upload{
   border:2px dashed #CBD5E1;
   border-radius:14px;
-  padding:25px;
+  padding:18px;
   text-align:center;
-  background:#F8FAFC;
+  margin-top:10px;
 }
 
-.upload strong{
-  display:block;
+.upload input{
+  border:0;
+  padding:8px 0;
+}
+
+.ai-box{
+  margin-top:15px;
+  padding:15px;
+  border-radius:14px;
+  background:linear-gradient(135deg,#EFF6FF,#ECFEFF);
+  border:1px solid #BFDBFE;
+}
+
+.ai-title{
+  font-weight:800;
   margin-bottom:5px;
 }
 
-.upload span{
+.ai-status{
+  font-size:13px;
   color:var(--muted);
-  font-size:12px;
+  margin-top:9px;
+  min-height:18px;
 }
 
-.mediaList{
-  display:flex;
-  gap:8px;
-  flex-wrap:wrap;
-  margin-top:15px;
+button{
+  border:0;
+  border-radius:11px;
+  padding:12px 17px;
+  font:inherit;
+  font-weight:800;
+  cursor:pointer;
 }
 
-.mediaItem{
-  width:72px;
-  height:72px;
-  border-radius:9px;
-  overflow:hidden;
-  border:1px solid var(--border);
+.primary{
+  background:var(--blue);
+  color:white;
+}
+
+.primary:hover{filter:brightness(.95)}
+
+.secondary{
   background:#E2E8F0;
+  color:var(--text);
 }
 
-.mediaItem img,
-.mediaItem video{
+.ai-button{
   width:100%;
-  height:100%;
-  object-fit:cover;
+  background:var(--navy);
+  color:white;
+  margin-top:10px;
+}
+
+.preview{
+  min-height:500px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:#F8FAFC;
+  border-radius:16px;
+  overflow:hidden;
+  position:relative;
+}
+
+.preview-content{
+  text-align:center;
+  color:var(--muted);
+  padding:30px;
+}
+
+.preview-image{
+  max-width:100%;
+  max-height:500px;
+  object-fit:contain;
+  display:block;
+}
+
+.preview-overlay{
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:0;
+  padding:25px 20px;
+  color:white;
+  text-align:left;
+  background:linear-gradient(transparent,rgba(0,0,0,.8));
+}
+
+.preview-overlay h3{
+  margin:0 0 6px;
+  font-size:24px;
+}
+
+.preview-overlay strong{
+  color:#5EEAD4;
+  font-size:22px;
 }
 
 .actions{
   display:flex;
   gap:10px;
   flex-wrap:wrap;
+  margin-top:16px;
 }
 
-.primary{
-  background:var(--blue);
-  color:white;
-  border:0;
-  padding:13px 20px;
-  border-radius:11px;
-  font-weight:800;
-}
-
-.secondary{
-  background:white;
-  color:var(--text);
-  border:1px solid var(--border);
-  padding:13px 20px;
-  border-radius:11px;
-  font-weight:700;
-}
-
-.preview{
-  position:sticky;
-  top:20px;
-}
-
-.phone{
-  width:100%;
-  max-width:360px;
-  margin:auto;
-  aspect-ratio:9/16;
-  border-radius:25px;
-  background:#0B1220;
-  padding:8px;
-  box-shadow:0 25px 70px rgba(0,0,0,.20);
-}
-
-.screen{
-  width:100%;
-  height:100%;
-  border-radius:19px;
-  overflow:hidden;
-  position:relative;
-  background:#111827;
-}
-
-.previewEmpty{
-  height:100%;
-  display:grid;
-  place-items:center;
-  color:#94A3B8;
-  text-align:center;
-  padding:30px;
-}
-
-.previewEmpty strong{
-  color:white;
-  display:block;
-  font-size:18px;
-  margin-bottom:7px;
-}
-
-#staticCanvas,
-#motionResult,
-#videoResult{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  display:none;
-}
-
-.previewInfo{
-  text-align:center;
-  color:var(--muted);
-  font-size:12px;
-  margin-top:12px;
-}
-
-.resultBox{
-  display:none;
-  margin-top:20px;
-  padding:15px;
+.result{
+  margin-top:18px;
+  padding:14px;
   border-radius:12px;
-  background:#F0FDFA;
-  border:1px solid #99F6E4;
-}
-
-.resultBox strong{
-  display:block;
-  margin-bottom:5px;
-}
-
-.progress{
+  background:#ECFDF5;
+  color:#065F46;
   display:none;
-  margin-top:15px;
 }
 
-.progressTrack{
-  height:8px;
-  background:#E2E8F0;
-  border-radius:99px;
-  overflow:hidden;
+.media-list{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  margin-top:10px;
 }
 
-.progressBar{
-  height:100%;
-  width:0;
-  background:linear-gradient(90deg,var(--blue),var(--teal));
-  transition:.15s;
+.thumb{
+  width:80px;
+  height:80px;
+  border-radius:10px;
+  object-fit:cover;
+  border:1px solid var(--border);
 }
 
-.small{
-  font-size:12px;
+.footer{
+  text-align:center;
   color:var(--muted);
-  margin-top:7px;
+  font-size:12px;
+  margin-top:30px;
 }
 
-@media(max-width:950px){
-
-  .sidebar{
-    width:70px;
-    padding:18px 10px;
-  }
-
-  .logoText,
-  .nav span,
-  .proBox{
-    display:none;
-  }
-
-  .logo{
-    justify-content:center;
-  }
-
-  .nav button{
-    text-align:center;
-    padding:12px 5px;
-    font-size:0;
-  }
-
-  .main{
-    margin-left:70px;
-    width:calc(100% - 70px);
-    padding:20px;
-  }
-
-  .layout{
-    grid-template-columns:1fr;
-  }
-
-  .preview{
-    position:static;
-  }
+@media(max-width:800px){
+  .grid{grid-template-columns:1fr}
+  .mode-grid{grid-template-columns:1fr}
+  .preview{min-height:420px}
 }
 
-@media(max-width:600px){
-
-  .grid{
-    grid-template-columns:1fr;
-  }
-
-  .field.full{
-    grid-column:auto;
-  }
-
-  .modes{
-    grid-template-columns:1fr;
-  }
-
-  .topbar h1{
-    font-size:22px;
-  }
-
-  .main{
-    padding:14px;
-  }
+@media(max-width:500px){
+  header{padding:14px}
+  .brand{font-size:17px}
+  .container{padding:16px 10px 40px}
+  .card{padding:16px}
 }
 </style>
 </head>
 
 <body>
 
-<div class="app">
+<header>
+  <div class="brand">Simply Ads <span>Creator</span></div>
+  <a class="back" href="professional.html">← Dashboard</a>
+</header>
 
-<aside class="sidebar">
+<div class="container">
 
-  <div class="logo">
-    <div class="logoMark">SA</div>
-    <div class="logoText">Simply Ads</div>
+  <div class="steps">
+    <div class="step active">1. Ad Type</div>
+    <div class="step">2. Product</div>
+    <div class="step">3. Media</div>
+    <div class="step">4. Build Ad</div>
   </div>
 
-  <div class="nav">
-    <button onclick="goDashboard()">⌂ <span>Dashboard</span></button>
-    <button class="active">＋ <span>Create Ad</span></button>
-    <button onclick="placeholder('My Projects')">▣ <span>Projects</span></button>
-    <button onclick="placeholder('Templates')">◈ <span>Templates</span></button>
-    <button onclick="placeholder('Brand Kit')">◆ <span>Brand Kit</span></button>
-    <button onclick="placeholder('Promote')">↗ <span>Promote</span></button>
-  </div>
+  <div class="grid">
 
-  <div class="proBox">
-    <strong>Simply Ads Pro</strong>
-    <span>Create professional ads without complicated editing.</span>
-  </div>
-
-</aside>
-
-<main class="main">
-
-  <div class="topbar">
+    <!-- LEFT -->
     <div>
-      <h1>Create New Ad</h1>
-      <div class="small">
-        Turn your product information into a ready-to-use advertisement.
-      </div>
-    </div>
-
-    <button class="back" onclick="goDashboard()">← Dashboard</button>
-  </div>
-
-  <div class="layout">
-
-    <section>
 
       <div class="card">
-
-        <h2>Choose Ad Type</h2>
-        <p class="desc">Start with the format you want to create.</p>
-
-        <div class="modes">
-
-          <button class="mode active" id="staticMode"
-                  onclick="chooseType('static')">
-            <strong>Static Ad</strong>
-            <span>Professional promotional graphic</span>
-          </button>
-
-          <button class="mode" id="motionMode"
-                  onclick="chooseType('motion')">
-            <strong>Motion Ad</strong>
-            <span>Animated product advertisement</span>
-          </button>
-
-          <button class="mode" id="videoMode"
-                  onclick="chooseType('video')">
-            <strong>Video Ad</strong>
-            <span>Multi-scene promotional video</span>
-          </button>
-
-        </div>
-
-      </div>
-
-      <div class="card">
-
-        <h2>Product & Offer</h2>
-        <p class="desc">
-          Give Simply Ads the information it needs to build your ad.
+        <h2>Create a Professional Ad</h2>
+        <p>
+          Tell Simply Ads Creator what you are selling. Add your product
+          media or let AI create a professional product image for you.
         </p>
 
-        <div class="grid">
+        <label>Ad Type</label>
 
-          <div class="field">
-            <label>Product Name</label>
-            <input id="product" placeholder="e.g. Smartwatch Pro">
+        <div class="mode-grid">
+          <div class="mode selected" onclick="selectMode('static',this)">
+            Static Ad
+            <small>Professional image</small>
           </div>
 
-          <div class="field">
-            <label>Price / Offer</label>
-            <input id="price" placeholder="e.g. UGX 120,000">
+          <div class="mode" onclick="selectMode('motion',this)">
+            Motion Ad
+            <small>Animated product ad</small>
           </div>
 
-          <div class="field full">
-            <label>Customer Problem</label>
-            <textarea id="problem"
-              placeholder="What problem does your customer have?"></textarea>
+          <div class="mode" onclick="selectMode('video',this)">
+            Video Ad
+            <small>Multi-scene video</small>
           </div>
-
-          <div class="field full">
-            <label>Main Benefit</label>
-            <textarea id="benefit"
-              placeholder="What does your product help the customer achieve?"></textarea>
-          </div>
-
-          <div class="field">
-            <label>Target Customer</label>
-            <input id="target" placeholder="e.g. Busy professionals">
-          </div>
-
-          <div class="field">
-            <label>Country / Market</label>
-            <select id="country">
-              <option>Uganda</option>
-              <option>Kenya</option>
-              <option>Nigeria</option>
-              <option>South Africa</option>
-              <option>United Kingdom</option>
-              <option>United States</option>
-              <option>Canada</option>
-              <option>Australia</option>
-              <option>Other</option>
-            </select>
-          </div>
-
-          <div class="field">
-            <label>Platform</label>
-            <select id="platform">
-              <option>TikTok</option>
-              <option>Instagram Reels</option>
-              <option>Facebook</option>
-              <option>WhatsApp Status</option>
-              <option>YouTube Shorts</option>
-              <option>General Online Ad</option>
-            </select>
-          </div>
-
-          <div class="field">
-            <label>Call To Action / Contact</label>
-            <input id="contact"
-              placeholder="e.g. WhatsApp 0730 053 551">
-          </div>
-
         </div>
 
+        <input type="hidden" id="adType" value="static">
+
+        <label>Product Name</label>
+        <input id="product" placeholder="e.g. Smart Watch Pro">
+
+        <label>Price / Offer</label>
+        <input id="price" placeholder="e.g. UGX 120,000">
+
+        <label>Problem</label>
+        <textarea id="problem" placeholder="What problem does your product solve?"></textarea>
+
+        <label>Main Benefit</label>
+        <textarea id="benefit" placeholder="What is the biggest benefit?"></textarea>
+
+        <label>Target Customer</label>
+        <input id="target" placeholder="e.g. Students, professionals, parents">
+
+        <label>Country / Market</label>
+        <input id="country" placeholder="e.g. Uganda, Kenya, USA">
+
+        <label>Call to Action / Contact</label>
+        <input id="contact" placeholder="e.g. WhatsApp +256 700 000000">
+
+        <label>Platform</label>
+        <select id="platform">
+          <option>TikTok</option>
+          <option>Instagram Reels</option>
+          <option>Facebook</option>
+          <option>WhatsApp Status</option>
+          <option>YouTube Shorts</option>
+          <option>General Online Ad</option>
+        </select>
       </div>
 
-      <div class="card">
-
+      <div class="card" style="margin-top:20px">
         <h2>Product Media</h2>
-
-        <p class="desc">
-          Upload product photos or videos. Video Ads can use multiple pieces
-          of media.
+        <p>
+          Upload one or more product photos/videos. If you don't have a
+          product picture, AI can create one.
         </p>
 
         <div class="upload">
-
-          <strong>Upload Product Media</strong>
-          <span>Images and videos are supported</span>
-
-          <br><br>
-
           <input
             id="media"
             type="file"
             accept="image/*,video/*"
             multiple
-            onchange="handleMedia()">
-
+            onchange="handleMedia()"
+          >
         </div>
 
-        <div class="mediaList" id="mediaList"></div>
+        <div id="mediaList" class="media-list"></div>
 
-      </div>
+        <div class="ai-box">
+          <div class="ai-title">✨ No product picture?</div>
+          <div style="font-size:13px;color:#475569">
+            Generate a professional commercial product image with AI.
+          </div>
 
-      <div class="card">
+          <button class="ai-button" onclick="generateAIImage()">
+            ✨ Generate Product Image with AI
+          </button>
 
-        <h2>Voiceover & Music</h2>
-
-        <p class="desc">
-          Optional. Upload a voice recording or background music.
-        </p>
-
-        <input
-          id="audio"
-          type="file"
-          accept="audio/*"
-          onchange="handleAudio()">
-
-        <div class="small" id="audioName">
-          No audio selected.
+          <div id="aiStatus" class="ai-status"></div>
         </div>
 
+        <label>Optional Background Music / Audio</label>
+        <input id="audio" type="file" accept="audio/*">
       </div>
 
+    </div>
+
+    <!-- RIGHT -->
+    <div>
+
       <div class="card">
+        <h2>Live Preview</h2>
+        <p>Your product image and ad information will appear here.</p>
 
-        <h2>Build Your Ad</h2>
-
-        <p class="desc">
-          Simply Ads will automatically arrange your content into the
-          selected advertisement format.
-        </p>
+        <div class="preview" id="preview">
+          <div class="preview-content">
+            <div style="font-size:45px">✨</div>
+            <div>Your ad preview will appear here.</div>
+          </div>
+        </div>
 
         <div class="actions">
-
-          <button class="primary" onclick="generate()">
-            ✨ Build My Ad
+          <button class="primary" onclick="buildAd()">
+            Build My Ad
           </button>
 
-          <button class="secondary" onclick="updatePreview()">
-            Preview
+          <button class="secondary" onclick="clearAll()">
+            Clear
           </button>
-
         </div>
 
-        <div class="progress" id="progress">
+        <div id="result" class="result"></div>
 
-          <div class="progressTrack">
-            <div class="progressBar" id="progressBar"></div>
-          </div>
-
-          <div class="small" id="progressText">
-            Preparing your ad...
-          </div>
-
-        </div>
-
-        <div class="resultBox" id="resultBox">
-
-          <strong>Your ad is ready.</strong>
-
-          <div class="small" id="resultText"></div>
-
-        </div>
-
+        <div id="downloadArea" class="actions"></div>
       </div>
 
-    </section>
-
-    <aside class="preview">
-
-      <div class="card">
-
-        <h2>Live Preview</h2>
-
-        <p class="desc">
-          Your finished ad will appear here.
-        </p>
-
-        <div class="phone">
-
-          <div class="screen">
-
-            <div class="previewEmpty" id="emptyPreview">
-
-              <div>
-                <strong>Simply Ads Creator</strong>
-
-                Add your product information and media,
-                then build your ad.
-              </div>
-
-            </div>
-
-            <canvas id="staticCanvas"></canvas>
-
-            <video
-              id="motionResult"
-              controls
-              playsinline>
-            </video>
-
-            <video
-              id="videoResult"
-              controls
-              playsinline>
-            </video>
-
-          </div>
-
-        </div>
-
-        <div class="previewInfo">
-          Vertical format optimized for short-form advertising.
-        </div>
-
-      </div>
-
-    </aside>
+    </div>
 
   </div>
 
-</main>
+  <div class="footer">
+    Simply Ads Creator — Create. Animate. Promote.
+  </div>
 
 </div>
 
 <script>
 
-let adType="static";
-let mediaFiles=[];
-let audioFile=null;
+const AI_ENDPOINT =
+  "https://simply-ads-ai.raebby040.workers.dev/generate-image";
 
-/*
-  IMPORTANT:
-  These are the actual preloaded images.
-  The renderer never tries to load an image
-  while a frame is being rendered.
-*/
-let loadedImages=[];
+let selectedMode = "static";
+let loadedImages = [];
+let aiImage = null;
 
+function selectMode(mode, element){
 
-/* NAVIGATION */
+  selectedMode = mode;
+  document.getElementById("adType").value = mode;
 
-function goDashboard(){
-  window.location.href="professional.html";
-}
+  document.querySelectorAll(".mode")
+    .forEach(x => x.classList.remove("selected"));
 
-function placeholder(name){
-  alert(name+" will be connected to the professional dashboard in the next build.");
-}
-
-
-/* AD TYPE */
-
-function chooseType(type){
-
-  adType=type;
-
-  document.querySelectorAll(".mode").forEach(button=>{
-    button.classList.remove("active");
-  });
-
-  document.getElementById(type+"Mode").classList.add("active");
+  element.classList.add("selected");
 
   updatePreview();
 }
-
-
-/* MEDIA */
 
 function handleMedia(){
 
-  const input=document.getElementById("media");
+  const input = document.getElementById("media");
+  const list = document.getElementById("mediaList");
 
-  mediaFiles=Array.from(input.files);
+  loadedImages = [];
 
-  loadedImages=[];
+  list.innerHTML = "";
 
-  const list=document.getElementById("mediaList");
-
-  list.innerHTML="";
-
-  mediaFiles.forEach(file=>{
-
-    const item=document.createElement("div");
-
-    item.className="mediaItem";
+  Array.from(input.files).forEach((file,index)=>{
 
     if(file.type.startsWith("image/")){
 
-      const img=document.createElement("img");
+      const url = URL.createObjectURL(file);
 
-      img.src=URL.createObjectURL(file);
+      loadedImages.push({
+        url:url,
+        name:file.name
+      });
 
-      item.appendChild(img);
-
-    }else{
-
-      const video=document.createElement("video");
-
-      video.src=URL.createObjectURL(file);
-
-      video.muted=true;
-
-      item.appendChild(video);
-
+      const img = document.createElement("img");
+      img.src = url;
+      img.className = "thumb";
+      list.appendChild(img);
     }
-
-    list.appendChild(item);
 
   });
 
   updatePreview();
 }
 
+function getProduct(){
 
-/*
-  PRELOAD ALL PRODUCT IMAGES
-*/
-
-async function preloadProductImages(){
-
-  loadedImages=[];
-
-  const imageFiles=mediaFiles.filter(
-    file=>file.type.startsWith("image/")
-  );
-
-  for(const file of imageFiles){
-
-    const url=URL.createObjectURL(file);
-
-    const image=await new Promise((resolve,reject)=>{
-
-      const img=new Image();
-
-      img.onload=()=>{
-        resolve(img);
-      };
-
-      img.onerror=()=>{
-        reject(new Error("Could not load product image."));
-      };
-
-      img.src=url;
-
-    });
-
-    loadedImages.push(image);
-
-    /*
-      We intentionally keep the object URL alive
-      while the ad is being rendered.
-    */
-
-  }
-
-  if(!loadedImages.length){
-    throw new Error("No product image was successfully loaded.");
-  }
-
-  return loadedImages;
+  return document.getElementById("product").value.trim();
 }
 
+function buildPrompt(){
 
-/* AUDIO */
+  const product = document.getElementById("product").value.trim();
+  const problem = document.getElementById("problem").value.trim();
+  const benefit = document.getElementById("benefit").value.trim();
+  const target = document.getElementById("target").value.trim();
+  const country = document.getElementById("country").value.trim();
 
-function handleAudio(){
+  return `
+Create a premium commercial advertising product photograph for:
 
-  const input=document.getElementById("audio");
+Product: ${product || "the product"}
+Target customer: ${target || "modern consumers"}
+Market: ${country || "international market"}
+Problem solved: ${problem || "a common customer problem"}
+Main benefit: ${benefit || "high quality and useful"}
 
-  audioFile=input.files[0] || null;
-
-  document.getElementById("audioName").textContent=
-    audioFile ? audioFile.name : "No audio selected.";
+Show the actual product clearly and prominently.
+Luxury professional advertising photography.
+Clean modern composition.
+Premium studio lighting.
+Realistic materials and details.
+Strong depth and natural shadows.
+Professional commercial photography.
+Minimal elegant background.
+Leave some clean space for advertising text.
+No random objects.
+No people unless necessary.
+No fake logos.
+No watermark.
+World-class international advertising aesthetic.
+`;
 }
 
+async function generateAIImage(){
 
-/* DATA */
+  const product = getProduct();
+  const status = document.getElementById("aiStatus");
 
-function getData(){
+  if(!product){
 
-  return {
-    product:document.getElementById("product").value.trim(),
-    price:document.getElementById("price").value.trim(),
-    problem:document.getElementById("problem").value.trim(),
-    benefit:document.getElementById("benefit").value.trim(),
-    target:document.getElementById("target").value.trim(),
-    country:document.getElementById("country").value,
-    platform:document.getElementById("platform").value,
-    contact:document.getElementById("contact").value.trim()
-  };
+    status.textContent =
+      "Please enter your Product Name first.";
 
-}
+    document.getElementById("product").focus();
 
-
-/* PREVIEW */
-
-function updatePreview(){
-
-  const data=getData();
-
-  if(!data.product && !mediaFiles.length){
     return;
   }
 
-  if(adType==="static"){
-    drawStaticPreview();
-  }
-
-}
-
-
-/* STATIC PREVIEW */
-
-async function drawStaticPreview(){
-
-  const canvas=document.getElementById("staticCanvas");
-
-  canvas.style.display="block";
-
-  document.getElementById("emptyPreview").style.display="none";
-
-  canvas.width=720;
-  canvas.height=1280;
-
-  if(
-    mediaFiles.length &&
-    mediaFiles[0].type.startsWith("image/") &&
-    !loadedImages.length
-  ){
-
-    try{
-      await preloadProductImages();
-    }catch(e){
-      console.error(e);
-    }
-
-  }
-
-  const ctx=canvas.getContext("2d");
-
-  drawStaticFrame(
-    ctx,
-    canvas.width,
-    canvas.height,
-    getData(),
-    loadedImages[0] || null
-  );
-
-}
-
-
-/* STATIC FRAME */
-
-function drawStaticFrame(ctx,w,h,d,img){
-
-  ctx.clearRect(0,0,w,h);
-
-  const bg=ctx.createLinearGradient(0,0,w,h);
-
-  bg.addColorStop(0,"#0B1220");
-  bg.addColorStop(1,"#172554");
-
-  ctx.fillStyle=bg;
-
-  ctx.fillRect(0,0,w,h);
-
-  ctx.fillStyle="#14B8A6";
-
-  ctx.fillRect(0,0,w,14);
-
-
-  if(img){
-
-    const maxW=w*.86;
-    const maxH=h*.48;
-
-    const scale=Math.min(
-      maxW/img.width,
-      maxH/img.height
-    );
-
-    const iw=img.width*scale;
-    const ih=img.height*scale;
-
-    const x=(w-iw)/2;
-    const y=120;
-
-    ctx.save();
-
-    ctx.shadowColor="rgba(0,0,0,.35)";
-    ctx.shadowBlur=35;
-
-    ctx.drawImage(
-      img,
-      x,
-      y,
-      iw,
-      ih
-    );
-
-    ctx.restore();
-
-  }
-
-  drawStaticText(ctx,w,h,d);
-}
-
-
-/* STATIC TEXT */
-
-function drawStaticText(ctx,w,h,d){
-
-  ctx.textAlign="left";
-
-  ctx.fillStyle="#FFFFFF";
-
-  ctx.font="900 56px Arial";
-
-  wrapCanvas(
-    ctx,
-    d.product || "Your Product",
-    55,
-    700,
-    w-110,
-    64
-  );
-
-  ctx.fillStyle="#CBD5E1";
-
-  ctx.font="400 28px Arial";
-
-  wrapCanvas(
-    ctx,
-    d.benefit ||
-      "A better solution for your customers.",
-    55,
-    850,
-    w-110,
-    38
-  );
-
-  if(d.price){
-
-    ctx.fillStyle="#14B8A6";
-
-    ctx.font="900 48px Arial";
-
-    ctx.fillText(
-      d.price,
-      55,
-      1035
-    );
-
-  }
-
-  ctx.fillStyle="#FFFFFF";
-
-  ctx.font="700 27px Arial";
-
-  ctx.fillText(
-    d.contact || "Contact us today",
-    55,
-    1120
-  );
-
-  ctx.fillStyle="#94A3B8";
-
-  ctx.font="700 18px Arial";
-
-  ctx.fillText(
-    "SIMPLY ADS CREATOR",
-    55,
-    1215
-  );
-
-}
-
-
-/* VALIDATION */
-
-function validate(){
-
-  const d=getData();
-
-  if(!d.product){
-
-    alert("Please enter your product name.");
-
-    return false;
-  }
-
-  if(!mediaFiles.length){
-
-    alert("Please upload at least one product photo or video.");
-
-    return false;
-  }
-
-  return true;
-}
-
-
-/* GENERATE */
-
-async function generate(){
-
-  if(!validate()){
-    return;
-  }
-
-  document.getElementById("resultBox").style.display="none";
-
-  showProgress(
-    true,
-    3,
-    "Loading your product media..."
-  );
+  status.textContent =
+    "✨ Creating your professional product image...";
 
   try{
 
-    /*
-      THIS IS THE KEY FIX.
-      The images are completely loaded BEFORE
-      any video frames are rendered.
-    */
+    const response = await fetch(AI_ENDPOINT,{
 
-    await preloadProductImages();
+      method:"POST",
 
-    showProgress(
-      true,
-      10,
-      "Product media loaded."
-    );
+      headers:{
+        "Content-Type":"application/json"
+      },
 
-    if(adType==="static"){
+      body:JSON.stringify({
+        prompt:buildPrompt()
+      })
 
-      await buildStatic();
+    });
 
-    }else if(adType==="motion"){
+    if(!response.ok){
 
-      await buildMotion();
+      const errorText = await response.text();
 
-    }else{
-
-      await buildVideo();
-
+      throw new Error(
+        "AI server returned " +
+        response.status +
+        ": " +
+        errorText
+      );
     }
+
+    const data = await response.json();
+
+    if(!data.imageUrl){
+
+      throw new Error("No image was returned by the AI service.");
+    }
+
+    aiImage = data.imageUrl;
+
+    /*
+      Add the AI image to the same image collection used
+      by the ad renderer.
+    */
+    loadedImages.unshift({
+      url:aiImage,
+      name:"AI Generated Product"
+    });
+
+    const list = document.getElementById("mediaList");
+
+    const img = document.createElement("img");
+
+    img.src = aiImage;
+    img.className = "thumb";
+
+    list.prepend(img);
+
+    status.textContent =
+      "✅ AI product image created successfully.";
+
+    updatePreview();
 
   }catch(error){
 
     console.error(error);
 
-    showProgress(false,0,"");
-
-    alert(
-      "We couldn't create the ad. Please check your product image and try again."
-    );
+    status.textContent =
+      "❌ AI image generation failed. Please try again.";
 
   }
-
 }
 
+function updatePreview(){
 
-/* STATIC BUILD */
+  const preview = document.getElementById("preview");
 
-async function buildStatic(){
+  const product =
+    document.getElementById("product").value.trim();
 
-  const canvas=document.getElementById("staticCanvas");
+  const price =
+    document.getElementById("price").value.trim();
 
-  canvas.width=1080;
-  canvas.height=1920;
+  const benefit =
+    document.getElementById("benefit").value.trim();
 
-  const ctx=canvas.getContext("2d");
+  const contact =
+    document.getElementById("contact").value.trim();
 
-  drawStaticFrame(
-    ctx,
-    canvas.width,
-    canvas.height,
-    getData(),
-    loadedImages[0]
-  );
+  let image =
+    loadedImages.length
+      ? loadedImages[0].url
+      : null;
 
-  canvas.style.display="block";
+  if(!image){
 
-  document.getElementById("emptyPreview").style.display="none";
+    preview.innerHTML = `
+      <div class="preview-content">
+        <div style="font-size:45px">✨</div>
+        <div>Upload a product image or generate one with AI.</div>
+      </div>
+    `;
 
-  showProgress(
-    true,
-    100,
-    "Static ad ready."
-  );
-
-  showResult(
-    "Your static ad has been created.",
-    canvas.toDataURL("image/png"),
-    "Download Static Ad",
-    "png"
-  );
-
-}
-
-
-/* MOTION AD */
-
-async function buildMotion(){
-
-  if(!loadedImages.length){
-
-    throw new Error("Product image not loaded.");
-
-  }
-
-  const canvas=document.createElement("canvas");
-
-  canvas.width=1080;
-  canvas.height=1920;
-
-  const ctx=canvas.getContext("2d");
-
-  const stream=canvas.captureStream(30);
-
-  let audioContext=null;
-
-  if(audioFile){
-
-    try{
-
-      audioContext=new AudioContext();
-
-      const destination=
-        audioContext.createMediaStreamDestination();
-
-      const buffer=
-        await audioContext.decodeAudioData(
-          await audioFile.arrayBuffer()
-        );
-
-      const source=
-        audioContext.createBufferSource();
-
-      source.buffer=buffer;
-
-      source.connect(destination);
-
-      source.start();
-
-      destination.stream
-        .getAudioTracks()
-        .forEach(track=>{
-          stream.addTrack(track);
-        });
-
-    }catch(error){
-
-      console.warn(
-        "Audio could not be added.",
-        error
-      );
-
-    }
-
-  }
-
-  let mime="video/webm;codecs=vp9,opus";
-
-  if(!MediaRecorder.isTypeSupported(mime)){
-    mime="video/webm";
-  }
-
-  const recorder=
-    new MediaRecorder(
-      stream,
-      {mimeType:mime}
-    );
-
-  const chunks=[];
-
-  recorder.ondataavailable=e=>{
-
-    if(e.data.size){
-      chunks.push(e.data);
-    }
-
-  };
-
-  const stopped=new Promise(resolve=>{
-    recorder.onstop=resolve;
-  });
-
-  recorder.start();
-
-  const duration=9000;
-  const fps=30;
-  const frames=Math.floor(
-    duration/(1000/fps)
-  );
-
-  for(let i=0;i<frames;i++){
-
-    const progress=i/frames;
-
-    drawAnimatedFrame(
-      ctx,
-      canvas.width,
-      canvas.height,
-      getData(),
-      loadedImages[0],
-      progress
-    );
-
-    showProgress(
-      true,
-      10+Math.round(progress*85),
-      "Rendering motion ad..."
-    );
-
-    await wait(1000/fps);
-
-  }
-
-  recorder.stop();
-
-  await stopped;
-
-  if(audioContext){
-
-    try{
-      await audioContext.close();
-    }catch(e){}
-
-  }
-
-  const blob=
-    new Blob(
-      chunks,
-      {type:"video/webm"}
-    );
-
-  const url=
-    URL.createObjectURL(blob);
-
-  const video=
-    document.getElementById("motionResult");
-
-  video.src=url;
-
-  video.style.display="block";
-
-  document.getElementById("staticCanvas").style.display="none";
-  document.getElementById("videoResult").style.display="none";
-  document.getElementById("emptyPreview").style.display="none";
-
-  showProgress(
-    true,
-    100,
-    "Motion ad ready."
-  );
-
-  showResult(
-    "Your animated ad has been rendered.",
-    url,
-    "Download Motion Ad",
-    "webm"
-  );
-
-}
-
-
-/* VIDEO AD */
-
-async function buildVideo(){
-
-  if(!loadedImages.length){
-
-    throw new Error("Product image not loaded.");
-
-  }
-
-  const canvas=document.createElement("canvas");
-
-  canvas.width=1080;
-  canvas.height=1920;
-
-  const ctx=canvas.getContext("2d");
-
-  const stream=
-    canvas.captureStream(30);
-
-  let audioContext=null;
-
-  if(audioFile){
-
-    try{
-
-      audioContext=new AudioContext();
-
-      const destination=
-        audioContext.createMediaStreamDestination();
-
-      const buffer=
-        await audioContext.decodeAudioData(
-          await audioFile.arrayBuffer()
-        );
-
-      const source=
-        audioContext.createBufferSource();
-
-      source.buffer=buffer;
-
-      source.connect(destination);
-
-      source.start();
-
-      destination.stream
-        .getAudioTracks()
-        .forEach(track=>{
-          stream.addTrack(track);
-        });
-
-    }catch(error){
-
-      console.warn(
-        "Audio could not be added.",
-        error
-      );
-
-    }
-
-  }
-
-  let mime=
-    "video/webm;codecs=vp9,opus";
-
-  if(!MediaRecorder.isTypeSupported(mime)){
-    mime="video/webm";
-  }
-
-  const recorder=
-    new MediaRecorder(
-      stream,
-      {mimeType:mime}
-    );
-
-  const chunks=[];
-
-  recorder.ondataavailable=e=>{
-
-    if(e.data.size){
-      chunks.push(e.data);
-    }
-
-  };
-
-  const stopped=new Promise(resolve=>{
-    recorder.onstop=resolve;
-  });
-
-  recorder.start();
-
-
-  /*
-    SIX PROFESSIONAL AD SCENES
-  */
-
-  const scenes=[
-    "hook",
-    "problem",
-    "product",
-    "benefit",
-    "offer",
-    "cta"
-  ];
-
-  const sceneDuration=2200;
-
-  const total=
-    scenes.length*sceneDuration;
-
-  const fps=30;
-
-  const frames=
-    Math.floor(
-      total/(1000/fps)
-    );
-
-
-  for(let frame=0;frame<frames;frame++){
-
-    const elapsed=
-      frame*(1000/fps);
-
-    const sceneIndex=
-      Math.min(
-        scenes.length-1,
-        Math.floor(
-          elapsed/sceneDuration
-        )
-      );
-
-    const scene=
-      scenes[sceneIndex];
-
-    const localProgress=
-      (
-        elapsed-
-        sceneIndex*sceneDuration
-      )/sceneDuration;
-
-
-    /*
-      IMPORTANT:
-      loadedImages[0] is passed directly.
-      There is NO image loading inside this loop.
-    */
-
-    drawVideoScene(
-      ctx,
-      canvas.width,
-      canvas.height,
-      getData(),
-      loadedImages[0],
-      scene,
-      localProgress
-    );
-
-
-    showProgress(
-      true,
-      10+
-        Math.round(
-          (frame/frames)*85
-        ),
-      "Building scene "+
-        (sceneIndex+1)+
-        " of "+
-        scenes.length+
-        "..."
-    );
-
-
-    await wait(
-      1000/fps
-    );
-
-  }
-
-  recorder.stop();
-
-  await stopped;
-
-  if(audioContext){
-
-    try{
-      await audioContext.close();
-    }catch(e){}
-
-  }
-
-  const blob=
-    new Blob(
-      chunks,
-      {type:"video/webm"}
-    );
-
-  const url=
-    URL.createObjectURL(blob);
-
-  const video=
-    document.getElementById("videoResult");
-
-  video.src=url;
-
-  video.style.display="block";
-
-  document.getElementById("staticCanvas").style.display="none";
-  document.getElementById("motionResult").style.display="none";
-  document.getElementById("emptyPreview").style.display="none";
-
-  showProgress(
-    true,
-    100,
-    "Video ad ready."
-  );
-
-  showResult(
-    "Your six-scene video advertisement has been created.",
-    url,
-    "Download Video Ad",
-    "webm"
-  );
-
-}
-
-
-/* VIDEO SCENE RENDERER */
-
-function drawVideoScene(
-  ctx,
-  w,
-  h,
-  d,
-  img,
-  scene,
-  p
-){
-
-  const bg=
-    ctx.createLinearGradient(
-      0,
-      0,
-      w,
-      h
-    );
-
-  bg.addColorStop(
-    0,
-    "#0B1220"
-  );
-
-  bg.addColorStop(
-    1,
-    "#172554"
-  );
-
-  ctx.fillStyle=bg;
-
-  ctx.fillRect(
-    0,
-    0,
-    w,
-    h
-  );
-
-  ctx.fillStyle="#14B8A6";
-
-  ctx.fillRect(
-    0,
-    0,
-    w,
-    14
-  );
-
-
-  if(scene==="hook"){
-
-    drawProductBackground(
-      ctx,
-      w,
-      h,
-      img,
-      .08,
-      p
-    );
-
-    drawSceneText(
-      ctx,
-      w,
-      h,
-      d.product ||
-        "Your Product",
-      "A better way to get it done.",
-      "INTRODUCING",
-      p
-    );
-
-  }
-
-
-  else if(scene==="problem"){
-
-    drawDarkScene(
-      ctx,
-      w,
-      h,
-      "The problem?",
-      d.problem ||
-        "Your customers are looking for a better solution.",
-      p
-    );
-
-  }
-
-
-  else if(scene==="product"){
-
-    drawProductBackground(
-      ctx,
-      w,
-      h,
-      img,
-      .03,
-      p
-    );
-
-    drawSceneText(
-      ctx,
-      w,
-      h,
-      d.product ||
-        "Your Product",
-      "Meet the solution.",
-      "THE SOLUTION",
-      p
-    );
-
-  }
-
-
-  else if(scene==="benefit"){
-
-    drawDarkScene(
-      ctx,
-      w,
-      h,
-      "Why customers choose it",
-      d.benefit ||
-        "Designed to make everyday life easier.",
-      p
-    );
-
-  }
-
-
-  else if(scene==="offer"){
-
-    drawProductBackground(
-      ctx,
-      w,
-      h,
-      img,
-      .05,
-      p
-    );
-
-    drawSceneText(
-      ctx,
-      w,
-      h,
-      d.price ||
-        "Special Offer",
-      "Get yours today.",
-      "SPECIAL OFFER",
-      p
-    );
-
-  }
-
-
-  else if(scene==="cta"){
-
-    drawCTA(
-      ctx,
-      w,
-      h,
-      d,
-      p
-    );
-
-  }
-
-}
-
-
-/*
-  PRODUCT IMAGE
-  The image is ALREADY LOADED.
-  No new Image() is created here.
-*/
-
-function drawProductBackground(
-  ctx,
-  w,
-  h,
-  img,
-  zoom,
-  p
-){
-
-  if(!img){
     return;
   }
 
-  const scale=
-    Math.max(
-      w/img.width,
-      h/img.height
-    )*
-    (1+zoom*p);
+  preview.innerHTML = `
+    <img
+      class="preview-image"
+      src="${escapeHtml(image)}"
+      alt="Product preview"
+    >
 
-  const iw=
-    img.width*scale;
+    <div class="preview-overlay">
 
-  const ih=
-    img.height*scale;
+      <h3>${escapeHtml(
+        product || "Your Product"
+      )}</h3>
 
-  const x=
-    (w-iw)/2;
+      <div>
+        ${escapeHtml(
+          benefit || "A better solution for you."
+        )}
+      </div>
 
-  const y=
-    (h-ih)/2;
+      ${
+        price
+        ? `<strong>${escapeHtml(price)}</strong>`
+        : ""
+      }
 
-  ctx.save();
+      ${
+        contact
+        ? `<div style="margin-top:8px">
+             ${escapeHtml(contact)}
+           </div>`
+        : ""
+      }
 
-  ctx.globalAlpha=.65;
+    </div>
+  `;
+}
+
+document.addEventListener("input",function(e){
+
+  if([
+    "product",
+    "price",
+    "benefit",
+    "contact"
+  ].includes(e.target.id)){
+
+    updatePreview();
+  }
+
+});
+
+function escapeHtml(value){
+
+  return String(value)
+    .replaceAll("&","&amp;")
+    .replaceAll("<","&lt;")
+    .replaceAll(">","&gt;")
+    .replaceAll('"',"&quot;")
+    .replaceAll("'","&#039;");
+}
+
+function loadImage(url){
+
+  return new Promise((resolve,reject)=>{
+
+    const img = new Image();
+
+    img.crossOrigin = "anonymous";
+
+    img.onload = () => resolve(img);
+
+    img.onerror = () =>
+      reject(new Error("Could not load image."));
+
+    img.src = url;
+  });
+}
+
+async function buildAd(){
+
+  const product = getProduct();
+
+  if(!product){
+
+    alert("Please enter your Product Name.");
+
+    return;
+  }
+
+  if(!loadedImages.length){
+
+    alert(
+      "Please upload a product image or use the AI button to create one."
+    );
+
+    return;
+  }
+
+  const result =
+    document.getElementById("result");
+
+  const downloadArea =
+    document.getElementById("downloadArea");
+
+  result.style.display = "block";
+
+  result.innerHTML =
+    "⏳ Building your professional ad...";
+
+  downloadArea.innerHTML = "";
+
+  try{
+
+    if(selectedMode === "static"){
+
+      await createStaticAd();
+
+    }else{
+
+      await createMotionOrVideoAd(
+        selectedMode
+      );
+
+    }
+
+    result.innerHTML =
+      "✅ Your ad has been created successfully.";
+
+  }catch(error){
+
+    console.error(error);
+
+    result.innerHTML =
+      "❌ Something went wrong while creating the ad.";
+
+  }
+}
+
+async function createStaticAd(){
+
+  const canvas =
+    document.createElement("canvas");
+
+  canvas.width = 1080;
+  canvas.height = 1080;
+
+  const ctx =
+    canvas.getContext("2d");
+
+  const image =
+    await loadImage(
+      loadedImages[0].url
+    );
+
+  /*
+    Premium dark background.
+  */
+  ctx.fillStyle = "#0B1220";
+  ctx.fillRect(
+    0,
+    0,
+    canvas.width,
+    canvas.height
+  );
+
+  /*
+    Product image.
+  */
+  const margin = 90;
+
+  const maxW = 900;
+  const maxH = 610;
+
+  const ratio = Math.min(
+    maxW / image.width,
+    maxH / image.height
+  );
+
+  const w = image.width * ratio;
+  const h = image.height * ratio;
+
+  const x = (canvas.width - w) / 2;
+  const y = 90;
 
   ctx.drawImage(
-    img,
+    image,
     x,
     y,
-    iw,
-    ih
-  );
-
-  ctx.restore();
-
-  ctx.fillStyle=
-    "rgba(11,18,32,.55)";
-
-  ctx.fillRect(
-    0,
-    0,
     w,
     h
   );
 
-}
+  const product =
+    document.getElementById("product").value;
 
+  const price =
+    document.getElementById("price").value;
 
-/* SCENE TEXT */
+  const benefit =
+    document.getElementById("benefit").value;
 
-function drawSceneText(
-  ctx,
-  w,
-  h,
-  title,
-  subtitle,
-  label,
-  p
-){
+  const contact =
+    document.getElementById("contact").value;
 
-  const alpha=
-    Math.min(
-      1,
-      p*4
+  ctx.fillStyle = "#FFFFFF";
+  ctx.font = "bold 58px Arial";
+
+  ctx.fillText(
+    product || "Your Product",
+    70,
+    790
+  );
+
+  ctx.fillStyle = "#14B8A6";
+  ctx.font = "bold 42px Arial";
+
+  if(price){
+
+    ctx.fillText(
+      price,
+      70,
+      850
     );
+  }
 
-  ctx.globalAlpha=alpha;
+  ctx.fillStyle = "#FFFFFF";
+  ctx.font = "28px Arial";
 
-  ctx.textAlign="left";
-
-  ctx.fillStyle="#14B8A6";
-
-  ctx.font=
-    "800 22px Arial";
-
-  ctx.fillText(
-    label,
-    70,
-    1110
-  );
-
-  ctx.fillStyle="#FFFFFF";
-
-  ctx.font=
-    "900 68px Arial";
-
-  wrapCanvas(
+  wrapText(
     ctx,
-    title,
+    benefit || "A better solution for you.",
     70,
-    1200,
-    w-140,
-    82
-  );
-
-  ctx.fillStyle="#CBD5E1";
-
-  ctx.font=
-    "400 31px Arial";
-
-  wrapCanvas(
-    ctx,
-    subtitle,
-    70,
-    1430,
-    w-140,
-    45
-  );
-
-  ctx.globalAlpha=1;
-
-}
-
-
-/* DARK SCENE */
-
-function drawDarkScene(
-  ctx,
-  w,
-  h,
-  title,
-  body,
-  p
-){
-
-  const alpha=
-    Math.min(
-      1,
-      p*4
-    );
-
-  ctx.globalAlpha=alpha;
-
-  ctx.textAlign="center";
-
-  ctx.fillStyle="#14B8A6";
-
-  ctx.font=
-    "800 24px Arial";
-
-  ctx.fillText(
-    "SIMPLY ADS",
-    w/2,
-    570
-  );
-
-  ctx.fillStyle="#FFFFFF";
-
-  ctx.font=
-    "900 67px Arial";
-
-  ctx.fillText(
-    title,
-    w/2,
-    720
-  );
-
-  ctx.fillStyle="#CBD5E1";
-
-  ctx.font=
-    "400 31px Arial";
-
-  wrapCentered(
-    ctx,
-    body,
-    w/2,
+    905,
     850,
-    w-150,
-    45
+    38
   );
 
-  ctx.globalAlpha=1;
+  if(contact){
 
-}
-
-
-/* CTA */
-
-function drawCTA(
-  ctx,
-  w,
-  h,
-  d,
-  p
-){
-
-  const alpha=
-    Math.min(
-      1,
-      p*4
-    );
-
-  ctx.globalAlpha=alpha;
-
-  ctx.textAlign="center";
-
-  ctx.fillStyle="#14B8A6";
-
-  ctx.font=
-    "800 25px Arial";
-
-  ctx.fillText(
-    "READY?",
-    w/2,
-    570
-  );
-
-  ctx.fillStyle="#FFFFFF";
-
-  ctx.font=
-    "900 68px Arial";
-
-  ctx.fillText(
-    "Get yours today.",
-    w/2,
-    700
-  );
-
-  if(d.price){
-
-    ctx.fillStyle="#14B8A6";
-
-    ctx.font=
-      "900 52px Arial";
+    ctx.fillStyle = "#94A3B8";
+    ctx.font = "24px Arial";
 
     ctx.fillText(
-      d.price,
-      w/2,
-      830
+      contact,
+      70,
+      1015
     );
-
   }
 
-  ctx.fillStyle="#FFFFFF";
+  const blob =
+    await canvasToBlob(canvas,"image/png");
 
-  ctx.font=
-    "800 32px Arial";
-
-  ctx.fillText(
-    d.contact ||
-      "Contact us today",
-    w/2,
-    960
+  addDownload(
+    blob,
+    "simply-ads-static.png",
+    "Download Static Ad"
   );
-
-  ctx.fillStyle="#CBD5E1";
-
-  ctx.font=
-    "500 24px Arial";
-
-  ctx.fillText(
-    d.product ||
-      "Your Product",
-    w/2,
-    1040
-  );
-
-  ctx.fillStyle="#94A3B8";
-
-  ctx.font=
-    "700 18px Arial";
-
-  ctx.fillText(
-    "SIMPLY ADS CREATOR",
-    w/2,
-    1770
-  );
-
-  ctx.globalAlpha=1;
-
 }
 
-
-/* MOTION FRAME */
-
-function drawAnimatedFrame(
-  ctx,
-  w,
-  h,
-  d,
-  img,
-  p
-){
-
-  const bg=
-    ctx.createLinearGradient(
-      0,
-      0,
-      w,
-      h
-    );
-
-  bg.addColorStop(
-    0,
-    "#0B1220"
-  );
-
-  bg.addColorStop(
-    1,
-    "#1E3A8A"
-  );
-
-  ctx.fillStyle=bg;
-
-  ctx.fillRect(
-    0,
-    0,
-    w,
-    h
-  );
-
-  if(img){
-
-    const zoom=
-      1+p*.14;
-
-    const scale=
-      Math.max(
-        w/img.width,
-        (h*.58)/img.height
-      )*zoom;
-
-    const iw=
-      img.width*scale;
-
-    const ih=
-      img.height*scale;
-
-    const x=
-      (w-iw)/2;
-
-    const y=
-      100+p*30;
-
-    ctx.drawImage(
-      img,
-      x,
-      y,
-      iw,
-      ih
-    );
-
-  }
-
-  ctx.fillStyle=
-    "rgba(11,18,32,.58)";
-
-  ctx.fillRect(
-    0,
-    0,
-    w,
-    h
-  );
-
-  ctx.globalAlpha=
-    Math.min(
-      1,
-      p*4
-    );
-
-  ctx.textAlign="left";
-
-  ctx.fillStyle="#FFFFFF";
-
-  ctx.font=
-    "900 64px Arial";
-
-  wrapCanvas(
-    ctx,
-    d.product ||
-      "Your Product",
-    65,
-    1050,
-    w-130,
-    75
-  );
-
-  ctx.fillStyle="#CBD5E1";
-
-  ctx.font=
-    "400 29px Arial";
-
-  wrapCanvas(
-    ctx,
-    d.benefit ||
-      "A better solution for your customers.",
-    65,
-    1250,
-    w-130,
-    42
-  );
-
-  if(d.price){
-
-    ctx.fillStyle="#14B8A6";
-
-    ctx.font=
-      "900 48px Arial";
-
-    ctx.fillText(
-      d.price,
-      65,
-      1510
-    );
-
-  }
-
-  ctx.fillStyle="#FFFFFF";
-
-  ctx.font=
-    "800 25px Arial";
-
-  ctx.fillText(
-    d.contact ||
-      "Order now",
-    65,
-    1600
-  );
-
-  ctx.fillStyle="#14B8A6";
-
-  ctx.fillRect(
-    0,
-    0,
-    w,
-    14
-  );
-
-  ctx.fillStyle="#94A3B8";
-
-  ctx.font=
-    "700 18px Arial";
-
-  ctx.fillText(
-    "SIMPLY ADS CREATOR",
-    65,
-    1830
-  );
-
-  ctx.globalAlpha=1;
-
-}
-
-
-/* TEXT WRAPPING */
-
-function wrapCanvas(
+function wrapText(
   ctx,
   text,
   x,
@@ -2265,26 +961,22 @@ function wrapCanvas(
   lineHeight
 ){
 
-  const words=
+  const words =
     String(text).split(" ");
 
-  let line="";
+  let line = "";
 
-  for(
-    let i=0;
-    i<words.length;
-    i++
-  ){
+  for(let n=0;n<words.length;n++){
 
-    const test=
-      line+
-      words[i]+
-      " ";
+    const testLine =
+      line + words[n] + " ";
+
+    const metrics =
+      ctx.measureText(testLine);
 
     if(
-      ctx.measureText(test).width>
-      maxWidth &&
-      i>0
+      metrics.width > maxWidth &&
+      n > 0
     ){
 
       ctx.fillText(
@@ -2293,17 +985,15 @@ function wrapCanvas(
         y
       );
 
-      line=
-        words[i]+" ";
+      line =
+        words[n] + " ";
 
-      y+=lineHeight;
+      y += lineHeight;
 
     }else{
 
-      line=test;
-
+      line = testLine;
     }
-
   }
 
   ctx.fillText(
@@ -2311,153 +1001,142 @@ function wrapCanvas(
     x,
     y
   );
-
 }
 
+async function createMotionOrVideoAd(type){
 
-function wrapCentered(
-  ctx,
-  text,
-  x,
-  y,
-  maxWidth,
-  lineHeight
-){
+  const canvas =
+    document.createElement("canvas");
 
-  const words=
-    String(text).split(" ");
+  canvas.width = 1080;
+  canvas.height = 1920;
 
-  let line="";
+  const ctx =
+    canvas.getContext("2d");
+
+  const stream =
+    canvas.captureStream(30);
+
+  const recorder =
+    new MediaRecorder(
+      stream,
+      {
+        mimeType:"video/webm;codecs=vp9"
+      }
+    );
+
+  const chunks = [];
+
+  recorder.ondataavailable =
+    e => {
+
+      if(e.data.size > 0)
+        chunks.push(e.data);
+
+    };
+
+  const finished =
+    new Promise(resolve => {
+
+      recorder.onstop = () => {
+
+        const blob =
+          new Blob(
+            chunks,
+            {type:"video/webm"}
+          );
+
+        resolve(blob);
+      };
+
+    });
+
+  recorder.start();
+
+  const images = [];
 
   for(
     let i=0;
-    i<words.length;
+    i<Math.min(loadedImages.length,5);
     i++
   ){
 
-    const test=
-      line+
-      words[i]+
-      " ";
+    try{
 
-    if(
-      ctx.measureText(test).width>
-      maxWidth &&
-      i>0
-    ){
-
-      ctx.fillText(
-        line,
-        x,
-        y
+      images.push(
+        await loadImage(
+          loadedImages[i].url
+        )
       );
 
-      line=
-        words[i]+" ";
-
-      y+=lineHeight;
-
-    }else{
-
-      line=test;
-
-    }
-
+    }catch(e){}
   }
 
-  ctx.fillText(
-    line,
-    x,
-    y
-  );
+  if(!images.length){
 
-}
+    recorder.stop();
 
+    return;
+  }
 
-/* RESULT */
+  const product =
+    document.getElementById("product").value ||
+    "Your Product";
 
-function showResult(
-  text,
-  url,
-  label,
-  extension
-){
+  const price =
+    document.getElementById("price").value ||
+    "";
 
-  const box=
-    document.getElementById(
-      "resultBox"
-    );
+  const benefit =
+    document.getElementById("benefit").value ||
+    "A better solution for you.";
 
-  box.style.display="block";
+  const contact =
+    document.getElementById("contact").value ||
+    "";
 
-  const safeName=
-    label
-      .toLowerCase()
-      .replaceAll(" ","-");
+  const scenes =
+    type === "video"
+      ? [
+          "DISCOVER",
+          "THE PROBLEM",
+          "MEET THE PRODUCT",
+          "WHY YOU'LL LOVE IT",
+          "SPECIAL OFFER",
+          "GET YOURS TODAY"
+        ]
+      : [
+          "DISCOVER",
+          "MEET THE PRODUCT",
+          "WHY IT'S DIFFERENT",
+          "GET YOURS TODAY"
+        ];
 
-  document.getElementById(
-    "resultText"
-  ).innerHTML=
-    text+
-    "<br><br>"+
-    '<a href="'+url+
-    '" download="'+
-    safeName+
-    "."+
-    extension+
-    '">'+
-    '<button class="primary">'+
-    label+
-    "</button>"+
-    "</a>";
+  const sceneDuration =
+    type === "video"
+      ? 2200
+      : 2600;
 
-}
+  for(
+    let scene=0;
+    scene<scenes.length;
+    scene++
+  ){
 
+    const start =
+      performance.now();
 
-/* PROGRESS */
+    while(
+      performance.now() -
+      start <
+      sceneDuration
+    ){
 
-function showProgress(
-  show,
-  value,
-  text
-){
+      const elapsed =
+        performance.now() -
+        start;
 
-  const box=
-    document.getElementById(
-      "progress"
-    );
-
-  box.style.display=
-    show ? "block" : "none";
-
-  document.getElementById(
-    "progressBar"
-  ).style.width=
-    value+"%";
-
-  document.getElementById(
-    "progressText"
-  ).textContent=
-    text;
-
-}
-
-
-/* WAIT */
-
-function wait(ms){
-
-  return new Promise(
-    resolve=>
-      setTimeout(
-        resolve,
-        ms
-      )
-  );
-
-}
-
-</script>
-
-</body>
-</html>
+      const progress =
+        Math.min(
+          elapsed / sceneDuration,
+       
